@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/AdminApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/config/AdminConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/config/AdminDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/config/AdminServiceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/main.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/vendors/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/vendors/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/vendors/material-icon-round.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/vendors/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/vendors/perfect-scrollbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/vendors/select2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Outlined.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Outlined.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Outlined.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Round.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Round.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Round.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Sharp.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Sharp.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-Sharp.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-TwoTone.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-TwoTone.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons-TwoTone.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/fonts/material-icon/MaterialIcons.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand-9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/brands/brand.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/card-brands/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/card-brands/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/card-brands/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/card-brands/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/icons/stars-active.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/icons/starts-disable.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/12-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/12-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/misc/map.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/people/avatar1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/people/avatar2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/people/avatar3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/people/avatar4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/favicon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/flag-cn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/flag-fr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/flag-jp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/flag-us.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/upload.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/custom-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/jquery-3.6.0.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/jquery.fullscreen.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/perfect-scrollbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/select2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/abstracts/_import-vendors.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/abstracts/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/abstracts/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/base/_helpers.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/base/_typography.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/components/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/components/_elements.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/components/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/components/_items.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/components/_lists.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/components/_navigation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/layout/_layout-dark.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/layout/_layout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/layout/_responsive.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/layout/_spacing.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/sass/main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/sign-in.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/test/java/com/ecommerce/admin/AdminApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/LibraryApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/AdminDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/AdminRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/AdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/ImageUpload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/test/java/com/ecommerce/library/LibraryApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ecom/bagbliss/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2eYExAzYcqcjKWjbHbmsRYn2ODs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AdminApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Admin/src/main/resources/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\templates" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\java\com\ecommerce\admin" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AdminApplication">
+    <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.admin.AdminApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LibraryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Library" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.library.LibraryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="" />
+      <created>1712073358197</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712073358197</updated>
+      <workItem from="1712073359227" duration="31901000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
