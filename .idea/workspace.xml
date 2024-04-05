@@ -4,34 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="Admin Login,register and index added">
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/index-dark.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-blank.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-brands.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-categories.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-error-404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-invoice.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-tracking.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-reviews.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-seller-detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-cards.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-details.html" afterDir="false" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="category entity">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/categories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CategoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +39,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -62,35 +53,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Admin/src/main/resources/templates&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AdminApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Admin/src/main/resources/static/js",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\static\js" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\templates" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\java\com\ecommerce\admin" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\dto" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\java\com\ecommerce\admin\controller" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\service\impl" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\service" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\repository" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AdminApplication">
@@ -119,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712073358197</updated>
       <workItem from="1712073359227" duration="32055000" />
-      <workItem from="1712203125617" duration="21000" />
+      <workItem from="1712203125617" duration="41912000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -129,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712174355142</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added new templates">
+      <option name="closed" value="true" />
+      <created>1712203193502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712203193502</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +145,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Admin Login,register and index added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin Login,register and index added" />
+    <MESSAGE value="Added new templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new templates" />
   </component>
 </project>

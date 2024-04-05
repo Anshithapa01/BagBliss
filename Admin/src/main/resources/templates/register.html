@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th = "http://www.thymeleaf.org">
 
-<head th:replace="fragments :: header"> </head>
+<head th:replace="~{fragments :: header"> </head>
 
 <body>
 <main>
@@ -71,6 +71,7 @@
     </footer>
 </main>
 
+<div th:replace="~{fragments::script}"></div>
 </body>
 
 </html>
