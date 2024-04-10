@@ -1,34 +1,48 @@
 package com.ecommerce.library.utils;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.*;
 import java.security.cert.TrustAnchor;
 
-@Component
+@Service
 public class ImageUpload {
-    private final String UPLOAD_FOLDER = "C:\\Users\\Thanh\\Downloads\\Download\\Food-Ordering-Se2\\Admin\\src\\main\\resources\\static\\img";
-    public boolean uploadFile(MultipartFile file) {
-        boolean isUpload = false;
-        try {
-            Files.copy(file.getInputStream(), Paths.get(UPLOAD_FOLDER + File.separator + file.getOriginalFilename()) , StandardCopyOption.REPLACE_EXISTING);
-            isUpload = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return isUpload;
-    }
+    private final String UPLOAD_FOLDER = "C:\\Users\\Anshitha P A\\Documents\\Spring-Initializer\\Mini_project\\BagBliss\\Admin\\src\\main\\resources\\static\\imgs\\items";
+    public String storeFile(MultipartFile file) throws IOException {
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        Path uploadPath = Paths.get(UPLOAD_FOLDER);
+        Path uploadPathCustomer = Paths.get(UPLOAD_FOLDER);
 
-    public boolean checkExist(MultipartFile multipartFile){
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+            Files.createDirectories(uploadPathCustomer);
+        }
+
+        try (InputStream inputStream = file.getInputStream()) {
+            byte[] buffer = new byte[inputStream.available()];
+            inputStream.read(buffer);
+            Path filePath = uploadPath.resolve(fileName);
+            Path filePathCustomer = uploadPathCustomer.resolve(fileName);
+            Files.write(filePath,buffer, StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(filePathCustomer,buffer, StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING);
+
+            return fileName.toString();
+        } catch (IOException e) {
+            throw new IOException("Could not store file " + fileName, e);
+        }
+    }
+    public boolean checkExist(MultipartFile File){
         boolean isExist = false;
         try {
-           File file = new File(UPLOAD_FOLDER +"\\" + multipartFile.getOriginalFilename());
-           isExist = file.exists();
+            File file = new File(UPLOAD_FOLDER +"/" + File.getOriginalFilename());
+            isExist = file.exists();
         }catch (Exception e){
             e.printStackTrace();
         }

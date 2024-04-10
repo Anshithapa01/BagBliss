@@ -24,7 +24,7 @@
 <div th:fragment="side_bar">
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a href="index" class="brand-wrap">
+            <a th:href="@{/index}" class="brand-wrap">
                 <img src="/admin/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
             </a>
             <div>
@@ -39,11 +39,11 @@
                     </a>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
+                    <a class="menu-link" href="products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
                         <span class="text">Products</span>
                     </a>
                     <div class="submenu">
-                        <a th:href="@{page-products-list.html}">Product List</a>
+                        <a th:href="@{/products/0}">Product List</a>
                         <a th:href="@{page-products-grid.html}">Product grid</a>
                         <a th:href="@{page-products-grid-2.html}">Product grid 2</a>
                         <a th:href="@{/categories}">Categories</a>
@@ -72,11 +72,11 @@
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-form-product-1.html"> <i class="icon material-icons md-add_box"></i>
+                    <a class="menu-link" href="add-product.html"> <i class="icon material-icons md-add_box"></i>
                         <span class="text">Add product</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-form-product-1.html">Add product 1</a>
+                        <a href="add-product.html">Add product 1</a>
                         <a href="page-form-product-2.html">Add product 2</a>
                         <a href="page-form-product-3.html">Add product 3</a>
                         <a href="page-form-product-4.html">Add product 4</a>
@@ -143,22 +143,9 @@
 
 
 
+
 <div th:fragment="nav_bar">
-    <header class="main-header navbar">
-        <div class="col-search">
-            <form class="searchform">
-                <div class="input-group">
-                    <input list="search_terms" type="text" class="form-control" placeholder="Search term">
-                    <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
-                </div>
-                <datalist id="search_terms">
-                    <option value="Products">
-                    <option value="New orders">
-                    <option value="Apple iphone">
-                    <option value="Ahmed Hassan">
-                </datalist>
-            </form>
-        </div>
+    <header class="main-header navbar justify-content-end">
         <div class="col-nav">
             <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
             <ul class="nav">

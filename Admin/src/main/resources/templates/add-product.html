@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+
+<head th:replace="~{fragments::header_sec}"></head>
+
+<body>
+<div class="screen-overlay"></div>
+
+<div th:replace="~{fragments::side_bar}"></div>
+
+<main class="main-wrap">
+
+    <div th:replace="~{fragments::nav_bar}"></div>
+
+    <section class="content-main">
+        <div class="row">
+            <div class="col-9">
+                <div class="content-header">
+                    <h2 class="content-title">Add New Product</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form class="d-flex" th:action="@{/save-product}" method="post" enctype="multipart/form-data"
+                  th:object="${product}">
+                <div class="col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <label for="product_name" class="form-label">Product Title</label>
+                                <input type="text" name="product_name" th:field="*{name}" placeholder="Type here" class="form-control" id="product_name">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Product description</label>
+                                <textarea id="description" name="description" th:field="*{description}" placeholder="Type here" class="form-control" rows="4"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
+                                        <label class="form-label">Regular price</label>
+                                        <div class="row gx-2">
+                                            <input id="price" name="price" th:field="*{costPrice}" placeholder="$" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
+                                        <label class="form-label">Promotional price</label>
+                                        <input name="sale_price" id="sale_price" th:field="*{salePrice}" placeholder="$" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="form-label">Quantity</label>
+                                    <input type="number" th:field="*{currentQuantity}" id="available_quantity" name="available_quantity" placeholder="0" class="form-control">
+                                </div>
+                            </div>
+                        </div><!-- card end// -->
+                    </div>
+                </div>
+                <div class="col-lg-3 ml-150">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row gx-2">
+                                <label>Upload Image</label>
+                                <div class="input-upload">
+                                    <img src="/admin/imgs/theme/upload.svg" alt="">
+                                    <input id="image" name="imageProduct" class="input-file" type="file" multiple required>
+                                </div>
+                            </div>
+
+                            <div class="row gx-2">
+                                <label class="pt-20 pb-15">Select Category</label>
+                                <div class="col-sm-6 mb-3">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select" th:field="*{category}" id="categories" name="categories">
+                                        <option th:value="null"> SELECT </option>
+                                        <option th:each="category : ${categories}"
+                                                th:value="${category.id}"
+                                                th:text="${category.name}"></option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <button class="btn btn-md rounded font-sm hover-up" type="submit">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                </div>
+            </form>
+        </div>
+    </section> <!-- content-main end// -->
+
+    <div th:replace="~{fragments::footer_sec}"></div>
+
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const imageInput = document.getElementById('image');
+
+        imageInput.addEventListener('change', function(event) {
+            const selectedFiles = event.target.files;
+            const minFiles = 4;
+            const maxFiles = 4;
+
+            if (selectedFiles.length < minFiles) {
+                alert(`Please select at least ${minFiles} file.`);
+
+                imageInput.value = '';
+            } else if (selectedFiles.length > maxFiles) {
+                alert(`You can only upload up to ${maxFiles} file.`);
+
+                imageInput.value = '';
+            }
+        });
+    });
+</script>
+
+<div th:replace="~{fragments::script}"></div>
+
+</body>
+
+</html>

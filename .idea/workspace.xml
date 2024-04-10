@@ -4,22 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="category entity">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CategoryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CategoryServiceImpl.java" afterDir="false" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="category section added">
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/update-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/ProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Image.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ImageRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ImageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ImageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/12-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/12-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/9.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/index-dark.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/index-dark.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-blank.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-brands.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-brands.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-error-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-error-404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-invoice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-tracking.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-tracking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-reviews.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-seller-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-seller-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/sign-in.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/sign-in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CategoryDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/ImageUpload.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/ImageUpload.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +121,7 @@
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Admin/src/main/resources/static/js",
+    "last_opened_file_path": "C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Admin/src/main/resources/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,18 +132,24 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\static\js" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\templates" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\static\imgs\items" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\static\js" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\java\com\ecommerce\admin" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\dto" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\java\com\ecommerce\admin\controller" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\service\impl" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\service" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\java\com\ecommerce\admin\controller" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\dto" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\repository" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ecommerce.library.service.impl" />
+      <recent name="com.ecommerce.library.service" />
+      <recent name="com.ecommerce.library.repository" />
+      <recent name="com.ecommerce.library.model" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AdminApplication">
@@ -119,7 +178,12 @@
       <option name="presentableId" value="Default" />
       <updated>1712073358197</updated>
       <workItem from="1712073359227" duration="32055000" />
-      <workItem from="1712203125617" duration="41912000" />
+      <workItem from="1712203125617" duration="70727000" />
+      <workItem from="1712383972760" duration="48000" />
+      <workItem from="1712415493356" duration="26482000" />
+      <workItem from="1712550343221" duration="25555000" />
+      <workItem from="1712635930564" duration="16607000" />
+      <workItem from="1712727295569" duration="29561000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -137,15 +201,35 @@
       <option name="project" value="LOCAL" />
       <updated>1712203193502</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="category section added">
+      <option name="closed" value="true" />
+      <created>1712293157819</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712293157819</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Admin Login,register and index added" />
     <MESSAGE value="Added new templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new templates" />
+    <MESSAGE value="category section added" />
+    <option name="LAST_COMMIT_MESSAGE" value="category section added" />
   </component>
 </project>

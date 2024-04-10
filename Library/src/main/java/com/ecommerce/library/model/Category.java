@@ -16,6 +16,8 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
     private String name;
+
+
     @Column(name = "is_activated")
     private boolean activated;
     @Column(name = "is_deleted")
