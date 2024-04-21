@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/shop/login/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/shop/login/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<main>
+    <section class="content-main mt-80 mb-80">
+        <div class="card mx-auto card-login">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Create an Account</h4>
+                <p class="mb-50 font-sm">
+                    Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy
+                </p>
+                <div th:if = "${session.success}">
+                    <p class = "alert alert-success" th:text = "${session.success}"></p>
+                </div>
+                <div th:if = "${session.error}">
+                    <p class = "alert alert-danger" th:text = "${session.error}"></p>
+                </div>
+
+                <form th:action="@{/do-register}" method="post" th:object="${customerDto}">
+                    <div class="mb-3">
+                        <div class="row gx-2">
+                            <div>
+                                <input class="form-control" th:field="*{name}" name="name" placeholder="Full Name" type="text"></div>
+                                <div class="alert alert-danger" th:if="${#fields.hasErrors('name')}"
+                                     th:errors="*{name}"
+                                ></div>
+                        </div>
+                    </div> <!-- form-group// -->
+                    <div class="mb-3 row">
+                        <div>
+                            <input class="form-control" th:field="*{email}" name="email" th:value="${customerDto.email}" placeholder="Email" type="text">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}"
+                             th:errors="*{email}"
+                        ></div>
+                    </div><!-- form-group// -->
+                    <div class="mb-3">
+                        <div class="row gx-2">
+                            <div> <input class="form-control" placeholder="Phone" type="text" th:field="*{mobile}">
+                            </div>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('mobile')}"
+                                 th:errors="*{mobile}"
+                            ></div>
+                        </div>
+                    </div> <!-- form-group// -->
+
+                    <div class="mb-3">
+                        <div class="row gx-2">
+                            <div class="col-6"> <input class="form-control" placeholder="Password" th:field="*{password}" type="password"> </div>
+                            <div class="col-6"> <input class="form-control" placeholder="Repeat Password" th:field="*{repeatPassword}" type="password"> </div>
+                            <div class="alert alert-danger col-6" th:if="${#fields.hasErrors('password')}"
+                                 th:errors="*{password}"
+                            ></div>
+                            <div class="alert alert-danger col-6" th:if="${#fields.hasErrors('repeatPassword')}"
+                                 th:errors="*{repeatPassword}"
+                            ></div>
+                        </div>
+                    </div> <!-- form-group// -->
+                    <div class="mb-3">
+                        <p class="small text-center text-muted">By signing up, you confirm that you’ve read and accepted our User Notice and Privacy Policy.</p>
+                    </div> <!-- form-group  .// -->
+                    <div class="mb-4">
+                        <button type="submit" class="btn btn-primary w-100"> Register </button>
+                    </div> <!-- form-group// -->
+                </form>
+                <p class="text-center mb-2">Already have an account? <a th:href="@{/login}">Sign in now</a></p>
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer text-center">
+        <p class="font-xs">
+            <script>
+                document.write(new Date().getFullYear())
+            </script> ©, BagBliss - Pvt.Ltd .
+        </p>
+        <p class="font-xs mb-30">All rights reserved</p>
+    </footer>
+</main>
+<script src="/shop/login/js/vendors/jquery-3.6.0.min.js"></script>
+<script src="/shop/login/js/vendors/bootstrap.bundle.min.js"></script>
+<script src="/shop/login/js/vendors/jquery.fullscreen.min.js"></script>
+<!-- Main Script -->
+<script src="/shop/login/js/main.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -33,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
     private ImageRepository imageRepository;
 
 
+
     @Override
     public List<ProductDto> findAll() {
         List<Product> products=productRepository.findAll();
@@ -47,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
         try {
             product.setName(productDto.getName());
             product.setDescription(productDto.getDescription());
+            product.setLong_description(productDto.getLong_description());
             product.setCurrentQuantity(productDto.getCurrentQuantity());
             product.setCostPrice(productDto.getCostPrice());
             product.setSalePrice(productDto.getSalePrice());
@@ -97,6 +99,7 @@ public class ProductServiceImpl implements ProductService {
             productUpdate.setCategory(productDto.getCategory());
             productUpdate.setName(productDto.getName());
             productUpdate.setDescription(productDto.getDescription());
+            productUpdate.setLong_description(productDto.getLong_description());
             productUpdate.setCostPrice(productDto.getCostPrice());
             productUpdate.setSalePrice(productDto.getSalePrice());
             productUpdate.setCurrentQuantity(productDto.getCurrentQuantity());
@@ -116,6 +119,7 @@ public class ProductServiceImpl implements ProductService {
         productDto.setId(product.getId());
         productDto.setName(product.getName());
         productDto.setDescription(product.getDescription());
+        productDto.setLong_description(product.getLong_description());
         productDto.setCostPrice(product.getCostPrice());
         productDto.setSalePrice(product.getSalePrice());
         productDto.setCurrentQuantity(product.getCurrentQuantity());
@@ -151,7 +155,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> pageProducts(int pageNo) {
-        Pageable pageable=PageRequest.of(pageNo,5);
+        Pageable pageable=PageRequest.of(pageNo,8);
         List<ProductDto> products= transferData(productRepository.findAll());
         Page<Product> productPage=toPage(products,pageable);
         return productPage;
@@ -179,9 +183,13 @@ public class ProductServiceImpl implements ProductService {
         return dtoPage;
     }
 
+    @Override
+    public Product getProductById(long id) {
+        return productRepository.getById(id);
+    }
 
 
-        private Page toPage(List<ProductDto> list, Pageable pageable) {
+    private Page toPage(List<ProductDto> list, Pageable pageable) {
         if (pageable.getOffset() >= list.size()) {
             return Page.empty();
         }
@@ -205,6 +213,7 @@ public class ProductServiceImpl implements ProductService {
             productDto.setCostPrice(product.getCostPrice());
             productDto.setSalePrice(product.getSalePrice());
             productDto.setDescription(product.getDescription());
+            productDto.setLong_description(product.getLong_description());
             productDto.setImage(product.getImage());
             productDto.setCategory(product.getCategory());
             productDto.setActivated(product.is_activated());
@@ -213,6 +222,12 @@ public class ProductServiceImpl implements ProductService {
             }
         return productDtoList;
         }
+
+    @Override
+    public List<Product> findAllByCategory(long id) {
+        return productRepository.findAllByCategoryId(id);
+    }
+
 
 
 
@@ -291,8 +306,11 @@ public class ProductServiceImpl implements ProductService {
 //    }
 
 
-
-
+//
+//    @Override
+//    public List<Product> findProductsByCategory(long id) {
+//        return productRepository.findAllByCategoryId(id);
+//    }
 
 
 }

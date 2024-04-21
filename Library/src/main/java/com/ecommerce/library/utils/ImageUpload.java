@@ -14,10 +14,13 @@ import java.security.cert.TrustAnchor;
 @Service
 public class ImageUpload {
     private final String UPLOAD_FOLDER = "C:\\Users\\Anshitha P A\\Documents\\Spring-Initializer\\Mini_project\\BagBliss\\Admin\\src\\main\\resources\\static\\imgs\\items";
+
+    String UPLOAD_FOLDER_CUSTOMER ="C:\\Users\\Anshitha P A\\Documents\\Spring-Initializer\\Mini_project\\BagBliss\\Customer\\src\\main\\resources\\static\\imgs\\items";
+
     public String storeFile(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Path uploadPath = Paths.get(UPLOAD_FOLDER);
-        Path uploadPathCustomer = Paths.get(UPLOAD_FOLDER);
+        Path uploadPathCustomer = Paths.get(UPLOAD_FOLDER_CUSTOMER);
 
 
         if (!Files.exists(uploadPath)) {

@@ -13,7 +13,7 @@ public interface CategoryService {
 
     List<Category> findAllByActivatedTrue();
 
-    List<Category> findALl();
+    List<Category> findAll();
 
     Optional<Category> findById(Long id);
 

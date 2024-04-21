@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "https://www.thymeleaf.org/">
+<head th:replace="~{fragments::header_sec}"> </head>
+<body>
+<div class="screen-overlay"></div>
+
+<div th:replace="~{fragments::side_bar}"></div>
+
+<main class="main-wrap mt-50">
+    <div th:replace="~{fragments::nav_bar}"></div>
+<div class="container">
+    <p th:if="${size == 0} ">No Customers</p>
+    <div th:if = "${success}" class = "text-center alert alert-success">
+        <p th:text = "${success}"></p>
+    </div>
+    <div th:if = "${error}" class="text-center alert alert-danger">
+        <p th:text = "${error}"></p>
+    </div>
+    <table id="dataTable" class="table table-bordered" th:if = "${size > 0}">
+        <thead>
+        <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "customer : ${customers}">
+            <th scope="row" th:text = "${customer.name}"></th>
+            <td th:text = "${customer.email}"></td>
+            <td th:text = "${customer.mobile}"></td>
+
+            <td>
+                <a th:if="${customer.activated} == true" th:href="@{/disable-customer/{id}(id = ${customer.customer_id})}"
+                   class="btn btn-primary">Disable</a>
+                <a th:if="${customer.blocked} == true" th:href="@{/enable-customer/{id}(id = ${customer.customer_id})}"
+                   class=" btn btn-danger">Enable</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</main>
+<div th:replace="~{fragments::script}"></div>
+</body>
+
+</html>

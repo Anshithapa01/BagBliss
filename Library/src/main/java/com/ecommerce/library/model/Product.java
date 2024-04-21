@@ -19,6 +19,7 @@ public class Product {
     private Long id;
     private String name;
     private String description;
+    private String long_description;
     private int currentQuantity;
     private double costPrice;
     private double salePrice;

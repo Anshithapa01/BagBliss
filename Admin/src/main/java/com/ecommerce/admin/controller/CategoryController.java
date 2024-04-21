@@ -34,7 +34,7 @@ public class CategoryController {
             return "redirect:/login";
         }
         model.addAttribute("title", "Manage Category");
-        List<Category> categories = categoryService.findALl();
+        List<Category> categories = categoryService.findAll();
         model.addAttribute("categories", categories);
         model.addAttribute("size", categories.size());
         model.addAttribute("categoryNew", new Category());

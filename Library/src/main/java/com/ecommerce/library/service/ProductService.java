@@ -24,7 +24,7 @@ public interface ProductService {
 
     Page<ProductDto> searchProducts(int pageNo, String keyword);
 
-
+    Product getProductById(long id);
 
 
 
@@ -63,5 +63,9 @@ public interface ProductService {
     // List<ProductDto> findByCategoryId(Long id);
 
   //  Page<Product> searchProductsList(String keyword);
+
+//    List<Product> findProductsByCategory(long id);
+
+    List<Product> findAllByCategory(long id);
 
 }

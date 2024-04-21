@@ -6,6 +6,7 @@ import com.ecommerce.library.model.Category;
 import com.ecommerce.library.model.Image;
 import com.ecommerce.library.model.Product;
 import com.ecommerce.library.service.*;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -71,8 +73,13 @@ public class ProductController {
     @PostMapping("/save-product")
     public String saveProduct(@ModelAttribute("product") ProductDto productDto,
                               @RequestParam("imageProduct") List<MultipartFile> imageProduct,
-                              RedirectAttributes redirectAttributes) {
+                              RedirectAttributes redirectAttributes, BindingResult result, HttpSession session,Model model) {
         try {
+            if (result.hasErrors()) {
+                session.removeAttribute("error");
+                model.addAttribute("productDto", productDto);
+                return "register";
+            }
             productService.save(imageProduct, productDto);
             redirectAttributes.addFlashAttribute("success", "Added new product successfully!");
         } catch (Exception e) {
@@ -163,7 +170,7 @@ public class ProductController {
         model.addAttribute("categories", categories);
         model.addAttribute("title", "Manage Products");
         model.addAttribute("products", products);
-        model.addAttribute("size", products.getSize());
+        model.addAttribute("size", products.getTotalElements());
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", products.getTotalPages());
         return "products-list";

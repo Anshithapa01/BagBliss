@@ -16,22 +16,31 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
+
     private Long id;
 
-    @NotNull
-    @Size(min = 1 , message = "Product name can't be null")
+    @NotBlank(message ="Name cannot be null" )
+    @Size(min = 3,message = "minimum 3 letter")
     private String name;
 
+    @NotBlank
     private String description;
 
+    @NotBlank
+    private String long_description;
+
+    @NotBlank
     private int currentQuantity;
 
+    @NotBlank
     private double costPrice;
 
     private double salePrice;
 
+    @NotBlank
     private List<Image> image;
 
+    @NotBlank
     private Category category;
 
     private boolean activated;

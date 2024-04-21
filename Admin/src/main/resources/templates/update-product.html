@@ -60,17 +60,23 @@
                 <div class="col-lg-3 ml-150">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="row gx-2">
-                                <label>Upload Image</label>
+                            <div class="row flex-wrap">
+                                <img class="col-6" th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[0].getName()}|}" alt="img1">
+                                <img class="col-6" th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[1].getName()}|}" alt="img2">
+                                <img class="col-6" th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[2].getName()}|}" alt="img3">
+                                <img class="col-6" th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[3].getName()}|}" alt="img4">
+                            </div>
+                            <div class="row gx-2 file-uploader">
+                                <div class="file-uploader__message-area">
+                                    <p>Select a file to upload</p>
+                                </div>
                                 <div class="input-upload">
-                                    <img th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[0].getName()}|}" alt="img1">
-                                    <img th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[1].getName()}|}" alt="img2">
-                                    <img th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[2].getName()}|}" alt="img3">
-                                    <img th:field="*{image}" th:src="@{|/imgs/items/${productDto.image[3].getName()}|}" alt="img4">
-                                    <input id="image" name="imageProduct" class="input-file" type="file" multiple>
+                                    <div class="file-chooser">
+                                        <input class="file-chooser__input" name="imageProduct" type="file" multiple required>
+                                    </div>
+                                    <input class="file-uploader__submit-button" type="submit" value="Upload">
                                 </div>
                             </div>
-
                             <div class="row gx-2">
                                 <label class="pt-20 pb-15">Select Category</label>
                                 <div class="col-sm-6 mb-3">
@@ -88,6 +94,7 @@
                             </div>
                         </div>
                     </div> <!-- card end// -->
+                </div>
             </form>
         </div>
     </section> <!-- content-main end// -->
@@ -96,29 +103,156 @@
 
 </main>
 
+<div th:replace="~{fragments::script}"></div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const imageInput = document.getElementById('image');
+    (function ($) {
+        $.fn.uploader = function (options) {
+            var settings = $.extend(
+                {
+                    MessageAreaText: "No files selected.",
+                    MessageAreaTextWithFiles: "File List:",
+                    DefaultErrorMessage: "Unable to open this file.",
+                    BadTypeErrorMessage: "We cannot accept this file type at this time."
+                },
+                options
+            );
 
-        imageInput.addEventListener('change', function(event) {
-            const selectedFiles = event.target.files;
-            const minFiles = 4;
-            const maxFiles = 4;
+            var uploadId = 1;
+            //update the messaging
+            $(".file-uploader__message-area p").text(
+                options.MessageAreaText || settings.MessageAreaText
+            );
 
-            if (selectedFiles.length < minFiles) {
-                alert(`Please select at least ${minFiles} file.`);
+            //create and add the file list and the hidden input list
+            var fileList = $('<ul class="file-list"></ul>');
+            var hiddenInputs = $('<div class="hidden-inputs hidden"></div>');
+            $(".file-uploader__message-area").after(fileList);
+            $(".file-list").after(hiddenInputs);
 
-                imageInput.value = '';
-            } else if (selectedFiles.length > maxFiles) {
-                alert(`You can only upload up to ${maxFiles} file.`);
+            var selectedFileCount = 0;
 
-                imageInput.value = '';
-            }
+            // Submit button click event handler
+            $(".file-uploader__submit-button").on("click", function (e) {
+                if (selectedFileCount < 4) {
+                    alert("Please select at least 4 files.");
+                    e.preventDefault(); // Prevent form submission if validation fails
+                }
+            });
+
+            //when choosing a file, add the name to the list and copy the file input into the hidden inputs
+            $(".file-chooser__input").on("change", function () {
+                var files = document.querySelector(".file-chooser__input").files;
+
+                for (var i = 0; i < files.length; i++) {
+                    console.log(files[i]);
+
+                    var file = files[i];
+                    var fileName = file.name.match(/([^\\\/]+)$/)[0];
+
+                    //clear any error condition
+                    $(".file-chooser").removeClass("error");
+                    $(".error-message").remove();
+
+                    //validate the file
+                    var check = checkFile(fileName);
+                    if (check === "valid") {
+                        // move the 'real' one to hidden list
+                        $(".hidden-inputs").append($(".file-chooser__input"));
+
+                        //insert a clone after the hiddens (copy the event handlers too)
+                        $(".file-chooser").append(
+                            $(".file-chooser__input").clone({ withDataAndEvents: true })
+                        );
+
+                        //add the name and a remove button to the file-list
+                        $(".file-list").append(
+                            '<li style="display: none;"><span class="file-list__name">' +
+                            fileName +
+                            '</span><button class="removal-button" data-uploadid="' +
+                            uploadId +
+                            '"></button></li>'
+                        );
+                        $(".file-list").find("li:last").show(800);
+
+                        // Increment selected file count
+                        selectedFileCount++;
+
+                        //removal button handler
+                        $(".removal-button").on("click", function (e) {
+                            e.preventDefault();
+
+                            // Decrement selected file count
+                            selectedFileCount--;
+
+                            //remove the corresponding hidden input
+                            $(
+                                '.hidden-inputs input[data-uploadid="' +
+                                $(this).data("uploadid") +
+                                '"]'
+                            ).remove();
+
+                            //remove the name from file-list that corresponds to the button clicked
+                            $(this)
+                                .parent()
+                                .hide("puff")
+                                .delay(10)
+                                .queue(function () {
+                                    $(this).remove();
+                                });
+
+                            //if the list is now empty, change the text back
+                            if ($(".file-list li").length === 0) {
+                                $(".file-uploader__message-area").text(
+                                    options.MessageAreaText || settings.MessageAreaText
+                                );
+                            }
+                        });
+
+                        //so the event handler works on the new "real" one
+                        $(".hidden-inputs .file-chooser__input")
+                            .removeClass("file-chooser__input")
+                            .attr("data-uploadId", uploadId);
+
+                        //update the message area
+                        $(".file-uploader__message-area").text(
+                            options.MessageAreaTextWithFiles ||
+                            settings.MessageAreaTextWithFiles
+                        );
+
+                        uploadId++;
+                    } else {
+                        //indicate that the file is not ok
+                        $(".file-chooser").addClass("error");
+                        var errorText =
+                            options.DefaultErrorMessage || settings.DefaultErrorMessage;
+
+                        if (check === "badFileName") {
+                            errorText =
+                                options.BadTypeErrorMessage || settings.BadTypeErrorMessage;
+                        }
+
+                        $(".file-chooser__input").after(
+                            '<p class="error-message">' + errorText + "</p>"
+                        );
+                    }
+                }
+            });
+
+            var checkFile = function (fileName) {
+                return "valid";
+            };
+        };
+    })($);
+
+    //init
+    $(document).ready(function () {
+        console.log("hi");
+        $(".fileUploader").uploader({
+            MessageAreaText: "No files selected. Please select a file."
         });
     });
 </script>
-
-<div th:replace="~{fragments::script}"></div>
 
 </body>
 

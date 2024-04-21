@@ -57,7 +57,7 @@
                 <p class="text-center text-danger">No products in Shop</p>
             </div>
             <div class="card-body" th:if="${size > 0}">
-                <article class="itemlist" th:each= "product : ${products}">
+                <article class="itemlist" th:each= "product : ${products}" th:if="${!product.category.deleted}">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-sm-1 col-2 col-price"> <span th:text="${product.id}"></span> </div>
                         <div class="col-lg-3 col-sm-3 col-6 flex-grow-1 col-name">

@@ -4599,3 +4599,167 @@ body.dark .dropdown-menu .dropdown-item.text-danger {
   }
 }
 /*# sourceMappingURL=main.css.map */
+
+/* Image uploader */
+
+/* variables */
+.file-uploader__primaryColor {
+  color: rgb(114, 191, 167);
+}
+
+.file-uploader__primaryColor--hover {
+  color: lighten(rgb(114, 191, 167), 15%);
+}
+
+.file-uploader__black {
+  color: #242424;
+}
+
+.file-uploader__error {
+  color: rgb(214, 93, 56);
+}
+
+/* style */
+.file-uploader {
+  background-color: lighten(rgb(114, 191, 167), 30%);
+  border-radius: 3px;
+  color: #242424;
+}
+
+.file-uploader__message-area {
+  font-size: 18px;
+  padding: 1em;
+  text-align: center;
+  color: darken(rgb(114, 191, 167), 25%);
+}
+
+.file-list {
+  background-color: lighten(rgb(114, 191, 167), 45%);
+  font-size: 16px;
+}
+
+.file-list__name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-list li {
+  height: 50px;
+  line-height: 50px;
+  margin-left: 0.5em;
+  border: none;
+  overflow: hidden;
+}
+
+.removal-button {
+  width: 20%;
+  border: none;
+  background-color: rgb(214, 93, 56);
+  color: white;
+}
+
+.removal-button::before {
+  content: "X";
+}
+
+.removal-button:focus {
+  outline: 0;
+}
+
+.file-chooser {
+  padding: 1em;
+  transition: background-color 1s, height 1s;
+}
+
+.file-chooser p {
+  font-size: 18px;
+  padding-top: 1em;
+}
+
+/* layout */
+.file-uploader {
+  max-width: 400px;
+  height: auto;
+  margin: 2em auto;
+}
+
+.file-uploader * {
+  display: block;
+}
+
+.file-uploader input[type="submit"] {
+  margin-top: 2em;
+  float: right;
+}
+
+.file-list {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.file-list__name {
+  max-width: 70%;
+  float: left;
+}
+
+.file-list li::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.removal-button {
+  display: inline-block;
+  height: 100%;
+  float: right;
+}
+
+.file-chooser {
+  width: 90%;
+  margin: 0.5em auto;
+}
+
+.file-chooser__input {
+  margin: 0 auto;
+}
+
+.file-uploader__submit-button {
+  width: 100%;
+  border: none;
+  font-size: 1.5em;
+  padding: 1em;
+  background-color: rgb(114, 191, 167);
+  color: white;
+}
+
+.file-uploader__submit-button:hover {
+  background-color: lighten(rgb(114, 191, 167), 15%);
+}
+
+/* utility */
+.hidden {
+  display: none;
+}
+
+.hidden input {
+  display: none;
+}
+
+.error {
+  background-color: rgb(214, 93, 56);
+  color: white;
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}

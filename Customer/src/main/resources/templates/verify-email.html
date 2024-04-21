@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="/imgs/theme/favicon.svg">
+
+    <title>Forgot-Password</title>
+    <link rel="stylesheet" href="/shop/css/main.css">
+</head>
+<body>
+<section class="pt-150 pb-150 pl-200">
+    <div class="container pl-200">
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="login_wrap widget-taber-content p-30 background-white border-radius-10 mb-md-5 mb-lg-0 mb-sm-5">
+                            <div class="padding_eight_all bg-white">
+                                <div class="heading_s1">
+                                    <h3 class="mb-30">Enter Your Email address</h3>
+                                </div>
+                            </div>
+
+                            <form method="post" th:action="@{/sendVerificationEmailOtp}">
+                                <div  th:if="${param.error}">
+                                    <div class="alert alert-danger col=xs-offset-1 col-xs-10">
+                                        Sorry: enter valid email</div>
+
+                                </div>
+                                <div  th:if="${param.exist}">
+                                    <div class="alert alert-danger col=xs-offset-1 col-xs-10">
+                                        email already exist</div>
+
+                                </div>
+                                <div th:if="${param.existUser}">
+                                    <div class="alert alert-danger">email already exist !</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Your Email" class="form-control" >
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-fill-out btn-block hover-up">Send Otp</button>
+                                </div>
+                                <a th:href="@{/}">Back to Home</a><br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace = "~{fragments::scripts}"></div>
+</body>
+</html>
