@@ -143,8 +143,9 @@
                                 </div>
                                 <div class="product-extra-link2">
                                     <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                    <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
+
                                 </div>
                             </div>
                             <ul class="product-meta font-xs color-grey mt-50">
@@ -307,8 +308,9 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
+
                                     </div>
                                 </div>
                                 <div class="product-content-wrap" th:each="category :${caregories}" th:if="${category.name == product.category.name}">
@@ -326,9 +328,7 @@
                                         <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
                                         <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                     </div>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -349,8 +349,9 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
+
                                     </div>
                                 </div>
                                 <div class="product-content-wrap" th:each="category :${caregories}" th:if="${category.name == product.category.name}">
@@ -368,9 +369,7 @@
                                         <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
                                         <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                     </div>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -393,8 +392,9 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
+
                                     </div>
                                 </div>
                                 <div class="product-content-wrap" th:each="category :${caregories}" th:if="${category.name == product.category.name}">
@@ -412,9 +412,7 @@
                                         <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
                                         <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                     </div>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -435,8 +433,9 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
+
                                     </div>
                                 </div>
                                 <div class="product-content-wrap" th:each="category :${caregories}" th:if="${category.name == product.category.name}">
@@ -454,9 +453,7 @@
                                         <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
                                         <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                     </div>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -479,8 +476,9 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
+
                                     </div>
                                 </div>
                                 <div class="product-content-wrap" th:each="category :${caregories}" th:if="${category.name == product.category.name}">
@@ -498,9 +496,7 @@
                                         <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
                                         <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                     </div>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -521,8 +517,9 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
+
                                     </div>
                                 </div>
                                 <div class="product-content-wrap" th:each="category :${caregories}" th:if="${category.name == product.category.name}">
@@ -540,9 +537,7 @@
                                         <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
                                         <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                     </div>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -655,7 +650,7 @@
                                                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
                                                     <i class="fi-rs-eye"></i></a>
                                                 <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                                <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
                                             </div>
                                             <div class="product-badges product-badges-position product-badges-mrg">
                                                 <span class="hot">Hot</span>
@@ -677,7 +672,7 @@
                                                 <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                             </div>
                                             <div class="product-action-1 show">
-                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
                                             </div>
                                         </div>
                                     </div>

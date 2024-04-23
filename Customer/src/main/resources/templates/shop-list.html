@@ -120,7 +120,7 @@
                                     <div class="product-extra-link2">
                                         <button type="submit" class="button button-add-to-cart">Add to cart</button>
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+
                                     </div>
                                 </div>
                                 <ul class="product-meta font-xs color-grey mt-50">
@@ -160,54 +160,36 @@
                                 <p> We found <strong class="text-brand">688</strong> items for you!</p>
                             </div>
                             <div class="sort-by-product-area">
-                                <div class="sort-by-cover mr-10">
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span><i class="fi-rs-apps"></i>Show:</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">50</a></li>
-                                            <li><a href="#">100</a></li>
-                                            <li><a href="#">150</a></li>
-                                            <li><a href="#">200</a></li>
-                                            <li><a href="#">All</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sort-by-cover">
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <span> Featured <i class="fi-rs-angle-small-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">Featured</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                            <li><a href="#">Release Date</a></li>
-                                            <li><a href="#">Avg. Rating</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+<!--                                <select id="basic" class="selectpicker show-tick form-control"-->
+<!--                                        data-placeholder="$ USD" onchange="location = this.value;">-->
+<!--                                    <option>Featured</option>-->
+<!--                                    <option value="http://localhost:8020/shop/high-price">High Price → Low Price-->
+<!--                                    </option>-->
+<!--                                    <option value="http://localhost:8020/shop/lower-price">Low Price → High Price-->
+<!--                                    </option>-->
+<!--                                    <option>Release Date</option>-->
+<!--                                    <option>Avg. Rating</option>-->
+<!--                                </select>-->
+                                <select id="basic" class="form-select show-tick form-control" data-placeholder="$ USD" onchange="location = this.value;">
+                                    <option selected class="active">Featured</option>
+                                    <option value="http://localhost:8020/shop/high-price"> High Price → Low Price</option>
+                                    <option value="http://localhost:8020/shop/lower-price">Low Price → High Price</option>
+                                    <option>Release Date</option>
+                                    <option>Avg. Rating</option>
+                                    <option>Popularity</option>
+                                    <option>aA - zZ</option>
+                                    <option>zZ - aA</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="product-list mb-50">
-                            <div class="product-cart-wrap">
+                        <div class="product-list mb-50" >
+                            <div class="product-cart-wrap" th:each="product :${products}">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="shop-product-right.html">
-                                                <img class="default-img" src="/shop/imgs/shop/product-2-1.jpg" alt="">
-                                                <img class="hover-img" src="/shop/imgs/shop/product-2-2.jpg" alt="">
+                                            <a th:href="@{/find-products/{id} (id = ${product.id})}">
+                                                <img class="default-img" th:src="@{|/imgs/items/${product.image[0].getName()}|}" alt="img1">
+                                                <img class="hover-img" th:src="@{|/imgs/items/${product.image[0].getName()}|}" alt="img1">
                                             </a>
                                         </div>
                                     </div>
@@ -215,238 +197,37 @@
                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
 <i class="fi-rs-search"></i></a>
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
                                         <span class="hot">Hot</span>
                                     </div>
                                 </div>
-                                <div class="product-content-wrap">
+                                <div class="product-content-wrap w-100">
                                     <div class="product-category">
-                                        <a href="shop-grid-right.html">Music</a>
+                                        <a th:text="${product.category.name}"></a>
                                     </div>
-                                    <h2><a href="shop-product-right.html">Colorful Pattern Shirts</a></h2>
+                                    <h2>
+                                        <a href="shop-product-right.html" th:text="${product.name}"></a>
+                                    </h2>
                                     <div class="product-price">
-                                        <span>$238.85 </span>
-                                        <span class="old-price">$245.8</span>
+                                        <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
+                                        <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
+                                        <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
                                     </div>
-                                    <p class="mt-15">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam beatae consectetur, atque inventore aliquam adipisci perspiciatis nostrum qui consequatur praesentium?</p>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Buy now" class="action-btn" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i>Add to Cart</a>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>90%</span>
-                                            </span>
+                                    <p class="mt-15" th:text = "${product.description}"></p>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Buy now" class="action-btn" th:href="@{/addToCart(productId=${product.id})}"><i class="fi-rs-shopping-bag-add"></i>Add to Cart</a>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>90%</span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <!--single product-->
-                            <div class="product-cart-wrap">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <div class="product-img-inner">
-                                            <a href="shop-product-right.html">
-                                                <img class="default-img" src="/shop/imgs/shop/product-3-1.jpg" alt="">
-                                                <img class="hover-img" src="/shop/imgs/shop/product-3-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="new">New</span>
-                                    </div>
-                                </div>
-                                <div class="product-content-wrap">
-                                    <div class="product-category">
-                                        <a href="shop-grid-right.html">Music</a>
-                                    </div>
-                                    <h2><a href="shop-product-right.html">Cartoon Astronaut T-Shirts</a></h2>
-                                    <div class="product-price">
-                                        <span>$138.85 </span>
-                                        <span class="old-price">$255.8</span>
-                                    </div>
-                                    <p class="mt-15">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam beatae consectetur, atque inventore aliquam adipisci perspiciatis nostrum qui consequatur praesentium?</p>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Buy now" class="action-btn" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i>Add to Cart</a>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>50%</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--single product-->
-                            <div class="product-cart-wrap">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <div class="product-img-inner">
-                                            <a href="shop-product-right.html">
-                                                <img class="default-img" src="/shop/imgs/shop/product-7-1.jpg" alt="">
-                                                <img class="hover-img" src="/shop/imgs/shop/product-7-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="best">Best Sell</span>
-                                    </div>
-                                </div>
-                                <div class="product-content-wrap">
-                                    <div class="product-category">
-                                        <a href="shop-grid-right.html">Watch</a>
-                                    </div>
-                                    <h2><a href="shop-product-right.html">Plain Striola Shirts</a></h2>
-                                    <div class="product-price">
-                                        <span>$338.85 </span>
-                                        <span class="old-price">$445.8</span>
-                                    </div>
-                                    <p class="mt-15">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam beatae consectetur, atque inventore aliquam adipisci perspiciatis nostrum qui consequatur praesentium?</p>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Buy now" class="action-btn" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i>Add to Cart</a>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>95%</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--single product-->
-                            <div class="product-cart-wrap">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <div class="product-img-inner">
-                                            <a href="shop-product-right.html">
-                                                <img class="default-img" src="/shop/imgs/shop/product-1-2.jpg" alt="">
-                                                <img class="hover-img" src="/shop/imgs/shop/product-1-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="sale">Sale</span>
-                                    </div>
-                                </div>
-                                <div class="product-content-wrap">
-                                    <div class="product-category">
-                                        <a href="shop-grid-right.html">Music</a>
-                                    </div>
-                                    <h2><a href="shop-product-right.html">Landscape Painting Shirt</a></h2>
-                                    <div class="product-price">
-                                        <span>$123.85 </span>
-                                        <span class="old-price">$235.8</span>
-                                    </div>
-                                    <p class="mt-15">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam beatae consectetur, atque inventore aliquam adipisci perspiciatis nostrum qui consequatur praesentium?</p>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Buy now" class="action-btn" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i>Add to Cart</a>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--single product-->
-                            <div class="product-cart-wrap">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <div class="product-img-inner">
-                                            <a href="shop-product-right.html">
-                                                <img class="default-img" src="/shop/imgs/shop/product-5-2.jpg" alt="">
-                                                <img class="hover-img" src="/shop/imgs/shop/product-5-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">-22%</span>
-                                    </div>
-                                </div>
-                                <div class="product-content-wrap">
-                                    <div class="product-category">
-                                        <a href="shop-grid-right.html">Camera</a>
-                                    </div>
-                                    <h2><a href="shop-product-right.html">Element Pattern Print Shirts</a></h2>
-                                    <div class="product-price">
-                                        <span>$238.85 </span>
-                                        <span class="old-price">$245.8</span>
-                                    </div>
-                                    <p class="mt-15">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam beatae consectetur, atque inventore aliquam adipisci perspiciatis nostrum qui consequatur praesentium?</p>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Buy now" class="action-btn" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i>Add to Cart</a>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>72%</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--single product-->
-                            <div class="product-cart-wrap">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <div class="product-img-inner">
-                                            <a href="shop-product-right.html">
-                                                <img class="default-img" src="/shop/imgs/shop/product-8-2.jpg" alt="">
-                                                <img class="hover-img" src="/shop/imgs/shop/product-8-1.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="sale">Sale</span>
-                                    </div>
-                                </div>
-                                <div class="product-content-wrap">
-                                    <div class="product-category">
-                                        <a href="shop-grid-right.html">Phone</a>
-                                    </div>
-                                    <h2><a href="shop-product-right.html">Vintage Henley Shirt</a></h2>
-                                    <div class="product-price">
-                                        <span>$123.85 </span>
-                                        <span class="old-price">$235.8</span>
-                                    </div>
-                                    <p class="mt-15">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam beatae consectetur, atque inventore aliquam adipisci perspiciatis nostrum qui consequatur praesentium?</p>
-                                    <div class="product-action-1 show">
-                                        <a aria-label="Buy now" class="action-btn" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i>Add to Cart</a>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>90%</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--single product-->
+
                         </div>
                         <!--pagination-->
                         <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
@@ -465,59 +246,9 @@
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
                         <div class="widget-category mb-30">
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
-                            <ul class="categories">
-                                <li><a href="shop-grid-right.html">Shoes & Bags</a></li>
-                                <li><a href="shop-grid-right.html">Blouses & Shirts</a></li>
-                                <li><a href="shop-grid-right.html">Dresses</a></li>
-                                <li><a href="shop-grid-right.html">Swimwear</a></li>
-                                <li><a href="shop-grid-right.html">Beauty</a></li>
-                                <li><a href="shop-grid-right.html">Jewelry & Watch</a></li>
-                                <li><a href="shop-grid-right.html">Accessories</a></li>
+                            <ul class="categories" th:each="category : ${categories}">
+                                <li><a href="shop-grid-right.html" th:text="${category.name}"></a></li>
                             </ul>
-                        </div>
-                        <!-- Fillter By Price -->
-                        <div class="sidebar-widget price_range range mb-30">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Fill by price</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="price-filter">
-                                <div class="price-filter-inner">
-                                    <div id="slider-range"></div>
-                                    <div class="price_slider_amount">
-                                        <div class="label-input">
-                                            <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group">
-                                <div class="list-group-item mb-10 mt-10">
-                                    <label class="fw-900">Color</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                        <label class="form-check-label" for="exampleCheckbox1"><span>Red (56)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-                                        <label class="form-check-label" for="exampleCheckbox2"><span>Green (78)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
-                                        <label class="form-check-label" for="exampleCheckbox3"><span>Blue (54)</span></label>
-                                    </div>
-                                    <label class="fw-900 mt-15">Item Condition</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
-                                        <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="">
-                                        <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
-                                        <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
                         </div>
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
@@ -564,9 +295,9 @@
                         </div>
                         <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
                             <img src="/shop/imgs/banner/banner-11.jpg" alt="">
-                            <div class="banner-text">
+                            <div class="banner-text text-white">
                                 <span>Women Zone</span>
-                                <h4>Save 17% on <br>Office Dress</h4>
+                                <h4>Save 17% on <br>Bags</h4>
                                 <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
                             </div>
                         </div>

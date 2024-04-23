@@ -1,12 +1,10 @@
 package com.ecommerce.library.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -42,8 +40,11 @@ public class Customer {
     private boolean blocked;
 
   //@ToString.Exclude
-  //@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-   //private List<ShopingCart> cart;
+   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+   private List<ShoppingCart> cart;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "customers_roles", joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "customer_id"),
@@ -58,7 +59,7 @@ public class Customer {
     private String resetPasswordToken;
 
     @Column(name="referalToke")
-    private String referalToken;
+    private String referralToken;
 
 
 

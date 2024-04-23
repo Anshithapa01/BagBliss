@@ -57,7 +57,7 @@
                             <li th:if = "${session.email == null}"><i class="fi-rs-user"></i><a th:href="@{/login}">Log In</a></li>
                             <li th:unless = "${session.email == null}"><i class="fi-rs-user"></i><a th:text="${session.email}"></a></li>
                             <li th:unless = "${session.email == null}"><i class="fi-rs-user"></i><a th:href="@{/logout}">Log out</a></li>
-                            <li th:if = "${session.email == null}"><i class="fi-rs-user"></i><a th:href="@{/sign-up}">Sign Up</a></li>
+                            <li th:if = "${session.email == null}"><i class="fi-rs-user"></i><a th:href="@{/verify-email}">Sign Up</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
+                                <a class="mini-cart-icon" th:href="@{/cart}">
                                     <img alt="Evara" src="/shop/imgs/theme/icons/icon-cart.svg">
                                     <span class="pro-count blue">2</span>
                                 </a>
@@ -134,7 +134,7 @@
                                             <h4>Total <span>$4000.00</span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="shop-cart.html" class="outline">View cart</a>
+                                            <a th:href="@{/cart}" class="outline">View cart</a>
                                             <a href="shop-checkout.html">Checkout</a>
                                         </div>
                                     </div>
@@ -391,7 +391,7 @@
                             </a>
                         </div>
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="shop-cart.html">
+                            <a class="mini-cart-icon" th:href="@{/cart}">
                                 <img alt="Evara" src="/shop/imgs/theme/icons/icon-cart.svg">
                                 <span class="pro-count white">2</span>
                             </a>
@@ -427,7 +427,7 @@
                                         <h4>Total <span>$383.00</span></h4>
                                     </div>
                                     <div class="shopping-cart-button">
-                                        <a href="shop-cart.html">View cart</a>
+                                        <a th:href="@{/cart}">View cart</a>
                                         <a href="shop-checkout.html">Checkout</a>
                                     </div>
                                 </div>
@@ -491,10 +491,7 @@
                     <ul class="mobile-menu">
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Home</a>
                             <ul class="dropdown">
-                                <li><a href="index.html">Home 1</a></li>
-                                <li><a href="index-2.html">Home 2</a></li>
-                                <li><a href="index-3.html">Home 3</a></li>
-                                <li><a href="index-4.html">Home 4</a></li>
+                                <li><a th:href="@{/home}">Home</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="shop-grid-right.html">shop</a>
@@ -513,9 +510,9 @@
                                 </li>
                                 <li><a href="shop-filter.html">Shop – Filter</a></li>
                                 <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                <li><a href="shop-cart.html">Shop – Cart</a></li>
+                                <li><a th:href="@{/cart}">Shop – Cart</a></li>
                                 <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                <li><a href="shop-compare.html">Shop – Compare</a></li>
+
                             </ul>
                         </li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Mega menu</a>
@@ -671,9 +668,9 @@
                                 </li>
                                 <li><a href="shop-filter.html">Shop – Filter</a></li>
                                 <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                <li><a href="shop-cart.html">Shop – Cart</a></li>
+                                <li><a th:href="@{/cart}">Shop – Cart</a></li>
                                 <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                <li><a href="shop-compare.html">Shop – Compare</a></li>
+
                             </ul>
                         </li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Mega menu</a>

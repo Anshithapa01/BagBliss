@@ -112,14 +112,14 @@ public class CustomerServiceImpl implements CustomerService {
     public void updateReferalCodeToken(String token, String email) {
         Customer customer=customerRepository.findByEmail(email);
         if(customer!=null){
-            customer.setReferalToken(token);
+            customer.setReferralToken(token);
             customerRepository.save(customer);
         }
     }
 
     @Override
     public Customer getByReferalToken(String token) {
-        return customerRepository.findByReferalToken(token);
+        return customerRepository.findByReferralToken(token);
     }
 
     public void updatePassword(Customer customer, String newPassword) {

@@ -14,7 +14,6 @@ public interface ImageRepository extends JpaRepository<Image,Long> {
 
     @Query(value = "select * from images where product_id = :id", nativeQuery = true)
     List<Image> findImageBy(@Param("id")long id);
-
     @Modifying
     @Query(value = "delete from images where product_id = :id",nativeQuery = true)
     void deleteImagesByProductId(@Param("id") long id);

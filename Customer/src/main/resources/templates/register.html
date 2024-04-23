@@ -45,7 +45,7 @@
                     </div> <!-- form-group// -->
                     <div class="mb-3 row">
                         <div>
-                            <input class="form-control" th:field="*{email}" name="email" th:value="${customerDto.email}" placeholder="Email" type="text">
+                            <input class="form-control" th:field="*{email}" name="email" th:value="${customerDto.email}" placeholder="Email" type="text" disabled>
                         </div>
                         <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}"
                              th:errors="*{email}"

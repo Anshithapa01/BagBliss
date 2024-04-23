@@ -54,11 +54,11 @@ public interface ProductService {
 
     //List<ProductDto> findAllByCategory(String category);
 
-    // List<ProductDto> filterHighProducts();
+     List<ProductDto> filterHighProducts();
 
-    // List<ProductDto> filterLowerProducts();
+     List<ProductDto> filterLowerProducts();
 
-    // List<ProductDto> listViewProducts();
+     List<ProductDto> listViewProducts();
 
     // List<ProductDto> findByCategoryId(Long id);
 

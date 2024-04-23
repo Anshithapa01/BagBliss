@@ -4,516 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="Customer Module added">
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/js/vendors/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/customers.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/EmailSendController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ResetPasswordController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/SocialSignInController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/exception/CustomerBlockedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/main.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/plugins/animate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/plugins/jquery-ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/plugins/magnific-popup.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/plugins/perfect-scrollbar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/plugins/select2.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/plugins/slick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/vendors/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/vendors/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/vendors/evara-font.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/vendors/fontawesome-all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/vendors/normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/vendors/uicons-regular-straight.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-brands-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-brands-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-brands-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-brands-400d41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-duotone-900.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-duotone-900.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-duotone-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-duotone-900.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-duotone-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-duotone-900d41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-light-300.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-light-300.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-light-300.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-light-300.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-light-300.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-light-300d41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-regular-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-regular-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-regular-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-regular-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-regular-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-regular-400d41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-solid-900.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-solid-900.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-solid-900.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/awesome/fa-solid-900d41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/evara-font/evara-font.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/evara-font/evara-font.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/evara-font/evara-font.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/evara-font/evara-font.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/evara-font/evara-font.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/uicons/uicons-regular-straight.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/uicons/uicons-regular-straight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/fonts/uicons/uicons-regular-straight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/brand-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/brand-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/brand-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/brand-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/brand-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/brand-6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner-9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/menu-banner.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/blog/blog-9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Vanessa1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/vanessa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/vanessa2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/vanessa4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/about-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/avatar-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/company-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/company-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/company-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/page/img-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/category-thumb-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-1-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-1-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-10-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-10-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-11-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-11-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-12-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-12-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-13-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-13-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-14-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-14-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-15-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-15-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-16-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-16-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-16-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-16-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-16-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-16-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-16-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-2-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-2-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-3-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-3-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-4-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-4-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-5-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-5-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-6-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-6-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-7-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-7-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-8-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-8-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-9-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/product-9-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/thumbnail-9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/slider/slider-111.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/slider/slider-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/slider/slider-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/slider/slider-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/slider/slider-6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/slider/slider-7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/404.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/app-store.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/btn-brush-bg-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/btn-brush-bg-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/btn-brush-bg-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/favicon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/flag-dt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/flag-fr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/flag-ru.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/google-play.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/feature-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/feature-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/feature-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/feature-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/feature-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/feature-6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-cart.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-dribbble.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-email.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-facebook.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-heart.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-instagram.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-pinterest.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-twitter.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/icon-youtube.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/icons/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/logo-2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/payment-method.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/rating-stars.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/topbar-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/TweenMax.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/counterup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/custom-parallax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/images-loaded.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/isotope.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/jquery-ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/jquery.countdown.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/jquery.elevatezoom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/jquery.syotimer.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/jquery.theia.sticky.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/jquery.vticker-min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/leaflet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/magnific-popup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/perfect-scrollbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/scrollup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/select2.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/slick.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/waypoints.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/plugins/wow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/shop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/vendor/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/vendor/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/vendor/jquery-3.6.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/vendor/jquery-migrate-3.3.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/js/vendor/modernizr-3.6.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/main.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/vendors/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/vendors/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/vendors/material-icon-round.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/vendors/normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/vendors/perfect-scrollbar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/css/vendors/select2.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand-9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/brands/brand.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/card-brands/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/card-brands/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/card-brands/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/card-brands/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/icons/stars-active.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/icons/starts-disable.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Aphrodite-Black.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Bella.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Bella1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Bella2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Bella3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Bella4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Brooke.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Brooke1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Brooke2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Brooke3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Brooklyn1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Dakota.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Denice_Denim.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Denice_Tweed.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Elsa.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Grace.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Grace1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Grace2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Grace3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Kaya.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Melissa.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Penelope.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Rosalind.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Sophie.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/Vanessa1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/barbara.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/barbara1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/barbara2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/barbara3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/blake.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/camilla.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/camilla_cardholder.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/camilla_denim.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/cara.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/cara1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/crush_cb.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/cupid_bow.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/delilah.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/desire.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/donna.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/fiji.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/gigi_mini_cross.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/harmony.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/harmony1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/iris_cb.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/iris_cb1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/iris_cb2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/iris_cb3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/kate.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/margo.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/melissa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/olivia.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/vanessa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/vanessa2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/vanessa4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/items/zoe.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/misc/map.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/people/avatar1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/people/avatar2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/people/avatar3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/people/avatar4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/404.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/favicon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/flag-cn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/flag-fr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/flag-jp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/flag-us.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/imgs/theme/upload.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/custom-chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/vendors/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/vendors/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/vendors/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/vendors/jquery-3.6.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/vendors/jquery.fullscreen.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/vendors/perfect-scrollbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/js/vendors/select2.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Outlined.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Outlined.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Outlined.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Round.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Round.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Round.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Sharp.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Sharp.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-Sharp.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-TwoTone.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-TwoTone.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons-TwoTone.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/material-icon/MaterialIcons.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/abstracts/_import-vendors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/abstracts/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/abstracts/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/base/_helpers.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/base/_typography.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/components/_buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/components/_elements.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/components/_forms.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/components/_items.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/components/_lists.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/components/_navigation.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/layout/_layout-dark.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/layout/_layout.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/layout/_responsive.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/layout/_spacing.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/login/sass/main.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/abstracts/_functions.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/abstracts/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/abstracts/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/base/_animation.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/base/_common.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/base/_typography.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/components/_banners.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/components/_buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/components/_card.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/components/_form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/components/_misc.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/components/_slider.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/components/_tabs.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/layout/_footer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/layout/_header.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/layout/_navigation.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/layout/_responsive.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/layout/_sidebar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/layout/_spacing.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/main.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/pages/_blog.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/pages/_page.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/pages/_shop.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/themes/_default.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/sass/vendors/_vendors-import.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-big.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-fullwidth.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-grid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-fullwidth.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-left.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-right.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-account.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-contact.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-privacy-policy.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-purchase-guide.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-terms.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/reset-password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-checkout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-compare.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-filter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-grid-left.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-grid-right.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list-right.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-left.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-right.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-wishlist.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/sign-up.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-otp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/AddressDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CustomerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/UserOtp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/AddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/UserOtpRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/AddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/EmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/OtpService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/UserOtpService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/AddressServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/EmailServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/OtpServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/UserOtpServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="customer side login,show product">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ShoppingCartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/ShoppingCartDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/OrderDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/ShoppingCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ShopingCartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ShoppingCartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ShoppingCartServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/update-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/update-product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/CustomerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/CustomerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/ProductDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/SocialSignInController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-big.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-big.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-fullwidth.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-fullwidth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-grid.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-grid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-fullwidth.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-fullwidth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-left.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-left.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-right.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-right.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-about.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-account.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-privacy-policy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-purchase-guide.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-purchase-guide.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-terms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-description.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-description.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-compare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-filter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-grid-left.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-grid-left.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-grid-right.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-grid-right.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list-right.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list-right.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-left.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-left.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-right.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-right.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ImageRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/ImageUpload.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/ImageUpload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -567,7 +115,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Customer/src/main/java/com/ecommerce/customer/Customer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Customer/src/main/java/com/ecommerce/customer/Customer/controller&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -580,11 +128,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\java\com\ecommerce\customer\Customer\controller" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\java\com\ecommerce\customer\Customer" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\templates" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static\css\login" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\model" />
@@ -594,11 +142,11 @@
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ecommerce.customer.Customer.config" />
-      <recent name="com.ecommerce.library.utils" />
-      <recent name="com.ecommerce.customer.Customer.controller" />
       <recent name="com.ecommerce.library.service.impl" />
       <recent name="com.ecommerce.library.service" />
+      <recent name="com.ecommerce.library.repository" />
+      <recent name="com.ecommerce.library.model" />
+      <recent name="com.ecommerce.library.dto" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -610,7 +158,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AdminApplication">
+  <component name="RunManager" selected="Spring Boot.CustomerApplication">
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="Admin" />
@@ -658,7 +206,9 @@
       <workItem from="1713499136132" duration="55000" />
       <workItem from="1713499226937" duration="30575000" />
       <workItem from="1713593734063" duration="42482000" />
-      <workItem from="1713676231335" duration="17132000" />
+      <workItem from="1713676231335" duration="47673000" />
+      <workItem from="1713808946033" duration="2729000" />
+      <workItem from="1713846301869" duration="24516000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -700,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712773237976</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="customer side login,show product">
+      <option name="closed" value="true" />
+      <created>1713704198316</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713704198316</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -723,6 +281,7 @@
     <MESSAGE value="category section added" />
     <MESSAGE value="Product section added" />
     <MESSAGE value="Customer Module added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Customer Module added" />
+    <MESSAGE value="customer side login,show product" />
+    <option name="LAST_COMMIT_MESSAGE" value="customer side login,show product" />
   </component>
 </project>

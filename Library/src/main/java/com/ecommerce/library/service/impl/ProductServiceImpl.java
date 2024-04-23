@@ -164,16 +164,7 @@ public class ProductServiceImpl implements ProductService {
 
 
 
-  //  @Override
-   // public Page<ProductDto> searchProducts(int pageNo, String keyword) {
-//        List<Product> products = productRepository.findAllByNameOrDescription(keyword);
- //       Pageable pageable = PageRequest.of(pageNo, 5);
-       // List<ProductDto> productDtoList = transferData(productRepository.searchProductsList(keyword));
-      //  Page<ProductDto> products=toPage(productDtoList,pageable);
-      //  return products;
-//        Page<ProductDto> dtoPage = toPage(productDtoList, pageable);
-//        return dtoPage;
-  //  }
+
 
     @Override
     public Page<ProductDto> searchProducts(int pageNo, String keyword) {
@@ -229,6 +220,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    @Override
+    public List<ProductDto> filterHighProducts() {
+        return transferData(productRepository.filterHighProducts());
+    }
+
+    @Override
+    public List<ProductDto> filterLowerProducts() {
+        return transferData(productRepository.filterLowerProducts());
+    }
+
 
 
 //    @Override
@@ -279,20 +280,12 @@ public class ProductServiceImpl implements ProductService {
 //        return transferData(productRepository.findAllByCategory(category));
 //    }
 //
-//    @Override
-//    public List<ProductDto> filterHighProducts() {
-//        return transferData(productRepository.filterHighProducts());
-//    }
-//
-//    @Override
-//    public List<ProductDto> filterLowerProducts() {
-//        return transferData(productRepository.filterLowerProducts());
-//    }
-//
-//    @Override
-//    public List<ProductDto> listViewProducts() {
-//        return transferData(productRepository.listViewProduct());
-//    }
+
+
+    @Override
+    public List<ProductDto> listViewProducts() {
+        return transferData(productRepository.listViewProduct());
+    }
 //
 //    @Override
 //    public List<ProductDto> findByCategoryId(Long id) {
@@ -312,5 +305,14 @@ public class ProductServiceImpl implements ProductService {
 //        return productRepository.findAllByCategoryId(id);
 //    }
 
-
+//    @Override
+//    public Page<ProductDto> searchProducts(int pageNo, String keyword) {
+//        List<Product> product= productRepository.findAllByNameOrDescription(keyword);
+//        Pageable pageable = PageRequest.of(pageNo, 5);
+//        List<ProductDto> productDtoList = transferData(productRepository.searchProductsList(keyword));
+//        Page<ProductDto> products=toPage(productDtoList,pageable);
+//        return products;
+//        Page<ProductDto> dtoPage = toPage(productDtoList, pageable);
+//        return dtoPage;
+//    }
 }

@@ -16,9 +16,11 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query(value = "select * from categories where is_activated = true", nativeQuery = true)
     List<Category> findAllByActivatedTrue();
 
-    @Query(value =  "select new com.ecommerce.library.dto.CategoryDto(c.id, c.name, count(p.category.id)) " +
+    @Query(value =  "select new com.ecommerce.library.dto.CategoryDto(c.id, c.name) " +
             "from Category c left join Product p on c.id = p.category.id " +
             "where c.activated = true and c.deleted = false " +
             "group by c.id ")
     List<CategoryDto> getCategoriesAndSize();
+
+  //  , count(p.category.id)
 }

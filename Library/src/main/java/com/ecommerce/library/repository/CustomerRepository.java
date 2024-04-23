@@ -17,5 +17,5 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
 
     public Customer findByResetPasswordToken(String token);
 
-    public Customer findByReferalToken(String token);
+    public Customer findByReferralToken(String token);
 }

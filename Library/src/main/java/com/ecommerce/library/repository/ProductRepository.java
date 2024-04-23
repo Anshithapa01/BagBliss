@@ -31,18 +31,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "from products p where p.is_activated = true and p.is_deleted = false order by rand() limit 9", nativeQuery = true)
     List<Product> randomProduct();
 
-    @Query(value = "select " +
-            "p.product_id, p.name, p.description, p.current_quantity, p.cost_price, p.category_id, p.sale_price, p.image, p.is_activated, p.is_deleted " +
-            "from products p where p.is_deleted = false and p.is_activated = true order by p.cost_price desc limit 9", nativeQuery = true)
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY cost_price DESC LIMIT 9", nativeQuery = true)
     List<Product> filterHighProducts();
 
-    @Query(value = "select " +
-            "p.product_id, p.name, p.description, p.current_quantity, p.cost_price, p.category_id, p.sale_price, p.image, p.is_activated, p.is_deleted " +
-            "from products p where p.is_deleted = false and p.is_activated = true order by p.cost_price asc limit 9", nativeQuery = true)
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY cost_price asc LIMIT 9", nativeQuery = true)
     List<Product> filterLowerProducts();
 
 
-    @Query(value = "select p.product_id, p.name, p.description, p.current_quantity, p.cost_price, p.category_id, p.sale_price, p.image, p.is_activated, p.is_deleted from products p where p.is_deleted = false and p.is_activated = true limit 4", nativeQuery = true)
+    @Query(value = "SELECT * FROM products where is_deleted = false and is_activated = true limit 4", nativeQuery = true)
     List<Product> listViewProduct();
 
 
