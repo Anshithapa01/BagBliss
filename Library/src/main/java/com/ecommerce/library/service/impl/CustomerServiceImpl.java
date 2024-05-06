@@ -130,4 +130,16 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setResetPasswordToken(null);
         customerRepository.save(customer);
     }
+
+
+    @Override
+    public Customer update(String email, String name, Long mobile) {
+    System.out.println(email);
+    System.out.println(name);
+    System.out.println(mobile);
+        Customer customer = customerRepository.findByEmail(email);
+        customer.setName(name);
+        customer.setMobile(mobile);
+        return customerRepository.save(customer);
+    }
 }

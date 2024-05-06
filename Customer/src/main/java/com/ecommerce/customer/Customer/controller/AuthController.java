@@ -43,8 +43,8 @@ public class AuthController {
 
 
     @GetMapping("/register")
-    public String register(Model model){
-        String email = (String) model.asMap().get("email");
+    public String register(Model model,HttpSession session){
+        String email = (String) session.getAttribute("email");
         CustomerDto customerDto=new CustomerDto();
         customerDto.setEmail(email);
         model.addAttribute("customerDto",customerDto);
@@ -105,9 +105,10 @@ public class AuthController {
     public String showVerifyEmail(){
         return "verify-email";
     }
+
     @GetMapping("/otpvalidation")
     public String showotpvalidationPage(Model model, HttpSession session){
-        String email = (String) model.asMap().get("email");
+        String email = (String) session.getAttribute("email");
         UserOtp userOTP = new UserOtp();
         userOTP.setEmail(email);
         session.setAttribute("email",email);

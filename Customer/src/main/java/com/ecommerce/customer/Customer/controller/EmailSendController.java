@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.Date;
 
 @Controller
@@ -77,7 +78,9 @@ public class EmailSendController {
             String status = emailService.sendSimpleMail(email,otp);
             if(status.equals("success")){
                 session.setAttribute("message","otpsent");
+                session.setAttribute("email",email);
                 redirectAttributes.addFlashAttribute("email",email);
+                session.removeAttribute("error");
                 return "redirect:/otpvalidation";
 
             }else{
@@ -89,76 +92,127 @@ public class EmailSendController {
 
     }
     @PostMapping("/sendEmailOTPLogin")
-    public String sendEmailOTPLogin(
-            @RequestParam("email")String email
-            , HttpSession session,
-            RedirectAttributes redirectAttributes) throws Exception {
-        if(usersSevice.findByEmail(email)!=null){
+    public String sendEmailOTPLogin(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+
+        String email =(String) session.getAttribute("email");
+        if(usersSevice.findByEmail(email)==null){
             String otp = otpService.generateOTP();
-            UserOtp userOTP = userOTPService.findByEmail(email);
-            if(userOTP!=null){
-                userOTP.setOneTimePassword(passwordEncoder.encode(otp));
-                userOTP.setOtpRequestedTime(new Date());
-                userOTP.setUpdateOn(new Date());
-            }else{
-                userOTP = new UserOtp();
+            if(!userOTPService.existsByEmail(email)){
+                // new email verification
+                UserOtp userOTP =new UserOtp();
                 userOTP.setEmail(email);
                 userOTP.setOneTimePassword(passwordEncoder.encode(otp));
                 userOTP.setCreatedAt(new Date());
                 userOTP.setOtpRequestedTime(new Date());
                 userOTP.setUpdateOn(new Date());
-            }
-            try{
-                userOTPService.saveOrUpdate(userOTP);
-            }catch(Exception e){
-                e.printStackTrace();
-                throw new Exception("Send OTP.Please try after some time...");
+                try{
+                    userOTPService.saveOrUpdate(userOTP);
+                }catch(Exception e){
+                    e.printStackTrace();
+                    throw new Exception("Couldn't finish OTP verification process"+ HttpStatus.BAD_REQUEST);
+                }
+
+            }else{
+                //code to delete all data related to this email id
+                UserOtp userOTP=userOTPService.findByEmail(email);
+                userOTP.setOneTimePassword(passwordEncoder.encode(otp));
+                userOTP.setOtpRequestedTime(new Date());
+                userOTP.setUpdateOn(new Date());
+                try{
+                    userOTPService.saveOrUpdate(userOTP);
+                }catch(Exception e){
+                    e.printStackTrace();
+                    throw new Exception("Couldn't finish OTP verification process");
+                }
             }
             String status = emailService.sendSimpleMail(email,otp);
             if(status.equals("success")){
                 session.setAttribute("message","otpsent");
+                session.setAttribute("email",email);
                 redirectAttributes.addFlashAttribute("email",email);
-                return "redirect:/forgotPasswordOTPLogin";
+                session.removeAttribute("error");
+                return "redirect:/otpvalidation";
 
             }else{
-                return "redirect:/forgotpassword?error";
+                return "redirect:/verifyEmail?error";
             }
         }else{
-            return "redirect:/forgotpassword?error";
+            return "redirect:/verifyEmail?existUser";
         }
     }
+
+//    @PostMapping("/validateOTP")
+//    public String validateOTP(@ModelAttribute("userOTP")UserOtp userOTPRequest, HttpSession session,
+//                              RedirectAttributes redirectAttributes){
+//
+//        String email = (String) session.getAttribute("email");
+//        if (email == null) {
+//            return "redirect:/error";
+//        }
+//        UserOtp userOTP = userOTPService.findByEmail(email);
+//        if (userOTP != null) {
+//            if (passwordEncoder.matches(userOTPRequest.getOneTimePassword(), userOTP.getOneTimePassword())) {
+//                redirectAttributes.addFlashAttribute("email", userOTP.getEmail());
+//                return "redirect:/register";
+//            } else {
+//                return "redirect:/otpvalidation?error";
+//            }
+//        } else {
+//            return "redirect:/requestOTP?email=" + email;
+//        }
+//
+//    }
+
     @PostMapping("/validateOTP")
     public String validateOTP(@ModelAttribute("userOTP")UserOtp userOTPRequest, HttpSession session,
                               RedirectAttributes redirectAttributes){
-        // Retrieve email from session
-        String email = (String) session.getAttribute("email");
 
-        // Ensure email is not null
+        String email = (String) session.getAttribute("email");
         if (email == null) {
-            // Handle the case where email is null
-            // For example, redirect to an error page or handle it appropriately
             return "redirect:/error";
         }
-
-        // Fetch user OTP based on the retrieved email
         UserOtp userOTP = userOTPService.findByEmail(email);
-
-        // Check if userOTP is not null before accessing its properties
         if (userOTP != null) {
             if (passwordEncoder.matches(userOTPRequest.getOneTimePassword(), userOTP.getOneTimePassword())) {
-                // Navigate to signup page
-                redirectAttributes.addFlashAttribute("email", userOTP.getEmail());
-                return "redirect:/register";
+                long currentTime = System.currentTimeMillis();
+                long otpRequestedTime = userOTP.getOtpRequestedTime().getTime(); // Assuming getOtpRequestedTime() returns a Date object
+                long timeDifference = currentTime - otpRequestedTime;
+                if (timeDifference < 60000) { // Check if time difference is less than 1 minute (60,000 milliseconds)
+                    session.setAttribute("email",email);
+                    redirectAttributes.addFlashAttribute("email", userOTP.getEmail());
+                    return "redirect:/register";
+                } else {
+                    session.setAttribute("error","Sorry, the OTP has timed out. Please request a new one.");
+                    return "redirect:/otpvalidation";
+                }
             } else {
-                // Handle incorrect OTP error
-                return "redirect:/otpvalidation?error";
+                session.setAttribute("error","The OTP entered is incorrect. Please try again.");
+                return "redirect:/otpvalidation";
             }
         } else {
-            // Handle the case where no UserOtp object is found for the provided email
-            // For example, redirect to a page to request OTP again or handle it appropriately
-            return "redirect:/requestOTP?email=" + email; // Redirect to a page to request OTP again
+            return "redirect:/requestOTP?email=" + email;
         }
-
     }
 
+
+
+
+
+    @PostMapping("/sendNotifyEmail")
+    public String sendNotify(
+            @RequestParam("product")String product
+            , HttpSession session,
+            RedirectAttributes redirectAttributes, Principal principal) throws Exception {
+        String email = principal.getName();
+        String status = emailService.sendSimpleMail(email, product);
+        if (status.equals("success")) {
+            session.setAttribute("message", "otpsent");
+            redirectAttributes.addFlashAttribute("email", email);
+            return "redirect:/find-products";
+
+        } else {
+            return "redirect:/find-products?error";
+
+        }
+    }
 }

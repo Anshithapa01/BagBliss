@@ -5,6 +5,23 @@
 </head>
 
 <body>
+
+<div class="modal fade" id="outOfStockModal" tabindex="-1" aria-labelledby="outOfStockModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="outOfStockModalLabel">Out of Stock</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                This product is currently out of stock. We will notify you when it's back in stock.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Quick view -->
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -147,7 +164,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a th:href="@{/home}" rel="nofollow">Home</a>
-                    <span></span> Shop
+                    <span><a class="text-grey-5"  th:href="@{/product-shop/0}" > Shop</a></span>
                     <span th:text="${productDto.name}"></span>
                 </div>
             </div>
@@ -213,16 +230,14 @@
                                         </div>
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
-                                            <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
-                                            <div class="product-extra-link2">
-                                                <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <th:block th:if="${inStock}">
+                                                <a type="submit" class="btn btn-primary" th:href="@{/addToCart(productId=${productDto.id})}">Add to cart</a>
+                                            </th:block>
+                                            <th:block th:unless="${inStock}">
+                                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#outOfStockModal">Add to cart</button>
+                                            </th:block>
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
 
-                                            </div>
                                         </div>
                                         <ul class="product-meta font-xs color-grey mt-50">
                                             <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
@@ -461,6 +476,7 @@
     <div th:replace="~{fragments::pre-loader}"></div>
     <!-- Vendor JS-->
     <div th:replace="~{fragments::scripts}"></div>
+
 
 </body>
 

@@ -20,6 +20,8 @@ public class CustomerController {
 
     private CustomerService customerService;
 
+
+
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
@@ -42,7 +44,6 @@ public class CustomerController {
     @GetMapping("/disable-customer/{id}")
     public String disable(@PathVariable("id")long id,RedirectAttributes redirectAttributes){
         redirectAttributes.addFlashAttribute("success","Customer Disabled");
-
         customerService.blockById(id);
         return "redirect:/customers";
     }
@@ -50,12 +51,9 @@ public class CustomerController {
     @GetMapping("/enable-customer/{id}")
     public String enable(@PathVariable("id")long id, RedirectAttributes redirectAttributes){
         redirectAttributes.addFlashAttribute("success","Customer Enabled");
-
         customerService.enableById(id);
         return "redirect:/customers";
     }
-
-
 
 
 

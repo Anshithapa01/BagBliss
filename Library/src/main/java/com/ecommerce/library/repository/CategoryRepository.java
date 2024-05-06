@@ -23,4 +23,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<CategoryDto> getCategoriesAndSize();
 
   //  , count(p.category.id)
+
+    Category findByNameIgnoreCase(String name);
 }

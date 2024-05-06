@@ -7,6 +7,7 @@ import com.ecommerce.library.model.Image;
 import com.ecommerce.library.model.Product;
 import com.ecommerce.library.service.*;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -61,7 +63,7 @@ public class ProductController {
         List<Category> categories = categoryService.findAllByActivatedTrue();
         model.addAttribute("categories", categories);
         model.addAttribute("categoryNew", new CategoryDto());
-        model.addAttribute("product", new ProductDto());
+        model.addAttribute("productDto", new ProductDto());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "redirect:/login";
@@ -71,14 +73,16 @@ public class ProductController {
 
 
     @PostMapping("/save-product")
-    public String saveProduct(@ModelAttribute("product") ProductDto productDto,
+    public String saveProduct(@Valid @ModelAttribute("productDto")ProductDto productDto,
+                              BindingResult result,
                               @RequestParam("imageProduct") List<MultipartFile> imageProduct,
-                              RedirectAttributes redirectAttributes, BindingResult result, HttpSession session,Model model) {
+                              RedirectAttributes redirectAttributes,
+                              Model model) {
         try {
             if (result.hasErrors()) {
-                session.removeAttribute("error");
                 model.addAttribute("productDto", productDto);
-                return "register";
+                result.toString();
+                return "add-product";
             }
             productService.save(imageProduct, productDto);
             redirectAttributes.addFlashAttribute("success", "Added new product successfully!");
@@ -200,7 +204,11 @@ public class ProductController {
     }
 
 
-
+    @GetMapping("/deleteImage/{productId}/{name}")
+    public String deleteImage(@PathVariable("productId") Long productId,@PathVariable("name") String name){
+        imageService.deleteImageByName(name);
+        return "redirect:/update-product/"+productId;
+    }
 
 
 }

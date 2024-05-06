@@ -10,6 +10,8 @@ import com.ecommerce.library.service.ProductService;
 import com.ecommerce.library.service.ShoppingCartService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -35,23 +37,24 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 
     @Override
-    public ShoppingCart addItemToCart(Long productId, int quantity, Long id) {;
+    public ShoppingCart addItemToCart(Long productId, int quantity, Long id) {
         ShoppingCart shoppingCarts=shopingCartRepository.findByUsersProduct(id,productId);
         Product product=productService.getProductById(productId);
 
-
-    if (shoppingCarts != null) {
-
+        if (shoppingCarts != null) {
             int oldQuantity = shoppingCarts.getQuantity();
-            shoppingCarts.setQuantity(oldQuantity + quantity);
-            shoppingCarts.setUnitPrice(product.getSalePrice());
-            double totalPrice = product.getSalePrice() * (oldQuantity + quantity);
-            shoppingCarts.setTotalPrice(totalPrice);
-            shoppingCarts.setDeleted(false);
+            if(oldQuantity<oldQuantity+quantity){
+                System.out.println("Exceeded");
+            }else {
+                shoppingCarts.setQuantity(oldQuantity + quantity);
+                shoppingCarts.setUnitPrice(product.getSalePrice());
+                double totalPrice = product.getSalePrice() * (oldQuantity + quantity);
+                shoppingCarts.setTotalPrice(totalPrice);
+                shoppingCarts.setDeleted(false);
+            }
 
-    }
-
-    else {
+        }
+        else {
 
             shoppingCarts = new ShoppingCart();
 
@@ -63,7 +66,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             shoppingCarts.setTotalPrice(totalPrice);
             shoppingCarts.setDeleted(false);
 
-    }
+        }
+
+
+
+
         return shopingCartRepository.save(shoppingCarts);
     }
 
@@ -96,7 +103,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
         if (customer != null) {
             Long customerId = customer.getCustomer_id();
-            return shopingCartRepository.findGrandTotal(customerId);
+            double grandTotal = shopingCartRepository.findGrandTotal(customerId);
+            double formattedTotal = Math.round(grandTotal * 100.0) / 100.0;
+            return formattedTotal;
         }
 
         return 0.0;
@@ -109,9 +118,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public void increment(Long id,Long productId) {
         ShoppingCart shoppingCart1=shopingCartRepository.getReferenceById(id);
         Product product=productService.getProductById(productId);
-        if(product.getCurrentQuantity()>shoppingCart1.getQuantity()) {
+        if(product.getCurrentQuantity()>shoppingCart1.getQuantity() && 20>shoppingCart1.getQuantity()) {
             shoppingCart1.setQuantity(shoppingCart1.getQuantity() + 1);
-            shoppingCart1.setTotalPrice(shoppingCart1.getQuantity() * shoppingCart1.getUnitPrice());
+            BigDecimal unitPrice = BigDecimal.valueOf(shoppingCart1.getUnitPrice());
+            BigDecimal totalPrice = BigDecimal.valueOf(shoppingCart1.getQuantity()).multiply(unitPrice);
+            totalPrice = totalPrice.setScale(2, RoundingMode.HALF_UP); // Round to 2 decimal places
+            shoppingCart1.setTotalPrice(totalPrice.doubleValue());
             shopingCartRepository.save(shoppingCart1);
         }
     }
@@ -124,7 +136,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         ShoppingCart shoppingCart1=shopingCartRepository.getReferenceById(id);
         if(shoppingCart1.getQuantity()>1) {
             shoppingCart1.setQuantity(shoppingCart1.getQuantity() - 1);
-            shoppingCart1.setTotalPrice(shoppingCart1.getQuantity() * shoppingCart1.getUnitPrice());
+            BigDecimal unitPrice = BigDecimal.valueOf(shoppingCart1.getUnitPrice());
+            BigDecimal totalPrice = BigDecimal.valueOf(shoppingCart1.getQuantity()).multiply(unitPrice);
+            totalPrice = totalPrice.setScale(2, RoundingMode.HALF_UP); // Round to 2 decimal places
+            shoppingCart1.setTotalPrice(totalPrice.doubleValue());
             shopingCartRepository.save(shoppingCart1);
         }
     }

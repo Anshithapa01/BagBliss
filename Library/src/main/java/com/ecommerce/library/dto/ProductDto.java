@@ -2,6 +2,7 @@ package com.ecommerce.library.dto;
 
 import com.ecommerce.library.model.Category;
 import com.ecommerce.library.model.Image;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -23,24 +24,23 @@ public class ProductDto {
     @Size(min = 3,message = "minimum 3 letter")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Write something about product")
     private String description;
 
-    @NotBlank
+    @NotBlank(message = "Description cannot be null")
     private String long_description;
 
-    @NotBlank
+    @Min(value = 1, message = "Quantity required")
     private int currentQuantity;
 
-    @NotBlank
+    @Min(value = 1, message = "costPrice required")
     private double costPrice;
 
+    @Min(value = 1, message = "salePrice required")
     private double salePrice;
 
-    @NotBlank
     private List<Image> image;
 
-    @NotBlank
     private Category category;
 
     private boolean activated;

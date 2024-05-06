@@ -25,4 +25,9 @@ public class ImageServiceImpl implements ImageService {
     public List<Image> findAll() {
         return imageRepository.findAll();
     }
+
+    @Override
+    public void deleteImageByName(String name) {
+        imageRepository.deleteByName(name);
+    }
 }

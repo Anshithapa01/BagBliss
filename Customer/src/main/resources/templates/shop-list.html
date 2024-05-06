@@ -146,7 +146,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
+                    <a th:href="@{/home}" rel="nofollow">Home</a>
                     <span></span> Shop
                 </div>
             </div>
@@ -171,14 +171,15 @@
 <!--                                    <option>Avg. Rating</option>-->
 <!--                                </select>-->
                                 <select id="basic" class="form-select show-tick form-control" data-placeholder="$ USD" onchange="location = this.value;">
-                                    <option selected class="active">Featured</option>
+                                    <option selected class="active"  value="null">Filter</option>
+                                    <option value="http://localhost:8020/shop/random">Featured</option>
                                     <option value="http://localhost:8020/shop/high-price"> High Price → Low Price</option>
                                     <option value="http://localhost:8020/shop/lower-price">Low Price → High Price</option>
-                                    <option>Release Date</option>
-                                    <option>Avg. Rating</option>
-                                    <option>Popularity</option>
-                                    <option>aA - zZ</option>
-                                    <option>zZ - aA</option>
+                                    <option value="http://localhost:8020/shop/descending-id">New arrivals</option>
+                                    <option value="http://localhost:8020/shop/random">Avg. Rating</option>
+                                    <option value="http://localhost:8020/shop/random">Popularity</option>
+                                    <option value="http://localhost:8020/shop/ascending-name">aA - zZ</option>
+                                    <option value="http://localhost:8020/shop/descending-name">zZ - aA</option>
                                 </select>
                             </div>
                         </div>
@@ -230,15 +231,24 @@
 
                         </div>
                         <!--pagination-->
-                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                        <div class="pagination-area mt-30 mb-50">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">16</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
+                                    <li th:if= "${currentPage != 0}" class="page-item ">
+                                        <a th:href = "@{'/product-shop/' + ${currentPage - 1}}" class="page-link">
+                                            <i class="fi-rs-angle-double-small-left"></i>
+                                        </a>
+                                    </li >
+                                    <li th:each = "i : ${#numbers.sequence(1, totalPages)}" th:classappend = "${currentPage == i - 1 ? 'active' : ''}" class="page-item">
+                                        <a th:href = "@{'/product-shop/' + ${i - 1}}" class="page-link" href="#">
+                                            <span th:text = "${i}"></span>
+                                        </a>
+                                    </li>
+                                    <li th:if = "${currentPage + 1 != totalPages}" class="page-item">
+                                        <a th:href = "@{'/product-shop/' + ${currentPage + 1}}" class="page-link" href="#">
+                                            <i class="fi-rs-angle-double-small-right"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -256,39 +266,17 @@
                                 <h5 class="widget-title mb-10">New products</h5>
                                 <div class="bt-1 border-color-1"></div>
                             </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="/shop/imgs/shop/thumbnail-3.jpg" alt="#">
-                                </div>
+                            <div class="single-post clearfix" th:each="product, iterStat : ${products}" th:if="${iterStat.index &lt;= 2}">
+                                <a th:href="@{/find-products/{id} (id = ${product.id})}">
+                                    <div class="image">
+                                        <img th:src="@{|/imgs/items/${product.image[0].getName()}|}" alt="img1">
+                                    </div>
+                                </a>
                                 <div class="content pt-10">
-                                    <h5><a href="shop-product-detail.html">Chen Cardigan</a></h5>
-                                    <p class="price mb-0 mt-5">$99.50</p>
+                                    <h5><a th:href="@{/find-products/{id} (id = ${product.id})}" th:text="${product.name}"></a></h5>
+                                    <p class="price mb-0 mt-5" th:text="${product.salePrice}"></p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="/shop/imgs/shop/thumbnail-4.jpg" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="shop-product-detail.html">Chen Sweater</a></h6>
-                                    <p class="price mb-0 mt-5">$89.50</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="/shop/imgs/shop/thumbnail-5.jpg" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="shop-product-detail.html">Colorful Jacket</a></h6>
-                                    <p class="price mb-0 mt-5">$25</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:60%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +284,7 @@
                         <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
                             <img src="/shop/imgs/banner/banner-11.jpg" alt="">
                             <div class="banner-text text-white">
-                                <span>Women Zone</span>
+                                <span class="text-dark">Women Zone</span>
                                 <h4>Save 17% on <br>Bags</h4>
                                 <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
                             </div>

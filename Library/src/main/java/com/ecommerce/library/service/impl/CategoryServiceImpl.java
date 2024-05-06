@@ -6,6 +6,7 @@ import com.ecommerce.library.repository.CategoryRepository;
 import com.ecommerce.library.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +21,18 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category save(Category category) {
-            Category categorySave = new Category(category.getName());
-            return categoryRepository.save(categorySave);
+//            Category categorySave = new Category(category.getName());
+//            return categoryRepository.save(categorySave);
+        String categoryName = category.getName();
+
+        // Check if a category with the same name (case sensitive) already exists
+        Category existingCategory = categoryRepository.findByNameIgnoreCase(categoryName);
+        if (existingCategory != null) {
+            throw new DataIntegrityViolationException("Category with name " + categoryName + " already exists.");
+        }
+
+        // No duplicate found, proceed with saving the category
+        return categoryRepository.save(category);
     }
 
     @Override

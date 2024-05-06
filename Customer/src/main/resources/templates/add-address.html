@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::head_sec}"></head>
+
+<body>
+<header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}">
+</header>
+
+<div th:replace="~{fragments::side-header}"></div>
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a th:href="@{/home}" rel="nofollow">Home</a>
+                <span></span> Shop
+                <span></span> Checkout
+                <span></span> Add Address
+            </div>
+        </div>
+    </div>
+    <section class="mt-50 mb-50">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-6">
+                    <h3> Add Address</h3>
+    <form th:action="@{/saveAddress}" th:object="${address}" method="post">
+        <div class="form-group">
+            <input type="text" name="addressLine1" th:field="*{addressLine1}" placeholder="Address Line1 *">
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('addressLine1')}"
+                 th:errors="*{addressLine1}"
+            ></div>
+        </div>
+        <div class="form-group">
+            <input type="text"  name="addressLine2" th:field="*{addressLine2}" placeholder="address Line2">
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('addressLine2')}"
+                 th:errors="*{addressLine2}"
+            ></div>
+        </div>
+        <div class="form-group">
+            <input  type="text" name="city" th:field="*{city}" placeholder="City">
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('city')}"
+                 th:errors="*{city}"
+            ></div>
+        </div>
+        <div class="form-group">
+            <input  type="text" name="district" th:field="*{district}" placeholder="District">
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('district')}"
+                 th:errors="*{district}"
+            ></div>
+        </div>
+
+
+        <div class="form-group">
+            <input type="text" name="state" th:field="*{state}"  placeholder="State">
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('state')}"
+                 th:errors="*{state}"
+            ></div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="country" th:field="*{country}"  placeholder="Country">
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('country')}"
+                 th:errors="*{country}"
+            ></div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="pincode" th:field="*{pincode}" placeholder="Pin code">
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('pincode')}"
+                 th:errors="*{pincode}"
+            ></div>
+        </div>
+        <div class="form-check">
+            <input id="is_default" type="checkbox" th:field="*{defaultAddress}"
+                   class="form-check-input">
+            <label for="is_default">Set as default address</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments::footer-sec}"></footer>
+
+<div th:replace="~{fragments::pre-loader}"></div>
+<!-- Vendor JS-->
+<div th:replace="~{fragments::scripts}"></div>
+</body>
+</html>

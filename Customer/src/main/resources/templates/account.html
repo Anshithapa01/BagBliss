@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::head_sec}"></head>
+
+<body>
+<header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}">
+</header>
+<div th:replace="~{fragments::side-header}"></div>
+
+<main class="main">
+  <div class="page-header breadcrumb-wrap">
+    <div class="container">
+      <div class="breadcrumb">
+        <a th:href="@{/home}" rel="nofollow">Home</a>
+        <span></span> Account
+      </div>
+    </div>
+  </div>
+
+  <section class="pt-80 pb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 m-auto">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="dashboard-menu">
+                <ul class="nav flex-column" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>My Address</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Account details</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="change-password-tab" data-bs-toggle="tab" href="#change-password" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Change Password</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="referal-tab" data-bs-toggle="tab" href="#referal" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Send Referal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href=""><form action="#" th:action="@{/login?logout}" method="get">
+
+                      <input  type="submit" value="logout" ></i>
+
+                    </form>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="tab-content dashboard-content">
+                <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0" >Hello !<span th:text="${customer.name}"></span> </h5>
+                    </div>
+                    <div class="card-body">
+                      <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">edit your password and account details.</a></p>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+                  <div th:if="${success != null}" class="alert alert-success">
+                    <p th:text="${success}"></p>
+                  </div>
+
+                  <div th:if="${error != null}" class="alert alert-danger">
+                    <p th:text="${error}"></p>
+                  </div>
+                  <div class="row">
+                    <div class="mb-5">
+                      <a class="btn" th:href="@{/accountAddAddress}" >Add new Address</a>
+                    </div>
+                    <div class="col-lg-6" th:each="addresses:${address}">
+                      <div class="card mb-3 mb-lg-0">
+                        <div class="card-header">
+                          <h5 class="mb-0" th:text="${addresses.addressLine1}"></h5>
+                          <p class="text-brand" th:if="${addresses.is_default()}">Default Address</p>
+                        </div>
+                        <div class="card-body">
+                          <span class="text-brand d-flex">Place : <p th:text="${addresses.addressLine2}"></p></span>
+                          <span class="text-brand d-flex">City : <p th:text="${addresses.city}"></p></span>
+                          <span class="text-brand d-flex">District : <p th:text="${addresses.district}"></p></span>
+                          <span class="text-brand d-flex">State : <p th:text="${addresses.state}"></p></span>
+                          <span class="text-brand d-flex">Country : <p th:text="${addresses.country}"></p></span>
+                          <span class="text-brand d-flex">Pin : <p th:text="${addresses.pincode}"></p></span>
+
+                          <div class="row">
+                            <a class="col-7"></a>
+                            <a th:href="@{editCustomerAddress(addressId=${addresses.id})}" class="btn-small text-success col-2">Edit</a>
+                            <a th:href="@{deleteCustomerAddress(addressId=${addresses.id})}" class="btn-small text-danger col-3">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5>Account Details</h5>
+                    </div>
+                    <div class="card-body">
+                      <p>Name: <span th:text="${customer.name}"></span></p>
+                      <p>Email: <span th:text="${customer.email}"></span></p>
+                      <p>Mobile: <span th:text="${customer.mobile}"></span></p>
+                      <a th:href="@{editCustomerDetails(email=${customer.email})}" class="btn-small text-danger">Edit</a>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="change-password" role="tabpanel" aria-labelledby="change-password-tab">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5>Change Password</h5>
+                    </div>
+
+
+
+                    <div th:if="${error != null}">
+                      <p class="text-danger">[[${error}]]</p>
+                    </div>
+                    <div th:if="${message != null}">
+                      <p class="text-warning">[[${message}]]</p>
+                    </div>
+
+                    <form th:action="@{/resetPassword}" method="post" style="max-width: 420px; margin: 0 auto;">
+                      <div class="border border-secondary rounded p-3">
+                        <div>
+                          <p>We will be sending a reset password link to your email.</p>
+                        </div>
+                        <div>
+                          <p>
+                            <input type="email" name="email" class="form-control" th:value="${customer.email}"  readonly/>
+                          </p>
+                          <p class="text-center">
+                            <input type="submit" value="Send" class="btn btn-primary" />
+                          </p>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+
+             </div>
+                  <div class="tab-pane fade" id="referal" role="tabpanel" aria-labelledby="referal-tab">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5>Referral</h5>
+                      </div>
+
+
+
+                      <div th:if="${error != null}">
+                        <p class="text-danger">[[${error}]]</p>
+                      </div>
+                      <div th:if="${message != null}">
+                        <p class="text-warning">[[${message}]]</p>
+                      </div>
+
+                      <form th:action="@{/sendReferal}" method="post" style="max-width: 420px; margin: 0 auto;">
+                        <div class="border border-secondary rounded p-3">
+                          <div>
+                            <p>Send the referral link to new user <br> you will get 100rs</p>
+                          </div>
+                          <div>
+                            <p>
+                              <input type="email" name="email" class="form-control" />
+                            </p>
+                            <p class="text-center">
+                              <input type="submit" value="Send" class="btn btn-primary" />
+                            </p>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+  </section>
+</main>
+<footer th:replace="~{fragments::footer-sec}"></footer>
+
+<div th:replace="~{fragments::pre-loader}"></div>
+<!-- Vendor JS-->
+<div th:replace="~{fragments::scripts}"></div>
+<script>
+  // Remember active tab
+  $(document).ready(function() {
+    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+      localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+
+    var activeTab = localStorage.getItem('activeTab');
+    if (activeTab) {
+      $('.nav-link[href="' + activeTab + '"]').tab('show');
+    }
+  });
+
+  function redirectToActiveTab() {
+    var activeTab = localStorage.getItem('activeTab');
+    if (activeTab) {
+      window.location.href = activeTab;
+    } else {
+      window.location.href = '/home';
+    }
+  }
+
+</script>
+</body>
+</html>

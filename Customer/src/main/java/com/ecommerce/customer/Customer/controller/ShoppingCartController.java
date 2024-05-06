@@ -36,10 +36,9 @@ public class ShoppingCartController {
     @GetMapping("/cart")
     public String showCart(Model model, Principal principal, HttpSession session){
         if (principal==null){
-            return "redirect:/loginPage";
+            return "redirect:/login";
         }
-        List<Customer> customerDto1=customerService.findAll();
-        String username=customerDto1.getFirst().getEmail();
+        String username=principal.getName();
         List<ShoppingCart> shoppingCart=shopCartService.findShoppingCartByCustomer(username);
 
         double total=shopCartService.grandTotal(username);
@@ -61,11 +60,12 @@ public class ShoppingCartController {
                                 HttpSession session)
     {
         if(principal==null){
-            return "redirect:/loginPage";
+            return "redirect:/login";
         }
         int quantity=1;
-        List<Customer> customerDto1=customerService.findAll();
-        ShoppingCart shoppingCart =shopCartService.addItemToCart(id,quantity,customerDto1.getFirst().getCustomer_id());
+        String username=principal.getName();
+        Customer customer=customerService.findByEmail(username);
+        ShoppingCart shoppingCart =shopCartService.addItemToCart(id,quantity,customer.getCustomer_id());
         model.addAttribute("shoppingCart", shoppingCart);
         return "redirect:/cart";
 
@@ -77,7 +77,6 @@ public class ShoppingCartController {
     public String showDelete(@RequestParam("cartId")Long id,Principal principal){
         List<Customer> customerDto1=customerService.findAll();
         shopCartService.deleteById(id);
-//        customerDto1.getFirst().getCustomer_id()
         return "redirect:/cart";
     }
 

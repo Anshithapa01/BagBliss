@@ -2,6 +2,7 @@ package com.ecommerce.library.repository;
 
 import com.ecommerce.library.dto.ProductDto;
 import com.ecommerce.library.model.Product;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,17 +27,25 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             " where p.category.name = ?1 and p.is_activated = true and p.is_deleted = false")
     List<Product> findAllByCategory(String category);
 
-    @Query(value = "select " +
-            "p.product_id, p.name, p.description, p.current_quantity, p.cost_price, p.category_id, p.sale_price, p.image, p.is_activated, p.is_deleted " +
-            "from products p where p.is_activated = true and p.is_deleted = false order by rand() limit 9", nativeQuery = true)
-    List<Product> randomProduct();
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY random()", nativeQuery = true)
+    Page<Product> randomProduct(Pageable pageable);
 
-    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY cost_price DESC LIMIT 9", nativeQuery = true)
-    List<Product> filterHighProducts();
 
-    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY cost_price asc LIMIT 9", nativeQuery = true)
-    List<Product> filterLowerProducts();
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY sale_price DESC", nativeQuery = true)
+    Page<Product> filterHighProducts(Pageable pageable);
 
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY sale_price ASC", nativeQuery = true)
+    Page<Product> filterLowerProducts(Pageable pageable);
+
+
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY name ASC", nativeQuery = true)
+    Page<Product> filterByNameAscending(Pageable pageable);
+
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY name DESC", nativeQuery = true)
+    Page<Product> filterByNameDescending(Pageable pageable);
+
+    @Query(value = "SELECT * FROM products WHERE is_deleted = false ORDER BY product_id DESC", nativeQuery = true)
+    Page<Product> filterByIdDescending(Pageable pageable);
 
     @Query(value = "SELECT * FROM products where is_deleted = false and is_activated = true limit 4", nativeQuery = true)
     List<Product> listViewProduct();
@@ -60,5 +69,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByCategoryId(long id);
 
-
+    
 }

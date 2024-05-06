@@ -1,5 +1,7 @@
 package com.ecommerce.customer.Customer.config;
 
+import com.ecommerce.library.service.CustomOAuth2UserService;
+import com.ecommerce.library.service.impl.CustomOAuth2UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -12,18 +14,28 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableWebSecurity
 public class CustomerConfiguration {
 
-    private UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService ;
+
+    private final OAuth2UserService oAuth2UserService;
+
 
     @Autowired
-    public CustomerConfiguration(UserDetailsService userDetailsService) {
+    public CustomerConfiguration(UserDetailsService userDetailsService,
+                                 OAuth2UserService oAuth2UserService) {
         this.userDetailsService = userDetailsService;
+        this.oAuth2UserService = oAuth2UserService;
     }
 
 
@@ -60,8 +72,10 @@ public class CustomerConfiguration {
                                 .permitAll()
                 )
                 .oauth2Login(oauth2Login -> oauth2Login
-                        .loginPage("/shop/register")
+                        .loginPage("/shop/login")
                         .defaultSuccessUrl("/home", true)
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(oAuth2UserService))
                 )
                 .logout(logout ->
                         logout.invalidateHttpSession(true)

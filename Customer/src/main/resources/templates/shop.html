@@ -3,7 +3,11 @@
 
 <head th:replace="~{fragments::head_sec}">
 </head>
-
+<style>
+    .out-of-stock {
+        opacity: 0.5;
+    }
+</style>
 <body>
 <!-- Quick view -->
 <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
@@ -161,20 +165,24 @@
                         <div class="sort-by-product-area">
                             <select id="basic" class="selectpicker show-tick form-control"
                                     data-placeholder="$ USD" onchange="location = this.value;">
-                                <option>Featured</option>
+                                <option selected class="active"  value="null">Filter</option>
+                                <option value="http://localhost:8020/shop/random">Featured</option>
                                 <option value="http://localhost:8020/shop/high-price">High Price → Low Price
                                 </option>
                                 <option value="http://localhost:8020/shop/lower-price">Low Price → High Price
                                 </option>
-                                <option>Release Date</option>
-                                <option>Avg. Rating</option>
+                                <option value="http://localhost:8020/shop/descending-id">New arrivals</option>
+                                <option value="http://localhost:8020/shop/random">Avg. Rating</option>
+                                <option value="http://localhost:8020/shop/random">Popularity</option>
+                                <option value="http://localhost:8020/shop/ascending-name">aA - zZ</option>
+                                <option value="http://localhost:8020/shop/descending-name">zZ - aA</option>
                             </select>
                         </div>
                     </div>
                     <div class="row product-grid-3">
                         <div class="col-lg-3 col-md-4"  th:each="product :${products}" th:if="${!product.category.deleted  and !product.deleted}">
                             <th:block th:if="${!product.category.deleted}">
-                                <div class="product-cart-wrap mb-30">
+                                <div class="product-cart-wrap mb-30" th:classappend="${product.currentQuantity == 0} ? ' out-of-stock'">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a th:href="@{/find-products/{id} (id = ${product.id})}">
@@ -183,10 +191,10 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal" th:if="${product.currentQuantity > 0}">
                                                 <i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Buy now" class="action-btn" th:href="@{/addToCart(productId=${product.id})}"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html" th:if="${product.currentQuantity > 0}"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Buy now" class="action-btn" th:href="@{/addToCart(productId=${product.id})}" th:if="${product.currentQuantity > 0}"><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
@@ -203,6 +211,10 @@
                                             <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
                                             <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
                                             <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
+                                        </div>
+                                        <div class="text-danger">
+                                            <span th:if="${product.currentQuantity == 0}">Out Of Stock</span>
+                                            <span th:if="${product.currentQuantity < 10 and product.currentQuantity > 0}">Only Few Left</span>
                                         </div>
                                     </div>
                                 </div>

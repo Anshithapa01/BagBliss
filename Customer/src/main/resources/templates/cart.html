@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{fragments::head_sec}"></head>
 
 <body>
@@ -46,8 +47,7 @@
                                                                                  th:src="@{|/imgs/items/${cart.product.image[0].getName()}|}" alt="#"></td>
                                         <td class="product-des product-name">
                                             <h5 class="product-name" th:text="${cart.product.name}"><a></a></h5>
-                                            <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
-                                            </p>
+                                            <p class="font-xs" th:text="${cart.product.description}"> </p>
                                         </td>
                                         <td class="price" data-title="Price" th:text="${cart.unitPrice}"><span>$ </span></td>
                                         <td class="text-center" data-title="Stock">
@@ -64,15 +64,14 @@
                                     </tr>
                                     <tr>
                                         <td colspan="6" class="text-end">
-                                            <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
+<!--                                            <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>-->
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="cart-action text-end">
-                            <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                            <a class="btn " th:href="@{/shop}"><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                            <a class="btn " th:href="@{/product-shop/0}"><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
                         </div>
                         <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                         <div class="row mb-50">
@@ -133,7 +132,7 @@
     </main>
 <footer th:replace="~{fragments::footer-sec}"></footer>
 
-<div th:replace="~{fragments::pre-loader}"></div>
+<!--<div th:replace="~{fragments::pre-loader}"></div>-->
 <!-- Vendor JS-->
 <div th:replace="~{fragments::scripts}"></div>
 </body>

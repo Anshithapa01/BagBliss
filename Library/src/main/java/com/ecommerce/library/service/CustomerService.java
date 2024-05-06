@@ -28,4 +28,5 @@ List<Customer> findAll();
     void updateReferalCodeToken(String token,String email);
 
 
+    Customer update(String email, String name, Long mobile);
 }

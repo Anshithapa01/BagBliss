@@ -4,24 +4,218 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="customer side login,show product">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ShoppingCartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/ShoppingCartDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/OrderDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/ShoppingCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ShopingCartRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ShoppingCartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ShoppingCartServiceImpl.java" afterDir="false" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="add to cart">
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/OrderDetailsControll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/theme/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/orderDetail-info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/orderDetails.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/CheckOutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/FilterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/SearchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/theme/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/add-address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/addAddress.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/change-password-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/checkOut.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/edit-account-address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/edit-account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/edit-address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/error-page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/order-confirm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/order-details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/orders.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/reset-password-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/OrderDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/OrderDetailsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CustomOAuth2UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/PdfService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomOAuth2UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/GoogleUserInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/PdfServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/ADARSH ASSIGNMENT RELIABILITY[1].docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Aphrodite-Black.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Bella4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooke3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Brooklyn1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Dakota.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Denice_Denim.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Denice_Tweed.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Elsa.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Grace.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Grace1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Grace2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Grace3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Kaya.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Melissa.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Penelope.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Rosalind.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Sophie.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/Vanessa1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/WhatsApp Image 2024-04-14 at 8.33.07 PM.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/WhatsApp Image 2024-04-14 at 8.33.08 PM.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/barbara.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/barbara1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/barbara2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/barbara3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/blake.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/camilla.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/camilla_cardholder.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/camilla_denim.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/cara.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/cara1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/crush_cb.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/cupid_bow.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/delilah.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/desire.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/donna.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/fiji.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/gigi_mini_cross.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/harmony.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/harmony1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/iris_cb.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/iris_cb1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/iris_cb2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/iris_cb3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/kate.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/margo.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/melissa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/olivia.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/photo1710493140 (1).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/photo1710493140 (2).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/photo1710493140.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/photo1710571528.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/tiara_cb.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/vanessa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/vanessa2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/vanessa4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/static/imgs/items/zoe.webp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/index-dark.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/index-dark.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-blank.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-brands.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-brands.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-error-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-error-404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-invoice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-tracking.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-tracking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-reviews.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-seller-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-seller-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/sign-in.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/sign-in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/update-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/update-product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/EmailSendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/EmailSendController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/SocialSignInController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ResetPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ResetPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ShoppingCartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/ADARSH ASSIGNMENT RELIABILITY[1].docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Aphrodite-Black.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Bella4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooke3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Brooklyn1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Dakota.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Denice_Denim.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Denice_Tweed.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Elsa.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Grace3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Kaya.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Melissa.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Penelope.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Rosalind.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Sophie.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/Vanessa1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/WhatsApp Image 2024-04-14 at 8.33.07 PM.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/WhatsApp Image 2024-04-14 at 8.33.08 PM.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/barbara3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/blake.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/camilla.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/camilla_cardholder.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/camilla_denim.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/cara.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/cara1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/crush_cb.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/cupid_bow.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/delilah.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/desire.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/donna.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/fiji.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/gigi_mini_cross.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/harmony.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/harmony1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/iris_cb3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/kate.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/margo.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/melissa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/olivia.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/photo1710493140 (1).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/photo1710493140 (2).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/photo1710493140.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/photo1710571528.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/tiara_cb.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/vanessa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/vanessa2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/vanessa4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/items/zoe.webp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-big.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-big.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-fullwidth.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-fullwidth.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-grid.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-category-grid.html" afterDir="false" />
@@ -29,6 +223,7 @@
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-fullwidth.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-fullwidth.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-left.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-left.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-right.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/blog-post-right.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" afterDir="false" />
@@ -41,7 +236,6 @@
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/page-terms.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-description.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-description.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-checkout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-compare.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-filter.html" afterDir="false" />
@@ -53,15 +247,28 @@
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-right.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-product-right.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-wishlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-email.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-otp.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-otp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/AddressDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/AddressDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/ShoppingCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/AddressRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CustomerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ImageRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ImageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/AddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CategoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/EmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/EmailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ImageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ShoppingCartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ShoppingCartServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,16 +278,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="SCSS File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/ProductController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -101,6 +311,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
@@ -115,38 +326,41 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Customer/src/main/java/com/ecommerce/customer/Customer/controller&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Customer/src/main/resources/static/imgs/theme&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\java\com\ecommerce\customer\Customer\controller" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\java\com\ecommerce\customer\Customer" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\templates" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static\css\login" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static\imgs\theme" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\static\imgs\theme" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\templates" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static\css\vendors" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main\java\com\ecommerce\library\model" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\static\imgs\theme" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static\imgs\theme" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static\imgs" />
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\templates" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static\imgs\slider" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\static" />
-      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss" />
+      <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ecommerce.library.service.impl" />
-      <recent name="com.ecommerce.library.service" />
-      <recent name="com.ecommerce.library.repository" />
-      <recent name="com.ecommerce.library.model" />
+      <recent name="com.ecommerce.customer.Customer.controller" />
+      <recent name="com.ecommerce.library.utils" />
+      <recent name="com.ecommerce.admin.controller" />
       <recent name="com.ecommerce.library.dto" />
+      <recent name="com.ecommerce.library.model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -208,7 +422,20 @@
       <workItem from="1713593734063" duration="42482000" />
       <workItem from="1713676231335" duration="47673000" />
       <workItem from="1713808946033" duration="2729000" />
-      <workItem from="1713846301869" duration="24516000" />
+      <workItem from="1713846301869" duration="29741000" />
+      <workItem from="1713944667297" duration="51816000" />
+      <workItem from="1714107093491" duration="30006000" />
+      <workItem from="1714198544765" duration="6889000" />
+      <workItem from="1714375542399" duration="381000" />
+      <workItem from="1714390105105" duration="1333000" />
+      <workItem from="1714451446877" duration="29117000" />
+      <workItem from="1714538431065" duration="17865000" />
+      <workItem from="1714583820244" duration="2386000" />
+      <workItem from="1714625167048" duration="8350000" />
+      <workItem from="1714710431777" duration="28356000" />
+      <workItem from="1714796802596" duration="63910000" />
+      <workItem from="1714960001283" duration="1231000" />
+      <workItem from="1714969454881" duration="6946000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -258,7 +485,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713704198316</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add to cart">
+      <option name="closed" value="true" />
+      <created>1713891223550</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713891223550</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add to cart">
+      <option name="closed" value="true" />
+      <created>1713891247530</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713891247530</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,12 +519,26 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Admin Login,register and index added" />
     <MESSAGE value="Added new templates" />
     <MESSAGE value="category section added" />
     <MESSAGE value="Product section added" />
     <MESSAGE value="Customer Module added" />
     <MESSAGE value="customer side login,show product" />
-    <option name="LAST_COMMIT_MESSAGE" value="customer side login,show product" />
+    <MESSAGE value="add to cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="add to cart" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/ShoppingCart.java</url>
+          <line>28</line>
+          <properties field="unitPrice" class="com.ecommerce.library.model.ShoppingCart" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

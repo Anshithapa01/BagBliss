@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @Getter
 @Entity
-@Table(name = "shoping_cart")
+@Table(name = "shopping_cart")
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

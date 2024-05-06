@@ -76,7 +76,8 @@
                         <div class="col-lg-1 col-sm-1 col-2 col-price"> <span th:text="${product.category.name}"></span> </div>
                         <div class="col-lg-3 col-sm-3 col-4 col-price"> <span th:text="${product.description}"></span> </div>
                         <div class="col-lg-1 col-sm-1 col-4 col-price"> <span th:text=" '$' + ${product.costPrice}"></span> </div>
-                        <div class="col-lg-1 col-sm-1 col-2 col-price"> <span th:text="${product.currentQuantity} +' Left'"></span> </div>
+                        <div class="col-lg-1 col-sm-1 col-2 col-price"> <span th:if="${product.currentQuantity>0}" th:text="${product.currentQuantity} +' Left'"></span>
+                            <span th:if="${product.currentQuantity==0}" class="alert-danger">Out of stock</span></div>
                         <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
                             <a th:href="@{/update-product/{id}(id=${product.id})}" class="btn btn-sm font-sm rounded btn-brand">
                                 <i class="material-icons md-edit"></i> Edit

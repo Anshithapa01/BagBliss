@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments::header_sec}"> </head>
+
+<body>
+<div class="screen-overlay"></div>
+
+<div th:replace="~{fragments::side_bar}"></div>
+
+<main class="main-wrap">
+
+    <div th:replace="~{fragments::nav_bar}"></div>
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Order List </h2>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div>
+                    <div class="row end">
+                    <form th:action="@{/pdfReport}" th:object="${report}" method="get">
+
+                            <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" th:field="*{pdfReport}">
+                                <option selected th:value="null">Select Report</option>
+                                <option th:value="daily">DailyReport</option>
+                                <option th:value="weekly">Weekly Report</option>
+                                <option th:value="monthly">Monthly report</option>
+
+
+                            </select>
+                            <input type="submit" value="Report PDF" class="btn btn-primary">
+                    </form>
+                    <form th:action="@{/csvReport}" th:object="${report}" method="get">
+
+                        <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" th:field="*{csvReport}">
+                            <option selected th:value="null">Select Report</option>
+                            <option th:value="daily">DailyReport</option>
+                            <option th:value="weekly">Weekly Report</option>
+                            <option th:value="monthly">Monthly report</option>
+
+
+                        </select>
+                        <input type="submit" value="Report CSV" class="btn btn-primary">
+                    </form>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <header class="card-header">
+                    <div class="row gx-3">
+                        <div class="col-lg-4 col-md-4 me-auto">
+                          <!--  <input type="text" placeholder="Search..." class="form-control">-->
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 me-auto">
+                                <form id="orderStatusForm" th:action="@{/orderStatus/0}" th:object="${report}">
+
+                                    <select id="statusSelect" class="form-select d-inline-block mb-lg-0 mb-15 mw-200" th:field="*{orderStatus}">
+                                        <option th:value="null">Status</option>
+                                        <option th:value="all">All</option>
+                                        <option th:value="Cancel">Cancelled</option>
+                                        <option th:value="Pending">Pending</option>
+                                        <option th:value="Shipped">Shipped</option>
+                                        <option th:value="Delivered">Delivered</option>
+                                        <option value="Return Pending">Return Pending</option>
+                                        <option value="Return Accept">Return Accept</option>
+                                    </select>
+                                    <input  type="submit" value="GET" style="display: none;">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </header> <!-- card-header end// -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col" class="text-end"> Action </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="orders: ${orders}">
+                                <td th:text="${orders.id}"></td>
+                                <td th:text="${orders.customer.name}"><b></b></td>
+
+
+                                <td th:text="${orders.grandTotalPrize}">$</td>
+                                <td>
+                                <p th:if="${orders.orderStatus}==Pending"><span th:text="${orders.orderStatus}" class=" btn-warning"></span></p>
+                                <p th:if="${orders.orderStatus}==Cancel"><span th:text="${orders.orderStatus}" class=" btn-danger"></span></p>
+                                <p th:if="${orders.orderStatus=='Return Accept'}"><span th:text="${orders.orderStatus}" class=" btn-success"></span></p>
+                                <p th:if="${orders.orderStatus}==Delivered"><span th:text="${orders.orderStatus}" class=" btn-info"></span></p>
+                                    <p th:if="${orders.orderStatus=='Return Pending'}"><span th:text="${orders.orderStatus}" class=" btn-warning"></span></p>
+                                    <p th:if="${orders.orderStatus}==Shipped"><span th:text="${orders.orderStatus}" class=" btn-brand"></span></p>
+
+                                </td>
+
+                                <td th:text="${orders.orderDate}"></td>
+                                <td th:text="${orders.paymentMethod}"></td>
+
+                                <td class="text-end">
+                                    <a th:href="@{/orderDetailsInfo(orderId=${orders.id})}" class="btn btn-md rounded font-sm">Detail</a>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        <div class="pagination-area mt-30 mb-50">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <li th:if= "${currentPage != 0}" class="page-item ">
+                                        <a th:href = "@{'/orderDetails/' + ${currentPage - 1}}" class="page-link">
+                                            <i class="material-icons md-chevron_left"></i>
+                                        </a>
+                                    </li >
+                                    <li th:each = "i : ${#numbers.sequence(1, totalPage)}" th:classappend = "${currentPage == i - 1 ? 'active' : ''}" class="page-item">
+                                        <a th:href = "@{'/orderDetails/' + ${i - 1}}" class="page-link" href="#">
+                                            <span th:text = "${i}"></span>
+                                        </a>
+                                    </li>
+                                    <li th:if = "${currentPage + 1 != totalPage}" class="page-item">
+                                        <a th:href = "@{'/orderDetails/' + ${currentPage + 1}}" class="page-link" href="#">
+                                            <i class="material-icons md-chevron_right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div th:replace="~{fragments::footer_sec}"></div>
+    </main>
+    <div th:replace="~{fragments::script}"></div>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusSelect = document.getElementById('statusSelect');
+        const orderStatusForm = document.getElementById('orderStatusForm');
+
+        statusSelect.addEventListener('change', function(event) {
+            // Submit the form when the select value changes
+            orderStatusForm.submit();
+
+            const selectedStatus = statusSelect.value;
+            if (selectedStatus === 'all') {
+                // Redirect to orderDetails/0 with the selected status as query parameter
+                window.location.href = '/admin/orderDetails/0';
+            }
+        });
+    });
+    </script>
+
+
+
+    </body>
+</html>

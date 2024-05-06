@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::head_sec}"></head>
+
+<body>
+<header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}">
+</header>
+<div th:replace="~{fragments::side-header}"></div>
+
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a th:href="@{/home}" rel="nofollow">Home</a>
+                <span></span> Order
+            </div>
+        </div>
+    </div>
+    <section class="pt-80 pb-100">
+        <div class="container">
+            <div class="row">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Your Orders</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Product</th>
+                                    <th>Name</th>
+                                    <th>Product Discription</th>
+                                    <th>Status</th>
+                                    <th>Unit Pize</th>
+                                    <th>Quantity</th>
+                                    <th>Total Prize</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="orderDetail:${orderDetailsPage}">
+                                    <td th:text="${orderDetail.id}">#</td>
+
+                                    <td >
+                                        <img th:if="${not #lists.isEmpty(orderDetail.product.image)}"
+                                             th:src="@{|/imgs/items/${orderDetail.product.image[0].getName()}|}" width="40" height="40" class="img-xs" alt="Item"> <br>
+                                    </td>
+                                    <td th:text="${orderDetail.product.name}"></td>
+                                    <td th:text="${orderDetail.product.description}"></td>
+                                    <td th:text="${orderDetail.order.orderStatus}"></td>
+                                    <td th:text="${orderDetail.unitPrice}"></td>
+                                    <td th:text="${orderDetail.quantity}">$</td>
+                                    <td th:text="${orderDetail.totalPrice}">$</td>
+                                    <td><a th:href="@{/order(orderId=${orderDetail.order.id})}" class="btn-small d-block">View</a></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination-area mt-30 mb-50">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-start">
+                            <li th:if= "${currentPage != 0}" class="page-item ">
+                                <a th:href = "@{'/product-shop/' + ${currentPage - 1}}" class="page-link">
+                                    <i class="fi-rs-angle-double-small-left"></i>
+                                </a>
+                            </li >
+                            <li th:each = "i : ${#numbers.sequence(1, totalPages)}" th:classappend = "${currentPage == i - 1 ? 'active' : ''}" class="page-item">
+                                <a th:href = "@{'/product-shop/' + ${i - 1}}" class="page-link" href="#">
+                                    <span th:text = "${i}"></span>
+                                </a>
+                            </li>
+                            <li th:if = "${currentPage + 1 != totalPages}" class="page-item">
+                                <a th:href = "@{'/product-shop/' + ${currentPage + 1}}" class="page-link" href="#">
+                                    <i class="fi-rs-angle-double-small-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments::footer-sec}"></footer>
+
+<div th:replace="~{fragments::pre-loader}"></div>
+<!-- Vendor JS-->
+<div th:replace="~{fragments::scripts}"></div>
+
+</body>
+</html>

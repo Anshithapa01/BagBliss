@@ -13,7 +13,10 @@ public interface AddressService {
     Address update(AddressDto addressDto);
 
     Address findByIdOrder(Long id);
+
     List<Address> findAddressByCustomer(String email);
 
+
+    void deleteById(Long addressId);
 
 }
