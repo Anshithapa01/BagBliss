@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments::header_sec}"></head>
+
+<body>
+<div class="screen-overlay"></div>
+<div th:replace="~{fragments::side_bar}"></div>
+
+<main class="main-wrap">
+
+    <div th:replace="~{fragments::nav_bar}"></div>
+
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Dashboard </h2>
+                <p>Whole data about your business here</p>
+            </div>
+           <!-- <div>
+                <a href="#" class="btn btn-primary"><i class="text-muted material-icons md-post_add"></i>Create report</a>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Revenue</h6>
+                            <span th:text="${currentYearlyEarning}"></span>
+                            <span class="text-sm" th:text="${currentYear}">
+
+                                </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Orders</h6> <span th:text="${totalOrders}"></span>
+                            <span class="text-sm">
+                                    Excluding orders in transit
+                                </span>
+                        </div>
+                    </article>
+                </div>
+            </div> <!--
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Products</h6> <span>9.856</span>
+                            <span class="text-sm">
+                                    In 19 Categories
+                                </span>
+                        </div>
+                    </article>
+                </div>
+            </div> -->
+            <div class="col-lg-3">
+                <div class="card card-body mb-4">
+                    <article class="icontext">
+                        <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
+                        <div class="text">
+                            <h6 class="mb-1 card-title">Monthly Earning</h6> <span th:text="${currentMonthEarning}"></span>
+                            <span class="text-sm" th:text="${currentMonth}">
+
+                                </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart-->
+
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Daily Earnings Overview in Current Month:<span th:text="${currentMonth}"></span></h6>
+                    <div class="dropdown no-arrow">
+                        <!--                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"-->
+                        <!--                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                        <!--                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>-->
+                        <!--                                        </a>-->
+
+
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body" th:attr="data-daily-earnings=${dailyEarnings}">
+                    <div class="chart-area" >
+                        <canvas id="myDailyEarningsChart" width="600" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Area Chart End-->
+
+
+        <!-- Pie Chart -->
+        <div class="row">
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4" id="paymentMethodPieChart">
+                <!-- Card Header - Dropdown -->
+                <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Revenue - Payment Methods</h6>
+
+                </div>
+                <div class="card-body" th:attr="data-totalPrice-byPayment=${totalPriceByPayment}" style="height: 360px;">
+                    <div class="chart-pie pt-4 pb-2 ">
+                        <canvas id="myPieChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4" id="monthlyChart">
+                <div class="card mb-4" style="height: 360px;">
+                    <article class="card-body" th:attr="monthly-data=${monthlyEarn}">
+                        <h5 class="card-title"></h5>
+                        <canvas id="myChart2" height="200"></canvas>
+                    </article>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section> <!-- content-main end// -->
+    <div th:replace="~{fragments::footer_sec}"></div>
+
+</main>
+
+<div th:replace="~{fragments::script}"></div>
+
+</div>
+<script>
+    var encodedDataElement = document.querySelector('[data-daily-earnings]');
+    if (encodedDataElement) {
+        var encodedData = encodedDataElement.getAttribute('data-daily-earnings');
+        var decodedData = decodeEntities(encodedData);
+
+        // Now you can parse the JSON data
+        var jsonData = JSON.parse(decodedData);
+
+        // Extract dates and earnings from the data
+        var dates = jsonData.map(function(item) {
+            // Convert the "date" property to a Date object
+            var date = new Date(item.date);
+            // Format the date to display only the day
+            var formattedDate = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+            return formattedDate;
+        });
+
+        var earnings = jsonData.map(function(item) {
+            return item.earnings; // Extract the "earnings" property
+        });
+
+        // Create a chart using Chart.js
+        var ctx = document.getElementById("myDailyEarningsChart").getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: "Daily Earnings in Rs.",
+                    data: earnings,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    } else {
+        console.log('Element with data-daily-earnings attribute not found.');
+    }
+
+    function decodeEntities(encodedString) {
+        var textArea = document.createElement('textarea');
+        textArea.innerHTML = encodedString;
+        return textArea.value;
+    }
+</script>
+
+
+
+<script>
+    var backgroundColor = [
+        'rgba(255, 99, 132, 0.7)',  // Light Red
+        'rgba(75, 192, 192, 0.7)', // Light Green
+        'rgba(255, 206, 86, 0.7)', // Light Yellow
+    ];
+    var encodedDataElement = document.querySelector('[data-totalPrice-byPayment]');
+    var encodedData = encodedDataElement.getAttribute('data-totalPrice-byPayment');
+    var decodedData = decodeEntities(encodedData);
+
+    // Now you can parse the JSON data
+    var jsonData = JSON.parse(decodedData);
+
+    var labels = jsonData.map(function(item) {
+        return item.payMethod;
+    });
+
+    var data = jsonData.map(function(item) {
+        return item.amount;
+    });
+
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: backgroundColor,
+            }]
+        },
+        options: {
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var dataset = data.datasets[0];
+                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                            return previousValue + currentValue;
+                        });
+                        var currentValue = dataset.data[tooltipItem.index];
+                        var percentage = Math.round((currentValue / total) * 100);
+                        return percentage + "%";
+                    }
+                }
+            }
+        }
+    });
+
+</script>
+<script>
+
+    var encodedDataElement = document.querySelector('[monthly-data]');
+    if (encodedDataElement) {
+        var encodedData = encodedDataElement.getAttribute('monthly-data');
+        var decodedData = decodeEntities(encodedData);
+
+        // Now you can parse the JSON data
+        var jsonData = JSON.parse(decodedData);
+
+        // Extract dates and earnings from the data
+        var dates = jsonData.map(function(item) {
+            // Convert the "date" property to a Date object
+            var date = new Date(item.date);
+            // Format the date to display only the day
+            var formattedDate = date.toLocaleDateString(undefined, { month: 'short' });
+            return formattedDate;
+        });
+
+        var earning = jsonData.map(function(item) {
+            return item.earning; // Extract the "earnings" property
+        });
+
+        var ctx = document.getElementById("myChart2").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: "Monthly Earning",
+                        backgroundColor: "#5897fb",
+                        barThickness:10,
+                        data: earning,
+                        fill:true,
+                    }
+            ]
+
+                    /*
+                    {
+                        label: "Africa",
+                        backgroundColor: "#d595e5",
+                        barThickness:10,
+                        data: [123,345,122,302]
+                    }, */
+
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            usePointStyle: true,
+                        },
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    } //end if
+    function decodeEntities(encodedString) {
+        var textArea = document.createElement('textarea');
+        textArea.innerHTML = encodedString;
+        return textArea.value;
+    }
+
+</script>
+
+
+</body>
+
+</html>

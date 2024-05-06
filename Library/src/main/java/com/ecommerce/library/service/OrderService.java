@@ -1,5 +1,8 @@
 package com.ecommerce.library.service;
 
+import com.ecommerce.library.dto.DailyEarning;
+import com.ecommerce.library.dto.Monthlyearning;
+import com.ecommerce.library.dto.WeeklyEarnings;
 import com.ecommerce.library.model.Order;
 import com.ecommerce.library.model.OrderDetails;
 import com.ecommerce.library.model.ShoppingCart;
@@ -49,4 +52,8 @@ public interface OrderService {
     Page<OrderDetails> findOrderDetailsByCustomerPageable(int pageNo, String username, int pageSize);
 
     boolean hasOrdersForAddress(Long addressId);
+
+    List<Monthlyearning> getMonthlyReport(int year);
+    List<DailyEarning> dailyReport(int year, int month);
+    List<WeeklyEarnings> findWeeklyEarnings(int year);
 }

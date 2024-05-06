@@ -62,4 +62,26 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
 
 
 
+
+
+    @Query(value="SELECT DATE_TRUNC('day', o.order_date) AS date, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('day', o.order_date)) AS earnings FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year AND EXTRACT(MONTH FROM o.order_date) =:month GROUP BY DATE_TRUNC('day', o.order_date)",nativeQuery = true)
+    List<Object[]> dailyEarnings(@Param("year") int year, @Param("month") int month);
+
+    @Query(value="SELECT DATE_TRUNC('month', o.order_date) AS month, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('month', o.order_date)) AS earnings FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year GROUP BY DATE_TRUNC('month', o.order_date)",nativeQuery = true)
+    List<Object[]> monthlyEarnings(@Param("year") int year);
+
+    @Query(value="SELECT DATE_TRUNC('week', o.order_date) AS week, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('week', o.order_date)) AS earnings FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year GROUP BY DATE_TRUNC('week', o.order_date)", nativeQuery = true)
+    List<Object[]> weeklyEarnings(@Param("year") int year);
+
+    @Query(value="SELECT DATE_TRUNC('day', o.order_date) AS date, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('day', o.order_date)) AS earnings, COUNT(o.order_id) AS totelOrder  FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year AND EXTRACT(MONTH FROM o.order_date) =:month GROUP BY DATE_TRUNC('day', o.order_date)",nativeQuery = true)
+    List<Object[]> dailyReport(@Param("year") int year, @Param("month") int month);
+
+    @Query(value="SELECT DATE_TRUNC('month', o.order_date) AS month, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('month', o.order_date)) AS earnings, COUNT(o.order_id)  AS totelOrder, " +
+            "COUNT(CASE WHEN o.order_status = 'Delivered' THEN o.order_id END) AS delivered_orders, " +
+            "COUNT(CASE WHEN o.order_status = 'Cancel' THEN o.order_id END) AS cancelled_orders " +
+            "FROM orders o WHERE EXTRACT(YEAR FROM o.order_date) = :year GROUP BY DATE_TRUNC('month', o.order_date)",nativeQuery = true)
+    List<Object[]> monthlyReport(@Param("year") int year);
+
+
+
 }

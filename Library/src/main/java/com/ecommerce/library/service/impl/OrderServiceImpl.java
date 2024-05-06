@@ -1,5 +1,8 @@
 package com.ecommerce.library.service.impl;
 
+import com.ecommerce.library.dto.DailyEarning;
+import com.ecommerce.library.dto.Monthlyearning;
+import com.ecommerce.library.dto.WeeklyEarnings;
 import com.ecommerce.library.model.*;
 import com.ecommerce.library.repository.*;
 import com.ecommerce.library.service.AddressService;
@@ -15,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -193,13 +197,6 @@ public class OrderServiceImpl implements OrderService {
         return orders;
     }
 
-    @Override
-    public List<Order> getDailyReport(Date date) {
-        // Call the repository method to get daily orders
-        return orderRepository.findDailyOrders(date);
-    }
-
-
 
     @Override
     public void deleteOrderDetailsById(Long id) {
@@ -235,6 +232,54 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
+    @Override
+    public List<Order> getDailyReport(Date date) {
+        // Call the repository method to get daily orders
+        return orderRepository.findDailyOrders(date);
+    }
+
+    @Override
+    public List<Monthlyearning> getMonthlyReport(int year) {
+        List<Object[]> result=orderRepository.monthlyReport(year);
+        List<Monthlyearning> report=new ArrayList<>();
+        for(Object[] row:result){
+            Date month= (Date) row[0];
+            Double grandTotel= (Double) row[1];
+            Long totelOrder= (Long) row[2];
+            Long delivered_orders= (Long) row[3];
+            Long cancelled_orders= (Long) row[4];
+            report.add(new Monthlyearning(month,grandTotel,totelOrder,delivered_orders,cancelled_orders));
+        }
+        return report;
+
+    }
+
+    @Override
+    public List<DailyEarning> dailyReport(int year, int month) {
+        List<Object[]> result=orderRepository.dailyReport(year,month);
+        List<DailyEarning> report=new ArrayList<>();
+        for(Object[] row:result){
+            Date date= (Date) row[0];
+            Double grandTotel= (Double) row[1];
+            Long totelOrder= (Long) row[2];
+            report.add(new DailyEarning(date,grandTotel,totelOrder));
+        }
+
+        return report;
+    }
+
+    @Override
+    public List<WeeklyEarnings> findWeeklyEarnings(int year) {
+        List<Object[]> result=orderRepository.weeklyEarnings(year);
+        List<WeeklyEarnings> report=new ArrayList<>();
+        for (Object[] row:result){
+            Date date= (Date) row[0];
+            Double earnings=(Double)  row[1];
+            report.add(new WeeklyEarnings(date,earnings));
+
+        }
+        return report;
+    }
 }
 
 

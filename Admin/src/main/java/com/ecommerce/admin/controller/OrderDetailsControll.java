@@ -91,8 +91,6 @@ public class OrderDetailsControll {
         //List<Order>orders=orderService.findAll();
         OrderDto orderDto=new OrderDto();
         model.addAttribute("report",orderDto);
-
-
         model.addAttribute("orders", orders);
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPage", orders.getTotalPages());

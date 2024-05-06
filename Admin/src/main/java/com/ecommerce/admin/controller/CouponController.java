@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-public class couponController {
+public class CouponController {
 
     private CouponService couponService;
     @Autowired
-    public couponController(CouponService couponService) {
+    public CouponController(CouponService couponService) {
         this.couponService = couponService;
     }
 
