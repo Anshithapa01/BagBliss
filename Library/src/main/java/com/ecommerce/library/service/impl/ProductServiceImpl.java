@@ -41,6 +41,11 @@ public class ProductServiceImpl implements ProductService {
         return productDtoList;
     }
 
+    @Override
+    public List<Product> findAllProduct() {
+        return productRepository.findAll();
+    }
+
 
 //    @Override
 //    public Product save(List<MultipartFile> imageProducts, ProductDto productDto) {

@@ -11,6 +11,8 @@ import java.util.List;
 public interface ProductService {
     List<ProductDto> findAll();
 
+    List<Product> findAllProduct();
+
     Product save(List<MultipartFile>imageProduct, ProductDto productDto);
 
     Product update(List<MultipartFile> imageProduct, ProductDto productDto);
@@ -54,10 +56,6 @@ public interface ProductService {
     // Page<ProductDto> getAllProductsForCustomer(int pageNo);
 
     //List<ProductDto> findAllByCategory(String category);
-
-//     List<ProductDto> filterHighProducts();
-//
-//     List<ProductDto> filterLowerProducts();
 
 
     Page<ProductDto> filterHighProducts(int pageNo, int pageSize);

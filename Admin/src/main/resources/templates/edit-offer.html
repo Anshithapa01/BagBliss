@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments::header_sec}"></head>
+
+<body>
+<div class="screen-overlay"></div>
+<div th:replace="~{fragments::side_bar}"></div>
+
+<main class="main-wrap">
+
+    <div th:replace="~{fragments::nav_bar}"></div>
+    <section class="content-main">
+        <div class="row">
+            <div class="col-9">
+                <div class="content-header">
+                    <h2 class="content-title">Add New Product</h2>
+                    <div>
+                        <!-- <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button>
+                         <button class="btn btn-md rounded font-sm hover-up">Publich</button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Product Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/updateOffer}" th:object="${offer}"   method="post">
+                            <input type="hidden" th:field="*{id}" >
+                            <div class="mb-4">
+                                <label  class="form-label">Product/Category Name</label> <br>
+
+                                <strong th:text="${offer.product?.name}"></strong>
+                                <strong th:text="${offer.category?.name}"></strong>
+                            </div>
+
+                            </select>
+                            <div class="mb-4">
+                                <label  class="form-label">Offer Name</label>
+                                <input type="text" th:field="*{offerName}"  name="offerName"   class="form-control"/>
+                                <div class="alert alert-danger" th:if="${#fields.hasErrors('offerName')}"
+                                     th:errors="*{offerName}"
+                                ></div>
+                            </div>
+                            <div class="mb-4">
+                                <label  class="form-label">Offer Description</label>
+                                <input type="text" th:field="*{description}"  name="description"   class="form-control" />
+                                <div class="alert alert-danger" th:if="${#fields.hasErrors('description')}"
+                                     th:errors="*{description}"
+                                ></div>
+                            </div>
+                            <div class="mb-4">
+                                <label  class="form-label">Offer Percentage</label>
+                                <input type="text" th:field="*{offerPercentage}"  name="offerPercentage"   class="form-control"/>
+                                <div class="alert alert-danger" th:if="${#fields.hasErrors('offerPercentage')}"
+                                     th:errors="*{offerPercentage}"
+                                ></div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Save</button>
+
+                        </form>
+
+                    </div>
+                </div> <!-- card end// -->
+            </div>
+        </div>
+    </section> <!-- content-main end// -->
+    <div th:replace="~{fragments::footer_sec}"></div>
+
+</main>
+
+<div th:replace="~{fragments::script}"></div>
+</body>
+
+</html>

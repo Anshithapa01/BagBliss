@@ -4,38 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="address dlt, password change,default address , filter">
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/couponController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-coupon.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/coupon.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/edit-coupon.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CouponDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Coupon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CouponRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CouponService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CouponServiceImpl.java" afterDir="false" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="Coupon">
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/OfferController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/Category-offer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-productOffer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/edit-offer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/offer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/OfferDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Offer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/OfferRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/OfferService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/OfferServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/index-dark.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-blank.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-brands.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-form-product-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-orders-tracking.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-products-grid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-seller-detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-cards.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-sellers-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-settings-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-transactions-details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-coupon.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/add-coupon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,37 +59,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.AdminApplication.executor": "Run",
-    "Spring Boot.CustomerApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "21",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Admin/src/main/resources/templates",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CustomerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Admin/src/main/resources/templates&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Admin\src\main\resources\templates" />
@@ -123,11 +106,11 @@
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Library\src\main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ecommerce.customer.Customer.controller" />
       <recent name="com.ecommerce.admin.controller" />
       <recent name="com.ecommerce.library.service.impl" />
       <recent name="com.ecommerce.library.service" />
       <recent name="com.ecommerce.library.repository" />
+      <recent name="com.ecommerce.library.dto" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -203,7 +186,8 @@
       <workItem from="1714796802596" duration="63910000" />
       <workItem from="1714960001283" duration="1231000" />
       <workItem from="1714969454881" duration="6946000" />
-      <workItem from="1714985617923" duration="10460000" />
+      <workItem from="1714985617923" duration="10545000" />
+      <workItem from="1715002293380" duration="6851000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -285,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714985914071</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Coupon">
+      <option name="closed" value="true" />
+      <created>1714997673332</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714997673332</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +304,7 @@
     <MESSAGE value="customer side login,show product" />
     <MESSAGE value="add to cart" />
     <MESSAGE value="address dlt, password change,default address , filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="address dlt, password change,default address , filter" />
+    <MESSAGE value="Coupon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coupon" />
   </component>
 </project>
