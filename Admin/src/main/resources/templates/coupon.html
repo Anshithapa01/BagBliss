@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments::header_sec}"></head>
+
+<body>
+<div class="screen-overlay"></div>
+<div th:replace="~{fragments::side_bar}"></div>
+
+<main class="main-wrap">
+
+    <div th:replace="~{fragments::nav_bar}"></div>
+    </div>
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">coupons</h2>
+                <p>Add, edit or delete a coupon</p>
+            </div>
+            <div>
+                <a type="button" class="btn btn-primary btn-sm rounded"  th:href="@{/addcoupon}">Create new</a>
+
+
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+
+
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>coupon Code</th>
+                                    <th>Offer Percentage</th>
+                                    <th>Start Date</th>
+                                    <th>Minimum Order Amount</th>
+                                    <th>MAximum Offer Price</th>
+                                    <th>available coupon</th>
+                                    <th>Expire Date</th>
+                                    <th>Update</th>
+                                    <th>Action</th>
+
+
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="couponData: ${coupons}" >
+                                    <td>
+                                    <span class="badge badge-pill badge-soft-success" th:if="${couponData.enabled==true && couponData.isExpired()==false}">Active</span>
+                                    <span class="badge badge-pill badge-soft-danger" th:if="${couponData.enabled==false && couponData.isExpired()==false}">Blocked </span>
+                                    <span class="badge badge-pill badge-soft-pink" th:if="${couponData.isExpired()==true}">Expired</span>
+                                    </td>
+                                    <td th:text="${couponData.couponCode}"></td>
+                                    <td th:text="${couponData.offerPercentage}"></td>
+                                    <td th:text="${couponData.startDate}"></td>
+                                    <td th:text="${couponData.minimumOrderAmount}"></td>
+                                    <td th:text="${couponData.maximumOfferAmount}"></td>
+                                    <td th:text="${couponData.count}"></td>
+                                    <td th:text="${couponData.expireDate}"></td>
+                                    <td><a class="btn btn-danger" th:href="@{/editcoupon(couponId=${couponData.id})}">Edit</a></td>
+                                    <td>
+                                        <a class="btn"  th:if="${couponData.enabled==true && couponData.isExpired()==false}"
+                                        th:href="@{/disablecoupon(couponId=${couponData.id})}">Disable </a>
+                                        <a class="btn"  th:if="${couponData.enabled==false && couponData.isExpired()==false}"
+                                        th:href="@{/enablecoupon(couponId=${couponData.id})}">Enable </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- .col// -->
+                </div> <!-- .row // -->
+            </div> <!-- card body .// -->
+        </div> <!-- card .// -->
+        <!-- Add category-->
+
+
+    </section> <!-- content-main end// -->
+    <div th:replace="~{fragments::footer_sec}">
+
+    </div>
+</main>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add coupon</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-10">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments::script}">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
