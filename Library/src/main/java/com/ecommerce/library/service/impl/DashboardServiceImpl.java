@@ -25,7 +25,7 @@ public class DashboardServiceImpl implements DashBoardService {
         double ordersTotalPrice=0;
         if(!orderList.isEmpty()){
             for(Order orders:orderList) {
-                ordersTotalPrice = ordersTotalPrice + orders.getGrandTotalPrize();
+                ordersTotalPrice = Double.parseDouble(String.format("%.2f",(ordersTotalPrice + orders.getGrandTotalPrize())));
             }
         }
         return ordersTotalPrice;

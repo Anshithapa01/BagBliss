@@ -2,6 +2,7 @@ package com.ecommerce.customer.Customer.controller;
 
 import com.ecommerce.library.dto.AddressDto;
 import com.ecommerce.library.model.Address;
+import com.ecommerce.library.model.Coupon;
 import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.ShoppingCart;
 import com.ecommerce.library.service.AddressService;
@@ -47,8 +48,8 @@ public class CheckOutController {
 
         List<ShoppingCart> shoppingCarts=shopCartService.findShoppingCartByCustomer(username);
         System.out.println(username);
-//        Coupen coupen=new Coupen();
-//        model.addAttribute("coupen",coupen);
+        Coupon coupon=new Coupon();
+        model.addAttribute("coupon",coupon);
 
         if(shoppingCarts.isEmpty()){
 

@@ -14,6 +14,9 @@ public interface CouponService {
     Coupon findByCouponCode(String coupencode);
 
     void dicreseCoupon(long id);
+
+    void increaseCoupon(long id);
+
     Coupon findByid(Long id);
 
     void updateCoupon(CouponDto couponDto);

@@ -94,6 +94,13 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
+    public void increaseCoupon(long id) {
+        Coupon coupon = couponRepository.getReferenceById(id);
+        coupon.setCount(coupon.getCount()+1);
+        couponRepository.save(coupon);
+    }
+
+    @Override
     public Coupon findByid(Long id) {
         return couponRepository.getReferenceById(id);
     }

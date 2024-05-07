@@ -27,12 +27,6 @@
                     <div class="divider mt-50 mb-50"></div>
                 </div>
             </div>
-            <div th:if="${errorMessage}">
-                <p class = "alert alert-danger" th:text = "${errorMessage}"></p>
-            </div>
-            <div th:if="${param.expired}">
-                <div class="alert alert-danger"> !</div>
-            </div>
 
             <div class="row">
 
@@ -68,9 +62,16 @@
                                     <th>Shipping</th>
                                     <td colspan="2"><em>Free Shipping</em></td>
                                 </tr>
+                                <tr id="couponRow" class="d-none" th:each="checkOut :${cartItem}">
+                                    <th>Coupon Discount</th>
+                                    <td colspan="2" id="coupon"></td>
+                                </tr>
                                 <tr>
                                     <th>Total</th>
-                                    <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900 payment_field" id="payment_field" th:text="${payable}" th:value="${payable}">$</span></td>
+                                    <td colspan="2" class="product-subtotal">
+                                        <span class="font-xl text-brand fw-900 payment_field" id="totalPrice"
+                                              th:text="${payable}" th:value="${payable}">$</span>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -83,18 +84,25 @@
                             <div class="total-amount">
                                 <div class="left">
                                     <div class="coupon">
-                                        <form method="POST">
+                                        <form th:action="@{/applyCoupon}" th:object="${coupon}" id="couponForm" method="POST" onsubmit="applyCoupon(event)">
                                             <div class="form-row row justify-content-center">
                                                 <div class="form-group col-lg-6">
-                                                    <input class="font-medium" name="couponcode" placeholder="Enter Your Coupon">
+                                                    <input class="font-medium" th:field="*{couponCode}" id="couponCode" name="couponCode" placeholder="Enter Your Coupon">
                                                 </div>
                                                 <div class="form-group col-lg-6">
-                                                    <button class="btn  btn-sm" type="submit" ><i class="fi-rs-label mr-10"></i>Apply</button>
+                                                    <button id="applyCouponBtn" class="btn btn-sm" type="submit"><i class="fi-rs-label mr-10"></i>Apply</button>
+                                                    <button id="removeCouponBtn" class="btn btn-sm d-none" type="button" onclick="removeCoupon()"><i class="fi-rs-label mr-10"></i>Remove</button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
+                            </div>
+                            <div th:if="${errorMessage}">
+                                <p class = "alert alert-danger" th:text = "${errorMessage}"></p>
+                            </div>
+                            <div th:if="${param.expired}">
+                                <div class="alert alert-danger"> Coupon Expired</div>
                             </div>
                         </div>
 
@@ -175,18 +183,8 @@
 </main>
 <footer th:replace="~{fragments::footer-sec}"></footer>
 
-<div th:replace="~{fragments::pre-loader}"></div>
 <!-- Vendor JS-->
 <div th:replace="~{fragments::scripts}"></div>
-<!--<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>-->
-
-
-    <script>
-      /*  function displayRadioValue() {
-            document.getElementById('myForm').submit();
-
-        }*/
-    </script>
 
 <script>
     function placeOrder() {
@@ -244,9 +242,82 @@
             alert("Invalid payment method selected!");
         }
     }
+
+
+    function applyCoupon(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        var couponCode = document.getElementById("couponCode").value;
+        var formData = new FormData();
+        formData.append("couponCode", couponCode);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/shop/applyCoupon", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var payable = xhr.getResponseHeader("payable");
+                    if (payable !== null) {
+                        document.getElementById("applyCouponBtn").classList.add("d-none");
+                        document.getElementById("removeCouponBtn").classList.remove("d-none");
+                        updateTotalPrice(xhr.getResponseHeader("payable"));
+                        // document.getElementById("couponRow").classList.remove("d-none");
+                        var couponRow = document.getElementById("couponRow");
+                        couponRow.classList.remove("d-none");
+
+                        var offer = xhr.getResponseHeader("offer");
+                        if (offer !== null) {
+                            couponRow.querySelector("td").textContent = offer;
+                        }else{
+                            alert("error")
+                        }
+
+                    }   else {
+                        alert("Coupon not found.");
+                    }
+                } else {
+                    alert("Failed to apply coupon. Please try again.");
+                }
+            }
+        };
+        xhr.send(formData);
+    }
+
+    function removeCoupon() {
+        var couponCode = document.getElementById("couponCode").value;
+        var formData = new FormData();
+        formData.append("couponCode", couponCode);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/shop/removeCoupon", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var payable = xhr.getResponseHeader("payable");
+                    if (payable !== null) {
+                        document.getElementById("applyCouponBtn").classList.remove("d-none");
+                        document.getElementById("removeCouponBtn").classList.add("d-none");
+                        updateTotalPrice(xhr.getResponseHeader("payable"));
+                        document.getElementById("couponRow").classList.add("d-none");
+                        document.getElementById("couponCode").value="";
+                    }   else {
+                        alert("Failed to remove coupon. Please try again.");
+                    }
+                } else {
+                    alert("Failed to remove coupon. Please try again.");
+                }
+            }
+        };
+        xhr.send(formData);
+    }
+
+    function updateTotalPrice(newTotalPrice) {
+        document.getElementById("totalPrice").innerText = newTotalPrice;
+    }
+
 </script>
-
-
 
 
 </body>

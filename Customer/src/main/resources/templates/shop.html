@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="product-extra-link2">
                                     <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                    <a aria-label="Add To Wishlist" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
                                     <a aria-label="Buy now" class="action-btn" th:href="@{/cart}"><i class="fi-rs-shopping-bag-add"></i></a>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal" th:if="${product.currentQuantity > 0}">
                                                 <i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html" th:if="${product.currentQuantity > 0}"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/addToWishList(productId=${product.id})}" th:if="${product.currentQuantity > 0}"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Buy now" class="action-btn" th:href="@{/addToCart(productId=${product.id})}" th:if="${product.currentQuantity > 0}"><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                     </div>

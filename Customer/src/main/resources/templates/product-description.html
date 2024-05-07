@@ -136,7 +136,7 @@
                                     </div>
                                     <div class="product-extra-link2">
                                         <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/addToWishList(productId=${productDto.id})}"><i class="fi-rs-heart"></i></a>
 
                                     </div>
                                 </div>
@@ -236,7 +236,7 @@
                                             <th:block th:unless="${inStock}">
                                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#outOfStockModal">Add to cart</button>
                                             </th:block>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/addToWishList(productId=${productDto.id})}"><i class="fi-rs-heart"></i></a>
 
                                         </div>
                                         <ul class="product-meta font-xs color-grey mt-50">
@@ -434,7 +434,7 @@
                                                     </div>
                                                     <div class="product-action-1">
                                                         <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" th:href="@{/addToWishList(productId=${product.id})}"><i class="fi-rs-heart"></i></a>
 
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">

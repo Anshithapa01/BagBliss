@@ -622,7 +622,7 @@
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
-                                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" th:href="@{/addToWishList(productId=${product.id})}"><i class="fi-rs-heart"></i></a>
                                                 <a aria-label="Buy now" class="action-btn" th:href="@{/login}"><i class="fi-rs-shopping-bag-add"></i></a>
                                             </div>
                                             <div class="product-badges product-badges-position product-badges-mrg">
