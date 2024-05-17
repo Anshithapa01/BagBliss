@@ -95,8 +95,8 @@
                                 </div>
                                 <div class="clearfix product-price-cover">
                                     <div class="product-price primary-color float-left">
-                                        <ins><span class="text-brand">$120.00</span></ins>
-                                        <ins><span class="old-price font-md ml-15">$200.00</span></ins>
+                                        <ins><span class="text-brand">₹120.00</span></ins>
+                                        <ins><span class="old-price font-md ml-15">₹200.00</span></ins>
                                         <span class="save-price  font-md color3 ml-15">25% Off</span>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                                         <h2 class="title-detail" th:text = "${productDto.name}"></h2>
                                         <div class="product-detail-rating">
                                             <div class="pro-details-brand">
-                                                <span> Category: <a href="shop-grid-right.html" th:text = "${productDto.category.name}"></a></span>
+                                                <span> Category: <a th:href="'/shop/searchCategoryHome?name=' + ${productDto.category.name}" th:text = "${productDto.category.name}"></a></span>
                                             </div>
                                             <div class="product-rate-cover text-end">
                                                 <div class="product-rate d-inline-block">

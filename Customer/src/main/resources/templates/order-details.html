@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments::head_sec}"></head>
+<style>
+.custom-border {
+border: 2px solid #000;
+}
 
+.custom-border th,
+.custom-border td {
+border: 1px solid #ccc;
+}
+</style>
 <body>
-<header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}">
-</header>
+<header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}"></header>
 <div th:replace="~{fragments::side-header}"></div>
 
 <main class="main">
@@ -26,37 +34,43 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th>Order</th>
+<!--                                    <th>Product</th>-->
                                     <th>Product</th>
                                     <th>Name</th>
-                                    <th>Product Discription</th>
+                                    <th>Product Description</th>
                                     <th>Status</th>
-                                    <th>Unit Pize</th>
+                                    <th>Unit Price</th>
                                     <th>Quantity</th>
-                                    <th>Total Prize</th>
+                                    <th>Total Price</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="orderDetail:${orderDetailsPage}">
-                                    <td th:text="${orderDetail.id}">#</td>
-
-                                    <td >
+                                <tr th:each="orderDetail : ${orderDetailsPage}">
+                                    <td class="order-id" th:text="${orderDetail.order.id}"></td>
+<!--                                    <td th:text="${orderDetail.id}">#</td>-->
+                                    <td>
                                         <img th:if="${not #lists.isEmpty(orderDetail.product.image)}"
                                              th:src="@{|/imgs/items/${orderDetail.product.image[0].getName()}|}" width="40" height="40" class="img-xs" alt="Item"> <br>
                                     </td>
                                     <td th:text="${orderDetail.product.name}"></td>
                                     <td th:text="${orderDetail.product.description}"></td>
-                                    <td th:text="${orderDetail.order.orderStatus}"></td>
+                                    <td>
+                                        <span th:if="${orderDetail.order.paymentMethod != 'Payment Pending'}" th:text="${orderDetail.order.orderStatus}"></span>
+                                        <span th:if="${orderDetail.order.paymentMethod == 'Payment Pending'}" th:text="'Payment required'" class="btn-danger"></span>
+                                    </td>
                                     <td th:text="${orderDetail.unitPrice}"></td>
-                                    <td th:text="${orderDetail.quantity}">$</td>
-                                    <td th:text="${orderDetail.totalPrice}">$</td>
-                                    <td><a th:href="@{/order(orderId=${orderDetail.order.id})}" class="btn-small d-block">View</a></td>
+                                    <td th:text="${orderDetail.quantity}">₹</td>
+                                    <td th:text="${orderDetail.totalPrice}">₹</td>
+                                    <td class="view-btn">
+                                        <a th:href="@{/order(orderId=${orderDetail.order.id})}" class="btn-small d-block">View</a>
+                                        <a th:if="${orderDetail.order.paymentMethod!='cash'}" class="btn-small text-primary" th:href="@{/invoice/{id}(id=${orderDetail.order.id})}">Invoice</a>
+                                    </td>
                                 </tr>
-
                                 </tbody>
                             </table>
                         </div>
@@ -65,18 +79,18 @@
                 <div class="pagination-area mt-30 mb-50">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-start">
-                            <li th:if= "${currentPage != 0}" class="page-item ">
-                                <a th:href = "@{'/product-shop/' + ${currentPage - 1}}" class="page-link">
+                            <li th:if="${currentPage != 0}" class="page-item">
+                                <a th:href="@{'/orderDetails?pageNo=' + ${currentPage - 1}}" class="page-link">
                                     <i class="fi-rs-angle-double-small-left"></i>
                                 </a>
-                            </li >
-                            <li th:each = "i : ${#numbers.sequence(1, totalPages)}" th:classappend = "${currentPage == i - 1 ? 'active' : ''}" class="page-item">
-                                <a th:href = "@{'/product-shop/' + ${i - 1}}" class="page-link" href="#">
-                                    <span th:text = "${i}"></span>
+                            </li>
+                            <li th:each="i : ${#numbers.sequence(1, totalPages)}" th:classappend="${currentPage == i - 1 ? 'active' : ''}" class="page-item">
+                                <a th:href="@{'/orderDetails?pageNo=' + ${i - 1}}" class="page-link">
+                                    <span th:text="${i}"></span>
                                 </a>
                             </li>
-                            <li th:if = "${currentPage + 1 != totalPages}" class="page-item">
-                                <a th:href = "@{'/product-shop/' + ${currentPage + 1}}" class="page-link" href="#">
+                            <li th:if="${currentPage + 1 != totalPages}" class="page-item">
+                                <a th:href="@{'/orderDetails?pageNo=' + ${currentPage + 1}}" class="page-link">
                                     <i class="fi-rs-angle-double-small-right"></i>
                                 </a>
                             </li>
@@ -93,6 +107,46 @@
 <div th:replace="~{fragments::pre-loader}"></div>
 <!-- Vendor JS-->
 <div th:replace="~{fragments::scripts}"></div>
+
+
+
+<script>
+
+    $(document).ready(function() {
+        let lastOrderId = null;
+        let rowspan = 1;
+
+        $('td.order-id').each(function() {
+            const currentOrderId = $(this).text();
+            if (currentOrderId === lastOrderId) {
+                $(this).remove();
+                $(this).siblings('.view-btn').remove();
+                rowspan++;
+            } else {
+                if (lastOrderId !== null) {
+                    $(`td[data-order-id="${lastOrderId}"]`).first().attr('rowspan', rowspan);
+                    $(`td.view-btn[data-order-id="${lastOrderId}"]`).first().attr('rowspan', rowspan);
+                    rowspan = 1;
+                }
+                $(this).attr('data-order-id', currentOrderId);
+                $(this).siblings('.view-btn').attr('data-order-id', currentOrderId);
+                lastOrderId = currentOrderId;
+            }
+        });
+
+        if (lastOrderId !== null) {
+            $(`td[data-order-id="${lastOrderId}"]`).first().attr('rowspan', rowspan);
+            $(`td.view-btn[data-order-id="${lastOrderId}"]`).first().attr('rowspan', rowspan);
+        }
+
+        // Remove any extra View columns that are not part of the merged rows
+        $('td.view-btn').each(function() {
+            if (!$(this).attr('data-order-id')) {
+                $(this).remove();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

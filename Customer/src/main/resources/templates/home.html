@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments::head_sec}"></head>
 <style>
     .out-of-stock {
@@ -20,7 +21,7 @@
 <!--                    </div>-->
 <!--                    <div class="deal-content">-->
 <!--                        <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>-->
-<!--                        <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>-->
+<!--                        <div class="product-price"><span class="new-price">₹139.00</span><span class="old-price">₹160.99</span></div>-->
 <!--                    </div>-->
 <!--                    <div class="deal-bottom">-->
 <!--                        <p>Hurry Up! Offer End In:</p>-->
@@ -106,8 +107,8 @@
                             </div>
                             <div class="clearfix product-price-cover">
                                 <div class="product-price primary-color float-left">
-                                    <ins><span class="text-brand">$120.00</span></ins>
-                                    <ins><span class="old-price font-md ml-15">$200.00</span></ins>
+                                    <ins><span class="text-brand">₹120.00</span></ins>
+                                    <ins><span class="old-price font-md ml-15">₹200.00</span></ins>
                                     <span class="save-price  font-md color3 ml-15">25% Off</span>
                                 </div>
                             </div>
@@ -202,9 +203,9 @@
                                             </span>
                                     </div>
                                     <div class="product-price">
-                                        <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
-                                        <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
-                                        <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
+                                        <span th:unless="${product.salePrice > 0}">₹[(${product.costPrice})]</span>
+                                        <span th:if="${product.salePrice > 0}">₹[(${product.salePrice})]</span>
+                                        <span th:if="${product.salePrice > 0}" class="old-price">₹[(${product.costPrice})]</span>
                                     </div>
                                     <div class="text-danger">
                                         <span th:if="${product.currentQuantity == 0}">Out Of Stock</span>
@@ -246,9 +247,9 @@
                                             </span>
                                     </div>
                                     <div class="product-price">
-                                        <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
-                                        <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
-                                        <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
+                                        <span th:unless="${product.salePrice > 0}">₹[(${product.costPrice})]</span>
+                                        <span th:if="${product.salePrice > 0}">₹[(${product.salePrice})]</span>
+                                        <span th:if="${product.salePrice > 0}" class="old-price">₹[(${product.costPrice})]</span>
                                     </div>
                                     <div class="text-danger">
                                         <span th:if="${product.currentQuantity == 0}">Out Of Stock</span>
@@ -292,9 +293,9 @@
                                             </span>
                                     </div>
                                     <div class="product-price">
-                                        <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
-                                        <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
-                                        <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
+                                        <span th:unless="${product.salePrice > 0}">₹[(${product.costPrice})]</span>
+                                        <span th:if="${product.salePrice > 0}">₹[(${product.salePrice})]</span>
+                                        <span th:if="${product.salePrice > 0}" class="old-price">₹[(${product.costPrice})]</span>
                                     </div>
                                     <div class="text-danger">
                                         <span th:if="${product.currentQuantity == 0}">Out Of Stock</span>
@@ -336,9 +337,9 @@
                                             </span>
                                     </div>
                                     <div class="product-price">
-                                        <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
-                                        <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
-                                        <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
+                                        <span th:unless="${product.salePrice > 0}">₹[(${product.costPrice})]</span>
+                                        <span th:if="${product.salePrice > 0}">₹[(${product.salePrice})]</span>
+                                        <span th:if="${product.salePrice > 0}" class="old-price">₹[(${product.costPrice})]</span>
                                     </div>
                                     <div class="text-danger">
                                         <span th:if="${product.currentQuantity == 0}">Out Of Stock</span>
@@ -382,9 +383,9 @@
                                             </span>
                                     </div>
                                     <div class="product-price">
-                                        <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
-                                        <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
-                                        <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
+                                        <span th:unless="${product.salePrice > 0}">₹[(${product.costPrice})]</span>
+                                        <span th:if="${product.salePrice > 0}">₹[(${product.salePrice})]</span>
+                                        <span th:if="${product.salePrice > 0}" class="old-price">₹[(${product.costPrice})]</span>
                                     </div>
                                     <div class="text-danger">
                                         <span th:if="${product.currentQuantity == 0}">Out Of Stock</span>
@@ -426,9 +427,9 @@
                                             </span>
                                     </div>
                                     <div class="product-price">
-                                        <span th:unless="${product.salePrice > 0}">$[(${product.costPrice})]</span>
-                                        <span th:if="${product.salePrice > 0}">$[(${product.salePrice})]</span>
-                                        <span th:if="${product.salePrice > 0}" class="old-price">$[(${product.costPrice})]</span>
+                                        <span th:unless="${product.salePrice > 0}">₹[(${product.costPrice})]</span>
+                                        <span th:if="${product.salePrice > 0}">₹[(${product.salePrice})]</span>
+                                        <span th:if="${product.salePrice > 0}" class="old-price">₹[(${product.costPrice})]</span>
                                     </div>
                                     <div class="text-danger">
                                         <span th:if="${product.currentQuantity == 0}">Out Of Stock</span>
@@ -447,7 +448,7 @@
             <!--End tab-content-->
         </div>
     </section>
-    <section class="banner-2 section-padding pb-0" th:replace="~{index::banner}"></section>
+
     <section class="popular-categories section-padding mt-15 mb-25">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>Popular</span> Categories</h3>
@@ -456,15 +457,14 @@
                 <div class="carausel-6-columns" id="carausel-6-columns">
                     <div class="card-1 border-brand" th:each="category :${caregories}">
                         <figure class=" img-hover-scale overflow-hidden">
-                            <a href="shop-grid-right.html"></a>
+                            <a th:href="'/shop/searchCategoryHome?name=' + ${category.name}"></a>
                         </figure>
-                        <h5><a href="shop-grid-right.html" th:text="${category.name}"></a></h5>
+                        <h5><a th:href="'/shop/searchCategoryHome?name=' + ${category.name}" th:text="${category.name}"></a></h5>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="banners mb-15" th:replace="~{index::banner-set}"></section>
     <section class="bg-grey-9 section-padding" th:replace="~{index::best-sell}"></section>
 </main>
 
@@ -495,6 +495,8 @@
             $('.viewMoreBtn').text("View More");
         });
     });
+
+
 </script>
 
 

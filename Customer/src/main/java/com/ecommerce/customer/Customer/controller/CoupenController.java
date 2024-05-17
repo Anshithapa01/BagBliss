@@ -46,11 +46,10 @@ public class CoupenController {
         if(coupon==null){
             String errorMessage = "Coupon not found";
             model.addAttribute("errorMessage", errorMessage);
-            String updatedHtmlContent = "<div>" +
-                    "<p class=\"alert alert-danger\">" +
-                    errorMessage +
-                    "</p>" +
-                    "</div>";
+            String updatedHtmlContent = "<div class='d-block'>" +
+                    "<p class = 'alert alert-danger' id='errorMessage'>" +
+                    errorMessage+
+                    "</p></div>";
             return ResponseEntity.ok()
                     .header("errorMessage", String.valueOf(errorMessage))
                     .body(updatedHtmlContent);
@@ -62,7 +61,6 @@ public class CoupenController {
                     "<span class='font-xl text-brand fw-900 payment_field' id='totalPrice'>" +
                     grandTotel + "</span></td>";
 
-            // Return the updated HTML content along with the updated payable value in the response
             return ResponseEntity.ok()
                     .header("payable", String.valueOf(grandTotel))
                     .body(updatedHtmlContent);
@@ -78,14 +76,14 @@ public class CoupenController {
             model.addAttribute("totel",grandTotel);
             model.addAttribute("customer",customer);
             model.addAttribute("payable",grandTotel);
-            String updatedHtmlContent = "<th>Total</th>" +
-                    "<td colspan='2' class='product-subtotal'>" +
-                    "<span class='font-xl text-brand fw-900 payment_field' id='totalPrice'>" +
-                    grandTotel + "</span></td>";
+            String errorMessage = "Order amount is less";
+            String updatedHtmlContent ="<div class='d-block'>" +
+                    "<p class = 'alert alert-danger' id='errorMessage'>" +
+                    errorMessage+
+                    "</p></div>";
 
-            // Return the updated HTML content along with the updated payable value in the response
             return ResponseEntity.ok()
-                    .header("payable", String.valueOf(grandTotel))
+                    .header("errorMessage", String.valueOf(errorMessage))
                     .body(updatedHtmlContent);
         }
         double offerPercentage= Double.parseDouble(coupon.getOfferPercentage());

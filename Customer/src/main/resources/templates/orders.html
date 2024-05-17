@@ -47,7 +47,7 @@
 
                                         <td th:text="${orderDetail.orderDate}"></td>
                                         <td th:text="${orderDetail.orderStatus}"></td>
-                                        <td th:text="${orderDetail.grandTotalPrize}">$</td>
+                                        <td th:text="${orderDetail.grandTotalPrize}">₹</td>
                                         <td th:text="${orderDetail.paymentMethod}"></td>
                                         <td>
                                             <span th:text="${orderDetail.shippingAddress.addressLine1 + ' ' + orderDetail.shippingAddress.addressLine2
@@ -57,13 +57,16 @@
 
                                         </td>
                                         <td>
-                                            <a href="#orders" class="btn-danger" th:if="${orderDetail.orderStatus=='Pending' || orderDetail.orderStatus=='Shipped'}" th:href="@{/cancelOrder(orderId=${orderDetail.id})}"
+                                            <a href="#orders" class="btn-danger" th:if="${(orderDetail.orderStatus=='Pending' || orderDetail.orderStatus=='Shipped') && orderDetail.paymentMethod!='Payment Pending'}" th:href="@{/cancelOrder(orderId=${orderDetail.id})}"
                                                onclick="if (!confirm('Are you sure want to Cancel This item'))return false">Cancel</a>
                                             <a href="#orders" class="btn-success" th:if="${orderDetail.orderStatus=='Cancel'}">Cancelled</a>
                                             <a class="btn-danger"  th:if="${orderDetail.orderStatus=='Delivered'}" th:href="@{/returnOrder(orderId=${orderDetail.id})}"
                                                onclick="if (!confirm('Are you sure want to Return This item'))return false">
                                                 Return</a>
-                                            <a class="btn-brand text-white" th:if="${orderDetail.orderStatus=='Delivered'}" th:href="@{/showReviewPage(productId=${orderDetail.id})}"> Add Review</a>
+                                            <a class="btn-brand text-white" th:if="${orderDetail.orderStatus=='Delivered'}" > Add Review</a>
+                                            <a class="btn-brand text-white" th:if="${orderDetail.orderStatus=='Return Pending'}">Returned</a>
+                                            <a class="btn-brand text-white" th:if="${orderDetail.orderStatus=='Return Accept'}" > Add Review</a>
+                                            <a th:href="@{/rePay/{id}(id= ${orderDetail.id})}" class="btn btn-danger text-white" th:if="${orderDetail.paymentMethod=='Payment Pending'}" > Pay Now</a>
                                         </td>
                                     </tr>
 

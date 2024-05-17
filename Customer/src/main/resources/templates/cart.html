@@ -2,117 +2,226 @@
 <html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragments::head_sec}"></head>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings:
+                'FILL' 0,
+                'wght' 700,
+                'GRAD' 200,
+                'opsz' 48
+    }
+    .material-symbols-outlined {
+        font-variation-settings:
+                'FILL' 0,
+                'wght' 700,
+                'GRAD' 200,
+                'opsz' 48
+    }
 
+</style>
 <body>
 <header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}">
 </header>
 
 <div th:replace="~{fragments::side-header}"></div>
 
-    <main class="main">
-        <div class="page-header breadcrumb-wrap">
-            <div class="container">
-                <div class="breadcrumb">
-                    <a th:href="@{/home}" rel="nofollow">Home</a>
-                    <span></span> <a th:href="@{/product-shop/0}">Shop</a>
-                    <span></span> Your Cart
-                </div>
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a th:href="@{/home}" rel="nofollow">Home</a>
+                <span></span> <a th:href="@{/product-shop/0}">Shop</a>
+                <span></span> Your Cart
             </div>
         </div>
-        <section class="mt-50 mb-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div th:if="${param.empties}">
-                            <div class="alert alert-danger">Cart is empty !</div>
-                        </div>
-                        <div th:if="${param.quantityError}">
-                            <div class="alert alert-danger">you selected more items. please check selected quantity and avalable stcok  !</div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table shopping-summery text-center clean">
-                                <thead>
-                                    <tr class="main-heading">
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Subtotal</th>
-                                        <th scope="col">Remove</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="cart : ${shoppingCart}">
-                                        <td class="image product-thumbnail"><img th:if="${not #lists.isEmpty(cart.product.image)}"
-                                                                                 th:src="@{|/imgs/items/${cart.product.image[0].getName()}|}" alt="#"></td>
-                                        <td class="product-des product-name">
-                                            <h5 class="product-name" th:text="${cart.product.name}"><a></a></h5>
-                                            <p class="font-xs" th:text="${cart.product.description}"> </p>
-                                        </td>
-                                        <td class="price" data-title="Price" th:text="${cart.unitPrice}"><span>$ </span></td>
-                                        <td class="text-center" data-title="Stock">
-                                            <a th:href="@{/incrementQuantity(cartId=${cart.id},productId=${cart.product.id})}">+</a>
-                                            <span th:text="${cart.quantity}"></span>
-                                            <a th:href="@{/decrementQuantity(cartId=${cart.id})}" >-</a>
-                                            <p>Available Stock: <span th:text="${cart.product.currentQuantity}"></span></p>
-                                        </td>
-                                        <td class="text-right" data-title="Cart" >
-                                            <span th:text="${cart.totalPrice}">$ </span>
-                                        </td>
-                                        <td ><a th:href="@{/deleteCartItem(cartId=${cart.id})}"
-                                                onclick="if (!confirm('Are you sure want to delete this item from cart'))return false "><i class="fi-rs-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6" class="text-end">
-<!--                                            <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>-->
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="cart-action text-end">
-                            <a class="btn " th:href="@{/product-shop/0}"><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
-                        </div>
-                        <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-                        <div class="row mb-50">
+    </div>
+    <section class="mt-50 mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div th:if="${param.empties}">
+                        <div class="alert alert-danger">Cart is empty !</div>
+                    </div>
+                    <div th:if="${param.quantityError}">
+                        <div class="alert alert-danger">you selected more items. please check selected quantity and avalable stcok  !</div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table shopping-summery text-center clean">
+                            <thead>
+                            <tr class="main-heading">
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
+                                <th scope="col">Remove</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="cart-item" th:each="cart : ${shoppingCart}"
+                                th:data-cart-id="${cart.id}"
+                                th:data-product-id="${cart.product.id}"
+                                th:data-sale-price="${cart.product.salePrice}"
+                                th:data-unit-price="${cart.unitPrice}">
+                                <td class="image product-thumbnail"><img th:if="${not #lists.isEmpty(cart.product.image)}"
+                                                                         th:src="@{|/imgs/items/${cart.product.image[0].getName()}|}" alt="#"></td>
+                                <td class="product-des product-name">
+                                    <h5 class="product-name" th:text="${cart.product.name}"><a></a></h5>
+                                    <p class="font-xs" th:text="${cart.product.description}"> </p>
+                                </td>
+                                <td class="price" data-title="Price" th:id="'cartPrice_'+${cart.id}" th:text="${cart.unitPrice}"><span>₹ </span></td>
+                                <td class="text-center" data-title="Stock">
+                                    <a class="remove-btn" th:data-cart-id="${cart.id}" th:data-product-id="${cart.product.id}">
+                                        <span class="material-symbols-outlined">remove</span>
+                                    </a>
+                                    <span name="quantity" th:id="'quantity_' + ${cart.id}" th:text="${cart.quantity}"></span>
+                                    <a class="add-btn" th:data-cart-id="${cart.id}" th:data-product-id="${cart.product.id}">
+                                        <span class="material-symbols-outlined">add</span>
+                                    </a>
+                                    <p>Available Stock: <span th:text="${cart.product.currentQuantity}"></span></p>
+                                </td>
+                                <td class="text-right" data-title="Cart" >
+                                    <span class="total-price" th:id="'total_' + ${cart.id}" th:text="${cart.totalPrice}">₹ </span>
+                                </td>
+                                <td ><a th:href="@{/deleteCartItem(cartId=${cart.id})}"
+                                        onclick="if (!confirm('Are you sure want to delete this item from cart'))return false "><i class="fi-rs-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-end">
+                                    <!--                                            <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>-->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart-action text-end">
+                        <a class="btn " th:href="@{/product-shop/0}"><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                    </div>
+                    <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                    <div class="row mb-50">
 
-                            <div class="col-lg-6 col-md-12">
-                                <div class="border p-md-4 p-30 border-radius cart-totals">
-                                    <div class="heading_s1 mb-3">
-                                        <h4>Cart Totals</h4>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="cart_total_label">Cart Subtotal</td>
-                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand" th:text="${total}" >$</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="cart_total_label">Shipping</td>
-                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand" th:text="${total}" >$</span></strong></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <a th:href="@{/checkOut}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="border p-md-4 p-30 border-radius cart-totals">
+                                <div class="heading_s1 mb-3">
+                                    <h4>Cart Totals</h4>
                                 </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td class="cart_total_label">Cart Subtotal</td>
+                                            <td class="cart_total_amount"><span class="font-lg fw-900 text-brand" id="grandTotal" th:text="${total}" >₹</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cart_total_label">Shipping</td>
+                                            <td class="cart_total_amount">
+                                                <span id="shippingFee">
+                                                    <i class="ti-gift mr-5"></i>
+                                                    <span th:if="${total != 0 && total < 1000}">50.0</span>
+                                                    <span th:unless="${total != 0 && total < 1000}">00.0</span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cart_total_label">Total</td>
+                                            <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand" id="finalTotal" th:text="${total}" >₹</span></strong></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a th:href="@{/checkOut}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 <footer th:replace="~{fragments::footer-sec}"></footer>
 
-<!--<div th:replace="~{fragments::pre-loader}"></div>-->
 <!-- Vendor JS-->
 <div th:replace="~{fragments::scripts}"></div>
+
+<script th:inline="javascript">
+    $(document).ready(function() {
+        $(".cart-item").each(function() {
+            var cartId = $(this).data("cart-id");
+            var productId = $(this).data("product-id");
+            var salePrice = $(this).data("sale-price");
+            var unitPrice = $(this).data("unit-price");
+
+            if (salePrice !== unitPrice) {
+                $.ajax({
+                    url: '/shop/updateUnitPrice',
+                    type: 'POST',
+                    data: {
+                        cartId: cartId,
+                        productId: productId,
+                        newUnitPrice: salePrice
+                    },
+                    success: function(response,status,xhr) {
+                        var newUnitPrice = xhr.getResponseHeader("newUnitPrice");
+                        if (newUnitPrice !== null) {
+                            updateCartPrice(xhr.getResponseHeader("newUnitPrice"));
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error updating unit price:", error);
+                    }
+                });
+                function updateCartPrice(newPrice) {
+                    document.getElementById('cartPrice_'+cartId).innerText = newPrice;
+                }
+            }
+        });
+    });
+
+
+    $(document).ready(function() {
+        $(".remove-btn, .add-btn").click(function() {
+            var cartId = $(this).data("cart-id");
+            var productId = $(this).data("product-id");
+            var action = $(this).hasClass("remove-btn") ? "remove" : "add";
+            updateCartQuantity(cartId, productId, action);
+        });
+
+        function updateCartQuantity(cartId, productId, action) {
+            $.ajax({
+                url: '/shop/updateQuantity?cartId=' + cartId + '&productId=' + productId + '&action=' + action,
+                type: 'POST',
+                success: function(response, status, xhr) {
+                    var quantity = xhr.getResponseHeader("quantity");
+                    var total = xhr.getResponseHeader("totalPrice");
+                    var shippingFee = xhr.getResponseHeader("shippingFee");
+                    var finalTotal = xhr.getResponseHeader("finalTotal");
+                    if (quantity !== null) {
+                        updateQuantity(cartId,quantity,total,finalTotal);
+                        updateTotalAmount(shippingFee);
+                    }},
+                error: function(xhr, status, error) {
+                    console.error("Error updating cart quantity:", error);
+                }
+            });
+        }
+    });
+
+    function updateQuantity(cartId,newQuantity,total,finalTotal) {
+        document.getElementById("quantity_" + cartId).innerText = newQuantity;
+        document.getElementById("total_" + cartId).innerText = total;
+        document.getElementById("finalTotal").innerText = finalTotal;
+    }
+    function updateTotalAmount(shippingFee) {
+        var total = 0;
+        $(".total-price").each(function() {
+            total += parseFloat($(this).text());
+        });
+        $("#grandTotal").text(total.toFixed(2));
+        document.getElementById("shippingFee").innerText = shippingFee;
+    }
+</script>
+
+
 </body>
 
 </html>

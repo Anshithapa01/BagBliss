@@ -35,10 +35,10 @@ public class WeeklyPdfGenerator {
         Paragraph paragraph = new Paragraph("Weekly report", fontTiltle);
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(paragraph);
-        PdfPTable table = new PdfPTable(2);
+        PdfPTable table = new PdfPTable(6);
         table.setWidthPercentage(100f);
-        table.setWidths(new int[]{3, 3});
-        table.setSpacingBefore(5);
+        table.setWidths(new int[]{2, 2, 2, 2, 2, 2});
+        table.setSpacingBefore(10);
 
         PdfPCell cell = new PdfPCell();
 
@@ -52,19 +52,26 @@ public class WeeklyPdfGenerator {
         table.addCell(cell);
         cell.setPhrase(new Phrase("Earning", font));
         table.addCell(cell);
-        // cell.setPhrase(new Phrase("Totel Orders", font));
-        //   table.addCell(cell);
+        cell.setPhrase(new Phrase("Total Orders", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Total Deduction", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Delivered Orders", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Cancelled Orders", font));
+        table.addCell(cell);
 
         for (WeeklyEarnings order : orders) {
             Date date = order.getWeek();
             LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-            // Format LocalDate as String
             String formattedDate = formatDateToDateString(localDate);
 
             table.addCell(formattedDate);
             table.addCell(String.valueOf(order.getEarnings()));
-            // table.addCell(String.valueOf(order.getTotelOrder()));
+            table.addCell(String.valueOf(order.getTotalOrders()));
+            table.addCell(String.valueOf(order.getDeduction()));
+            table.addCell(String.valueOf(order.getDeliveredOrders()));
+            table.addCell(String.valueOf(order.getCancelledOrders()));
         }
         document.add(table);
 
@@ -73,6 +80,6 @@ public class WeeklyPdfGenerator {
     }
 
     private String formatDateToDateString(LocalDate localDate) {
-        return localDate.toString();  // Assumes the default format of "yyyy-MM-dd"
+        return localDate.toString();
     }
 }

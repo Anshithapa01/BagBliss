@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 public class CsvGeneratorWeekly {
-    private static final String CSV_HEADER = "Week,Earning\n";
+    private static final String CSV_HEADER = "Week,Total Earning,Total Orders,total Deduction,Delivered Orders,Cancelled Orders\n";
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     public String generateCsv(List<WeeklyEarnings> weeklyEarnings) {
@@ -20,8 +20,11 @@ public class CsvGeneratorWeekly {
 
         for (WeeklyEarnings weekly : weeklyEarnings) {
             csvContent.append(dateFormat.format(weekly.getWeek())).append(",")
-                    .append(weekly.getEarnings()).append("\n");
-
+                    .append(weekly.getEarnings()).append(",")
+                    .append(weekly.getTotalOrders()).append(",")
+                    .append(weekly.getDeduction()).append(",")
+                    .append(weekly.getDeliveredOrders()).append(",")
+                    .append(weekly.getCancelledOrders()).append("\n");
 
         }
 

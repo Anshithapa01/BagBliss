@@ -25,11 +25,11 @@ public interface ProductService {
 
     Page<Product> pageProducts(int pageNo);
 
-    Page<ProductDto> searchProducts(int pageNo, String keyword);
+    List<Product> searchProducts(String keyword);
+
+    List<Product> searchProduct(String keyword);
 
     Product getProductById(long id);
-
-
 
 
 
@@ -78,6 +78,11 @@ public interface ProductService {
 
 //    List<Product> findProductsByCategory(long id);
 
-    List<Product> findAllByCategory(long id);
+    List<Product> findAllByCategory(String category);
+
+    List<Product> findAllByCategoryId(long id);
+
+    List<Product> findAllByCategoryName(String name);
+
 
 }

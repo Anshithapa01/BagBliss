@@ -1,9 +1,6 @@
 package com.ecommerce.admin.controller;
 
-import com.ecommerce.library.dto.DailyEarningMapping;
-import com.ecommerce.library.dto.DailyEarning;
-import com.ecommerce.library.dto.MonthlyEarnMap;
-import com.ecommerce.library.dto.TotelPriceByPayment;
+import com.ecommerce.library.dto.*;
 import com.ecommerce.library.service.DashBoardService;
 import com.ecommerce.library.service.OrderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -13,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -34,7 +32,7 @@ public class DashBoardControll {
         this.dashBoardService = dashBoardService;
         this.orderService=orderService;
     }
-    @RequestMapping(value={"/"})
+    @RequestMapping(value={"/","/index"})
     public String home(Model model, Principal principal) throws JsonProcessingException {
         if (principal == null) {
             return "redirect:/loginPage";
@@ -53,7 +51,8 @@ public class DashBoardControll {
         LocalDate localEndDate = currentYear.atEndOfMonth();
         Date startDate = java.sql.Date.valueOf(localStartDate);
         Date endDate = java.sql.Date.valueOf(localEndDate);
-        double currentMonthEarning=dashBoardService.findCurrentMonthOrder(startDate,endDate);
+        double newMonth=dashBoardService.findCurrentMonthOrder(startDate,endDate);
+        double currentMonthEarning = Math.round(newMonth * 100.0) / 100.0;
         Month currentMonth=currentYear.getMonth();
         model.addAttribute("currentMonth",currentMonth);
         model.addAttribute("currentMonthEarning",currentMonthEarning);
@@ -62,7 +61,8 @@ public class DashBoardControll {
         LocalDate localEndDateYearly = LocalDate.of(currentYear.getYear(),Month.DECEMBER,31);
         Date startDateYearly = java.sql.Date.valueOf(localStartDateYearly);
         Date endDateYearly = java.sql.Date.valueOf(localEndDateYearly);
-        double currentYearlyEarning=dashBoardService.findCurrentMonthOrder(startDateYearly,endDateYearly);
+        double newYear=dashBoardService.findCurrentMonthOrder(startDateYearly,endDateYearly);
+        double currentYearlyEarning = Math.round(newYear * 100.0) / 100.0;
         int year=currentYear.getYear();
         model.addAttribute("currentYear",year);
         model.addAttribute("currentYearlyEarning",currentYearlyEarning);
@@ -79,19 +79,28 @@ public class DashBoardControll {
         }
         model.addAttribute("progress",progress);
 
+
         /* Earning chart*/
 
         int currentYr=currentYear.getYear();
         int currentMnt=currentYear.getMonthValue();
         List<Object[]> dailyEarnings=dashBoardService.retrieveDailyEarnings(currentYr,currentMnt);
+        System.out.println(currentYr);
+        System.out.println(currentMnt);
+        for (Object[] objArray : dailyEarnings) {
+            for (Object obj : objArray) {
+                System.out.print(obj + " Obj-1");
+            }
+            System.out.println();
+        }
 
         List<DailyEarningMapping> dailyEarningListForJson=new ArrayList<>();
 
         for(Object[] obj : dailyEarnings){
             Date date = (Date) obj[0];
-
             Double amount = (Double) obj[1];
-            DailyEarning dailyEarnings1 = new DailyEarning(date,amount,1l);
+
+            DailyEarning dailyEarnings1 = new DailyEarning(date,amount,1l,1.0,1l,1);
             String input=dailyEarnings1.toString();
             String datePart = input.substring(input.indexOf("date=")+"date=".length(),input.indexOf(" "));
             DailyEarningMapping dailyEarningsMapping=new DailyEarningMapping(datePart,amount);
@@ -103,26 +112,32 @@ public class DashBoardControll {
         ObjectMapper objectMapper=new ObjectMapper();
         String dailyEarningJson = objectMapper.writeValueAsString(dailyEarningListForJson);
         model.addAttribute("dailyEarnings",dailyEarningJson);
-        System.out.println("Daily json=="+dailyEarningJson);
-        List<Object[]> monthlyEarning=dashBoardService.retriveMontlyEarning(2023);
+//        System.out.println("Daily json=="+dailyEarningJson);
+        List<Object[]> monthlyEarning=dashBoardService.retriveMontlyEarning(2024);
+        List<Object[]> yearlyEarning = dashBoardService.retriveYearlyEarning();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         List<MonthlyEarnMap> monthlyEarnJson=new ArrayList<>();
-        for(Object[] objects:monthlyEarning){
-            Date date= (Date) objects[0];
-            Double amount=(Double) objects[1];
-
+        for(Object[] objects:monthlyEarning) {
+            Date date = (Date) objects[0];
+            Double amount = (Double) objects[1];
             String datePart = dateFormat.format(date);
-
-            MonthlyEarnMap monthlyEarnMap=new MonthlyEarnMap(datePart,amount);
+            MonthlyEarnMap monthlyEarnMap = new MonthlyEarnMap(datePart, amount);
             monthlyEarnJson.add(monthlyEarnMap);
+        }
 
-
-
+        List<YearlyEarnMap> yearlyEarnJson = new ArrayList<>();
+        for (Object[] objects : yearlyEarning) {
+            int years = ((Number) objects[0]).intValue();
+            Double amount = (Double) objects[1];
+            YearlyEarnMap yearlyEarnMap = new YearlyEarnMap(years, amount);
+            yearlyEarnJson.add(yearlyEarnMap);
         }
         ObjectMapper objectMapper1=new ObjectMapper();
         String monthlyEarningJson=objectMapper1.writeValueAsString(monthlyEarnJson);
+        String yearlyEarningJson = objectMapper.writeValueAsString(yearlyEarnJson);
         model.addAttribute("monthlyEarn",monthlyEarningJson);
+        model.addAttribute("yearlyEarn", yearlyEarningJson);
 
 
 
@@ -146,9 +161,20 @@ public class DashBoardControll {
         String totalPriceByPayment = objectMapper2.writeValueAsString(totalPriceByPaymentList);
         model.addAttribute("totalPriceByPayment",totalPriceByPayment);
 
+        //    Best Selling
+        List<ProductSales> topSellingProducts = dashBoardService.getTopSellingProducts();
+        model.addAttribute("topSellingProducts", topSellingProducts);
 
-
+        List<CategorySales> topSellingCategories = dashBoardService.getTopSellingCategories();
+        model.addAttribute("topSellingCategories", topSellingCategories);
 
         return "admin";
+
+
+
     }
+
+
+
+
 }

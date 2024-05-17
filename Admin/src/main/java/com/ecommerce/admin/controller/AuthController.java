@@ -2,6 +2,7 @@ package com.ecommerce.admin.controller;
 
 import com.ecommerce.library.dto.AdminDto;
 import com.ecommerce.library.model.Admin;
+import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.service.AdminService;
 import com.ecommerce.library.service.impl.AdminServiceImpl;
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 public class AuthController {
@@ -32,21 +35,22 @@ public class AuthController {
     private final BCryptPasswordEncoder passwordEncoder;
 
 
+
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("title", "Login Page");
         return "sign-in";
     }
 
-    @GetMapping("/index")
-    public String index(Model model) {
-        model.addAttribute("title", "Home Page");
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "redirect:/login";
-        }
-        return "index";
-    }
+//    @GetMapping("/index")
+//    public String index(Model model) {
+//        model.addAttribute("title", "Home Page");
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+//            return "redirect:/login";
+//        }
+//        return "index";
+//    }
 
     @GetMapping("/register")
     public String register(Model model,HttpSession session) {

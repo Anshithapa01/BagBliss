@@ -22,6 +22,7 @@ public class Order {
     private Date deliveryDate;
     private String orderStatus;
     private double grandTotalPrize;
+    private double deduction;
     private int quantity;
     private String paymentMethod;
     private double shippingFee;

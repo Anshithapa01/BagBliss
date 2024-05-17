@@ -171,6 +171,8 @@ public class ProductController {
         }
         Page<Product> products = productService.pageProducts(pageNo);
         List<Category> categories = categoryService.findAllByActivatedTrue();
+        Category category=new Category();
+        model.addAttribute("categories1",category);
         model.addAttribute("categories", categories);
         model.addAttribute("title", "Manage Products");
         model.addAttribute("products", products);
@@ -180,28 +182,6 @@ public class ProductController {
         return "products-list";
     }
 
-
-
-
-    @GetMapping("/search-products/{pageNo}")
-    public String searchProduct(@PathVariable("pageNo") int pageNo,
-                                @RequestParam("keyword") String keyword,
-                                Model model, Principal principal
-    ) {
-        if (principal == null) {
-            return "redirect:/login";
-        }
-        Page<ProductDto> products = productService.searchProducts(pageNo, keyword);
-        List<Category> categories = categoryService.findAllByActivatedTrue();
-        model.addAttribute("categories", categories);
-        model.addAttribute("title", "Search Result");
-        model.addAttribute("products", products);
-        model.addAttribute("size", products.getSize());
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPages", products.getTotalPages());
-        return "products-result";
-
-    }
 
 
     @GetMapping("/deleteImage/{productId}/{name}")

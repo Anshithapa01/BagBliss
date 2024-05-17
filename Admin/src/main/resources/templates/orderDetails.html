@@ -15,33 +15,32 @@
             <div class="content-header">
                 <div>
                     <h2 class="content-title card-title">Order List </h2>
-                    <p>Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div>
                     <div class="row end">
                     <form th:action="@{/pdfReport}" th:object="${report}" method="get">
-
-                            <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" th:field="*{pdfReport}">
+                            <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" id="pdfReportSelect" th:field="*{pdfReport}">
                                 <option selected th:value="null">Select Report</option>
                                 <option th:value="daily">DailyReport</option>
                                 <option th:value="weekly">Weekly Report</option>
-                                <option th:value="monthly">Monthly report</option>
-
-
+                                <option th:value="yearly">Yearly report</option>
+                                <option th:value="custom">Custom Date Range</option>
                             </select>
                             <input type="submit" value="Report PDF" class="btn btn-primary">
+                        <input class="border-radius-5 border-white bg-white" type="text" id="startDate" name="startDate" placeholder="Start Date" style="display: none;">
+                        <input class="border-radius-5 border-white bg-white" type="text" id="endDate" name="endDate" placeholder="End Date" style="display: none;">
                     </form>
                     <form th:action="@{/csvReport}" th:object="${report}" method="get">
-
-                        <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" th:field="*{csvReport}">
+                        <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" id="csvReportSelect" th:field="*{csvReport}">
                             <option selected th:value="null">Select Report</option>
                             <option th:value="daily">DailyReport</option>
                             <option th:value="weekly">Weekly Report</option>
-                            <option th:value="monthly">Monthly report</option>
-
-
+                            <option th:value="yearly">Yearly report</option>
+                            <option th:value="customDate">Custom Date Range</option>
                         </select>
                         <input type="submit" value="Report CSV" class="btn btn-primary">
+                        <input class="border-radius-5 border-white bg-white" type="text" id="csvStartDate" name="csvStartDate" placeholder="Start Date" style="display: none;">
+                        <input class="border-radius-5 border-white bg-white" type="text" id="csvEndDate" name="csvEndDate" placeholder="End Date" style="display: none;">
                     </form>
 
 
@@ -95,7 +94,7 @@
                                 <td th:text="${orders.customer.name}"><b></b></td>
 
 
-                                <td th:text="${orders.grandTotalPrize}">$</td>
+                                <td th:text="${orders.grandTotalPrize}">₹</td>
                                 <td>
                                 <p th:if="${orders.orderStatus}==Pending"><span th:text="${orders.orderStatus}" class=" btn-warning"></span></p>
                                 <p th:if="${orders.orderStatus}==Cancel"><span th:text="${orders.orderStatus}" class=" btn-danger"></span></p>
@@ -147,6 +146,9 @@
         <div th:replace="~{fragments::footer_sec}"></div>
     </main>
     <div th:replace="~{fragments::script}"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
     <script>
@@ -165,8 +167,44 @@
             }
         });
     });
-    </script>
 
+
+    $(document).ready(function() {
+        $("#pdfReportSelect").change(function() {
+            var selectedOption = $(this).val();
+            if (selectedOption === "custom") {
+                $("#startDate, #endDate").datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    onSelect: function(dateText) {
+                        if ($(this).attr("id") === "startDate") {
+                            $("#endDate").datepicker("option", "minDate", dateText);
+                        }
+                    }
+                }).show();
+            } else {
+                $("#startDate, #endDate").hide();
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $("#csvReportSelect").change(function() {
+            var selectedOption = $(this).val();
+            if (selectedOption === "customDate") {
+                $("#csvStartDate, #csvEndDate").datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    onSelect: function(dateText) {
+                        if ($(this).attr("id") === "csvStartDate") {
+                            $("#csvEndDate").datepicker("option", "minDate", dateText);
+                        }
+                    }
+                }).show();
+            } else {
+                $("#csvStartDate, #csvEndDate").hide();
+            }
+        });
+    });
+</script>
 
 
     </body>

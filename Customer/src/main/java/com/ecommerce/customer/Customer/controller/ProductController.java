@@ -48,7 +48,7 @@ public class ProductController {
     public String findProductById(@PathVariable("id") Long id, Model model) {
         List<Category> categories = categoryService.findAllByActivatedTrue();
         ProductDto productDto=productService.getById(id);
-        List<Product> productDtoList = productService.findAllByCategory(productDto.getCategory().getId());
+        List<Product> productDtoList = productService.findAllByCategoryId(productDto.getCategory().getId());
         int currentQuantity = productDto.getCurrentQuantity();
         boolean inStock = currentQuantity > 0;
         boolean limitedStock = currentQuantity > 0 && currentQuantity < 10;

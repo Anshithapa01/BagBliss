@@ -4,6 +4,7 @@ import com.ecommerce.library.dto.CustomerDto;
 import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.UserOtp;
 import com.ecommerce.library.service.CustomerService;
+import jakarta.mail.Session;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -15,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @Controller
 public class AuthController {
@@ -121,5 +124,6 @@ public class AuthController {
     public String googleOAuth2Callback() {
         return "home";
     }
+
 
 }

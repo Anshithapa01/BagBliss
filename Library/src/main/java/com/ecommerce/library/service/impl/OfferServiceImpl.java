@@ -81,7 +81,8 @@ public class OfferServiceImpl implements OfferService {
             double costprice = product.getCostPrice();
             int offerPercentage = offer.getOfferPercentage();
             double offers = costprice * offerPercentage / 100;
-            product.setSalePrice(costprice - offers);
+            double newBalance=Math.round((costprice - offers) * 100.0) / 100.0;
+            product.setSalePrice(newBalance);
             productRepository.save(product);
         }
         else{
@@ -92,7 +93,8 @@ public class OfferServiceImpl implements OfferService {
                 double costprice = product.getCostPrice();
                 int offerPercentage = offer.getOfferPercentage();
                 double offers = costprice * offerPercentage / 100;
-                product.setSalePrice(costprice - offers);
+                double newBalance=Math.round((costprice - offers) * 100.0) / 100.0;
+                product.setSalePrice(newBalance);
                 productRepository.save(product);
             }
         }

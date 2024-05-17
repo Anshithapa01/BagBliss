@@ -1,20 +1,16 @@
 package com.ecommerce.library.service.impl;
 
+import com.ecommerce.library.dto.CustomEarning;
 import com.ecommerce.library.dto.DailyEarning;
-import com.ecommerce.library.dto.Monthlyearning;
 import com.ecommerce.library.dto.WeeklyEarnings;
+import com.ecommerce.library.dto.YearlyEarning;
 import com.ecommerce.library.model.*;
 import com.ecommerce.library.repository.*;
-import com.ecommerce.library.service.AddressService;
 import com.ecommerce.library.service.OrderService;
-import com.ecommerce.library.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.session.SessionInformation;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -30,9 +26,6 @@ public class OrderServiceImpl implements OrderService {
     private CustomerRepository customerRepository;
     private ShopingCartRepository shopingCartRepository;
 
-    private AddressService addressService;
-
-    private ShoppingCartService shopCartService;
     private ProductRepository productRepository;
     private AddressRepository addressRepository;
 
@@ -41,50 +34,70 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository, OrderDetailsRepository orderDetailsRepository,
                             CustomerRepository customerRepository, ShopingCartRepository shopingCartRepository,
-                            AddressService addressService, ShoppingCartService shopCartService,
                             ProductRepository productRepository, AddressRepository addressRepository) {
         this.orderRepository = orderRepository;
         this.orderDetailsRepository = orderDetailsRepository;
         this.customerRepository = customerRepository;
         this.shopingCartRepository = shopingCartRepository;
-        this.addressService = addressService;
-        this.shopCartService = shopCartService;
         this.productRepository = productRepository;
         this.addressRepository = addressRepository;
     }
 
     @Override
     public Order saveOrder(ShoppingCart shopingCart, String email, Long addressId, String paymentMethod,
-                           Double grandTotel) {
-
+                           Double grandTotel,Double deduction,double total) {
         Order order = new Order();
+        double discount=order.getDeduction()+deduction;
+        int orderQuantity=0;
         order.setOrderDate(new Date());
         order.setOrderStatus("Pending");
 
         order.setCustomer(customerRepository.findByEmail(email));
         order.setGrandTotalPrize(grandTotel);
         order.setPaymentMethod(paymentMethod);
-
+        if(total<1000&&grandTotel!=0){
+            order.setShippingFee(50);
+        }
         order.setShippingAddress(addressRepository.getReferenceById(addressId));
-        orderRepository.save(order);
         List<ShoppingCart> shoppingCarts = shopingCartRepository.findShoppingCartByCustomer(email);
         for (ShoppingCart cart : shoppingCarts) {
             OrderDetails orderDetails = new OrderDetails();
             orderDetails.setProduct(cart.getProduct());
             orderDetails.setOrder(order);
             orderDetails.setQuantity(cart.getQuantity());
-            orderDetails.setUnitPrice(cart.getUnitPrice());
+            orderQuantity+=cart.getQuantity();
+            orderDetails.setUnitPrice(cart.getProduct().getSalePrice());
             orderDetails.setTotalPrice(cart.getTotalPrice());
             orderDetailsRepository.save(orderDetails);
             Product product = cart.getProduct();
             int quantity = product.getCurrentQuantity() - cart.getQuantity();
             product.setCurrentQuantity(quantity);
+            double amt=product.getCostPrice()- product.getSalePrice();
+            discount+=amt;
             productRepository.save(product);
             cart.setDeleted(true);
             shopingCartRepository.save(cart);
         }
-
+        double roundedBalance = Math.round(discount * 100.0) / 100.0;
+        order.setDeduction(roundedBalance);
+        order.setQuantity(orderQuantity);
+        orderRepository.save(order);
         return order;
+    }
+
+    @Override
+    public void updateOrder(String paymentMethod, Long id){
+        Order order = findOrderById(id);
+        try {
+            if (order == null) {
+                System.out.println("Order not found");
+            }
+            assert order != null;
+            order.setPaymentMethod(paymentMethod);
+            orderRepository.save(order);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -156,12 +169,12 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order);
     }
 
-//    @Override
-//    public List<Order> findOrderByCustomer(String email) {
-//       // Pageable pageable=PageRequest.of(pageNo,6);
-//       // Page<Order> orders=this.orderRepository.findOrderByCustomer(email,pageable);
-//        return orderRepository.findOrderByCustomer(email);
-//    }
+    @Override
+    public List<Order> findOrderByCustomer(String email) {
+       // Pageable pageable=PageRequest.of(pageNo,6);
+       // Page<Order> orders=this.orderRepository.findOrderByCustomer(email,pageable);
+        return orderRepository.findOrderByCustomer(email);
+    }
 
     @Override
     public Order findOrderById(Long id) {
@@ -183,7 +196,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-
     public List<Order> getDailyOrders(LocalDate date) {
         LocalDate startOfDay = date.atStartOfDay().toLocalDate();
         LocalDate endOfDay = startOfDay.plusDays(1);
@@ -232,27 +244,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-    @Override
-    public List<Order> getDailyReport(Date date) {
-        // Call the repository method to get daily orders
-        return orderRepository.findDailyOrders(date);
-    }
+//    @Override
+//    public List<Order> getDailyReport(Date date) {
+//        return orderRepository.findDailyOrders(date);
+//    }
 
-    @Override
-    public List<Monthlyearning> getMonthlyReport(int year) {
-        List<Object[]> result=orderRepository.monthlyReport(year);
-        List<Monthlyearning> report=new ArrayList<>();
-        for(Object[] row:result){
-            Date month= (Date) row[0];
-            Double grandTotel= (Double) row[1];
-            Long totelOrder= (Long) row[2];
-            Long delivered_orders= (Long) row[3];
-            Long cancelled_orders= (Long) row[4];
-            report.add(new Monthlyearning(month,grandTotel,totelOrder,delivered_orders,cancelled_orders));
-        }
-        return report;
-
-    }
 
     @Override
     public List<DailyEarning> dailyReport(int year, int month) {
@@ -260,9 +256,14 @@ public class OrderServiceImpl implements OrderService {
         List<DailyEarning> report=new ArrayList<>();
         for(Object[] row:result){
             Date date= (Date) row[0];
-            Double grandTotel= (Double) row[1];
-            Long totelOrder= (Long) row[2];
-            report.add(new DailyEarning(date,grandTotel,totelOrder));
+            double newBalance1 =(Double) row[1];
+            Double grandTotal = Math.round(newBalance1 * 100.0) / 100.0;
+            Long totalOrder= (Long) row[2];
+            double newBalance2 =(Double) row[3];
+            Double deduction = Math.round(newBalance2 * 100.0) / 100.0;
+            Long deliveredOrders = (Long) row[4];
+            Long cancelledOrders = (Long) row[5];
+            report.add(new DailyEarning(date,grandTotal,totalOrder,deduction,deliveredOrders,cancelledOrders));
         }
 
         return report;
@@ -274,9 +275,50 @@ public class OrderServiceImpl implements OrderService {
         List<WeeklyEarnings> report=new ArrayList<>();
         for (Object[] row:result){
             Date date= (Date) row[0];
-            Double earnings=(Double)  row[1];
-            report.add(new WeeklyEarnings(date,earnings));
+            double newBalance1 =(Double) row[1];
+            Double earnings = Math.round(newBalance1 * 100.0) / 100.0;
+            Long totalOrders = (Long) row[2];
+            double newBalance2 =(Double) row[3];
+            Double deduction = Math.round(newBalance2 * 100.0) / 100.0;
+            Long deliveredOrders = (Long) row[4];
+            Long cancelledOrders = (Long) row[5];
+            report.add(new WeeklyEarnings(date, earnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
+        }
+        return report;
+    }
 
+
+    @Override
+    public List<YearlyEarning> getYearlyReport(int year) {
+        List<Object[]> result = orderRepository.yearlyReport(year);
+        List<YearlyEarning> report = new ArrayList<>();
+        for (Object[] row : result) {
+            Date yearDate = (Date) row[0];
+            double newBalance1 =(Double) row[1];
+            Double totalEarnings = Math.round(newBalance1 * 100.0) / 100.0;
+            Long totalOrders = (Long) row[2];
+            double newBalance2 =(Double) row[3];
+            Double deduction  = Math.round(newBalance2 * 100.0) / 100.0;
+            Long deliveredOrders = (Long) row[4];
+            Long cancelledOrders = (Long) row[5];
+            report.add(new YearlyEarning(yearDate, totalEarnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
+        }
+        return report;
+    }
+
+    @Override
+    public List<CustomEarning> getCustomReport(Date startDate, Date endDate,Date parsedEndDate) {
+        List<Object[]> result = orderRepository.findByOrderDatesBetween(startDate, endDate);
+        List<CustomEarning> report = new ArrayList<>();
+        for (Object[] row : result) {
+            double newBalance1 =(Double) row[0];
+            Double totalEarnings = Math.round(newBalance1 * 100.0) / 100.0;
+            Long totalOrders = (Long) row[1];
+            double newBalance2 =(Double) row[2];
+            Double deduction  = Math.round(newBalance2 * 100.0) / 100.0;
+            Long deliveredOrders = (Long) row[3];
+            Long cancelledOrders = (Long) row[4];
+            report.add(new CustomEarning(startDate,parsedEndDate, totalEarnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
         }
         return report;
     }

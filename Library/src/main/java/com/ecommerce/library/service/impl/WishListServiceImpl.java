@@ -28,7 +28,6 @@ public class WishListServiceImpl implements WishListService {
     @Override
     public WishList addToWishList(String email, Long productId) {
         WishList wishList=wishListRepository.findProductByCustomer(email,productId);
-        System.out.println("HELLO ngjlfgjbl.kxfjfgbn.kljg.lxkfxjgvm.fklxgnv.lxklxf,nv.xkl,gn");
         Product product=productService.getProductById(productId);
         if (wishList==null) {
 

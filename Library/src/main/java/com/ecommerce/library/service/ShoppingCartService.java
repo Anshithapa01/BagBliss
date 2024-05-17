@@ -13,8 +13,18 @@ public interface ShoppingCartService {
 //    ,Long customerId
   Double grandTotal(String username);
 
-  void increment(Long id,Long productId);
-  void decrement(Long id);
+    Double finalGrandTotal(String username);
+
+    Double shippingFee(String username);
+
+    void increment(Long id, Long productId);
+
+    void save(ShoppingCart cart);
+
+    ShoppingCart findById(Long id);
+
+    void decrement(Long id);
+
 
 
 }

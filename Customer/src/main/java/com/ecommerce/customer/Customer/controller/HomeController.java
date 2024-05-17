@@ -52,11 +52,5 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/cancelOrder")
-    public String showCancelOrder(@ModelAttribute("orderId")Long id){
-        orderService.cancelOrder(id);
-        return "redirect:/orderDetails?pageNo=0";
-    }
-
 
 }

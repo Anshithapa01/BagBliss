@@ -31,39 +31,15 @@ public class OrderDetailsControll {
 
     @GetMapping("/orderDetails/{pageNo}")
     public String showOrderDetails(@PathVariable("pageNo") int pageNo, Model model) {
-
-
-        List<Long> orderDetailIds = orderService.findAllOrder().stream()
-                .map(OrderDetails::getOrder)
-                .map(Order::getId)
-                .distinct()
-                .collect(Collectors.toList());
-
-        // Retrieve orders whose IDs are present in the order details
-        List<Order> filteredOrders = orderService.findOrderByPageble(pageNo, 10)
-                .stream()
-                .filter(order -> orderDetailIds.contains(order.getId()))
-                .collect(Collectors.toList());
-
-        // Create a PageImpl from the filtered orders
-        Page<Order> orders = new PageImpl<>(filteredOrders);
-
-        OrderDto orderDto = new OrderDto();
-        model.addAttribute("report", orderDto);
+        Page<Order> orders = orderService.findOrderByPageble(pageNo, 10);
+        List<OrderDetails> orderDetails=orderService.findAllOrder();
+        OrderDto orderDto=new OrderDto();
+        model.addAttribute("report",orderDto);
+        model.addAttribute("orderDetails",orderDetails);
         model.addAttribute("orders", orders);
         model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPage", orders.getTotalPages());
+        model.addAttribute("totalPage", orders.getTotalPages());;
         return "orderDetails";
-//        Page<Order> orders = orderService.findOrderByPageble(pageNo, 10);
-//        List<OrderDetails> orderDetails=orderService.findAllOrder();
-//        //List<Order>orders=orderService.findAll();
-//        OrderDto orderDto=new OrderDto();
-//        model.addAttribute("report",orderDto);
-//        model.addAttribute("orderDetails",orderDetails);
-//        model.addAttribute("orders", orders);
-//        model.addAttribute("currentPage", pageNo);
-//        model.addAttribute("totalPage", orders.getTotalPages());;
-//        return "orderDetails";
     }
 
     @GetMapping("/orderDetailsInfo")
@@ -88,7 +64,6 @@ public class OrderDetailsControll {
                                   @ModelAttribute("report")OrderDto orderDto1,Model model){
         String orderStatus=orderDto1.getOrderStatus();
         Page<Order> orders = orderService.findOrderByOrderStatusPagable(pageNo,orderStatus);
-        //List<Order>orders=orderService.findAll();
         OrderDto orderDto=new OrderDto();
         model.addAttribute("report",orderDto);
         model.addAttribute("orders", orders);

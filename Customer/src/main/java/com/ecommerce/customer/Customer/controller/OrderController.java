@@ -7,6 +7,7 @@ import com.ecommerce.library.repository.ShopingCartRepository;
 import com.ecommerce.library.service.AddressService;
 import com.ecommerce.library.service.OrderService;
 import com.ecommerce.library.service.ShoppingCartService;
+import com.ecommerce.library.utils.PdfGenerator;
 import com.lowagie.text.DocumentException;
 import jakarta.servlet.http.HttpServletResponse;
 import net.minidev.json.JSONObject;
@@ -93,37 +94,6 @@ public class OrderController {
         return "order-details";
     }
 
-
-
-    @PostMapping("/createPayment")
-    @ResponseBody
-    public String showOnlinePayment(Principal principal, Authentication authentication,
-                                    @RequestBody Map<String, Object> data){
-
-//        CustomUser customUser= (CustomUser) authentication.getPrincipal();
-//        Long id=customUser.getCustomer_id();
-        String username=principal.getName();
-        String paymentMethod = data.get("paymentMethod").toString();
-        Long address_id=Long.parseLong(data.get("addressId").toString());
-        Double amount= Double.valueOf(data.get("amount").toString());
-
-        System.out.println(amount);
-
-
-        ShoppingCart shoppingCart = new ShoppingCart();
-        orderService.saveOrder(shoppingCart, username, address_id,paymentMethod,amount);
-        JSONObject option=new JSONObject();
-        option.put("status","cash");
-        return option.toString();
-
-    }
-
-    @PostMapping("/verify-payment")
-    @ResponseBody
-    public String showVerifyPayment(@RequestBody Map<String,Object> data){
-
-        return "done";
-    }
     @GetMapping("/orderListPdf1")
     public void generatePdf(HttpServletResponse response, Principal principal) throws DocumentException, IOException {
 
@@ -135,11 +105,11 @@ public class OrderController {
         String headervalue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
         response.setHeader(headerkey, headervalue);
 
-       // List<Order> list=orderService.findOrderByCustomer(email);
+//        Page<Order> list=orderService.findOrderByCustomerPagable(email);
 
-//        PdfGenerator pdfGenerator=new PdfGenerator();
-//       // pdfGenerator.setOrders(list);
-//        pdfGenerator.generate(response);
+        PdfGenerator pdfGenerator=new PdfGenerator();
+       // pdfGenerator.setOrders(list);
+        pdfGenerator.generate(response);
     }
 
 

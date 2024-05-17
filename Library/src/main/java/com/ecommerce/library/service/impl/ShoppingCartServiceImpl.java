@@ -16,17 +16,17 @@ import java.util.List;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
-   private ShopingCartRepository shopingCartRepository;
-   private ProductService productService;
+    private ShopingCartRepository shopingCartRepository;
+    private ProductService productService;
 
-   private CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
 
 
 
     public ShoppingCartServiceImpl(ShopingCartRepository shopingCartRepository, CustomerService customerService,
                                    ProductService productService, CustomerRepository customerRepository
-                                  ) {
+    ) {
         this.shopingCartRepository = shopingCartRepository;
         this.productService = productService;
         this.customerRepository=customerRepository;
@@ -111,7 +111,31 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return 0.0;
     }
 
+    @Override
+    public Double finalGrandTotal(String username) {
+        Customer customer = customerRepository.findByEmail(username);
+        if (customer != null) {
+            Long customerId = customer.getCustomer_id();
+            double grandTotal = shopingCartRepository.findGrandTotal(customerId);
+            double shippingFee=shippingFee(username);
+            return grandTotal+shippingFee;
+        }
 
+        return 0.0;
+    }
+
+    @Override
+    public Double shippingFee(String username) {
+        Customer customer = customerRepository.findByEmail(username);
+        if (customer != null) {
+            Long customerId = customer.getCustomer_id();
+            double grandTotal = shopingCartRepository.findGrandTotal(customerId);
+            if(grandTotal<1000 && grandTotal!=0){
+                return 50.0;
+            }
+        }
+        return 00.0;
+    }
 
 
     @Override
@@ -128,7 +152,15 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
 
+    @Override
+    public void save(ShoppingCart cart) {
+        shopingCartRepository.save(cart);
+    }
 
+    @Override
+    public ShoppingCart findById(Long id) {
+        return shopingCartRepository.getReferenceById(id);
+    }
 
 
     @Override

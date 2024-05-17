@@ -21,7 +21,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService {
+public
+class ProductServiceImpl implements ProductService {
 
     @Autowired
     private final ProductRepository productRepository;
@@ -169,15 +170,19 @@ public class ProductServiceImpl implements ProductService {
 
 
 
+    @Override
+    public List<Product> searchProduct(String keyword) {
+        List<Product> products=productRepository.listViewProductsUserSide(keyword);
+        return products;
+    }
 
 
     @Override
-    public Page<ProductDto> searchProducts(int pageNo, String keyword) {
-        Pageable pageable = PageRequest.of(pageNo, 5);
-        List<ProductDto> productDtoList = transferData(productRepository.searchProductsList(keyword));
-        Page<ProductDto> dtoPage = toPage(productDtoList, pageable);
-        return dtoPage;
+    public List<Product> searchProducts(String keyword) {
+        List<Product> products= productRepository.searchProductsList(keyword);
+        return products;
     }
+
 
     @Override
     public Product getProductById(long id) {
@@ -220,9 +225,22 @@ public class ProductServiceImpl implements ProductService {
         }
 
     @Override
-    public List<Product> findAllByCategory(long id) {
-        return productRepository.findAllByCategoryId(id);
+    public List<Product> findAllByCategory(String category) {
+
+        return productRepository.findAllByCategory(category);
     }
+
+
+    @Override
+    public List<Product> findAllByCategoryId(long id) {
+        return productRepository.findAllByCategory_Id(id);
+    }
+
+    @Override
+    public List<Product> findAllByCategoryName(String name) {
+        return productRepository.findAllByCategoryName(name);
+    }
+
 
 
 
@@ -424,9 +442,7 @@ public class ProductServiceImpl implements ProductService {
             productUpdate.setCostPrice(productDto.getCostPrice());
             productUpdate.setSalePrice(productDto.getSalePrice());
             productUpdate.setCurrentQuantity(productDto.getCurrentQuantity());
-
-
-
+            productRepository.save(productUpdate);
             if (imageProducts != null && !imageProducts.isEmpty()) {
                 List<Image> imagesList = new ArrayList<>();
                 for (MultipartFile imageProduct : imageProducts) {
@@ -439,7 +455,6 @@ public class ProductServiceImpl implements ProductService {
                         imagesList.add(newImage);
                     }
                 }
-                // Update product's image list
                 productUpdate.setImage(imagesList);
             }
             return productRepository.save(productUpdate);

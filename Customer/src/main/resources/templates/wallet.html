@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::head_sec}"></head>
+
+<body>
+<header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}">
+</header>
+<div th:replace="~{fragments::side-header}"></div>
+
+
+<div class="col-md-8 mx-auto">
+    <div class="container mt-100 ">
+
+        <h3 class="text-center">Customer Wallet Details</h3>
+
+        <div class="text-center">
+            <h5 style="margin-bottom: 10px; margin-top: 20px;">User:
+               [( ${name})]</h5>
+            <h5 style="margin-bottom: 10px;">Wallet Balance:<span th:text="${wallet!=null? wallet.balance:'N/A'}"></span>
+            </h5>
+        </div>
+
+<!--
+        <div class="wallet-form" >
+            <form id="walletForm"  >
+                <label for="amount">Amount to Add:</label>
+                <input type="number" id="amount" name="amount"  min="100" max="99999" placeholder="min-100 to max-99999" required>
+                <button class="btn btn-fill-out btn-block hover-up" onclick="addWallet()">Add</button>
+            </form>
+        </div> -->
+
+        <div class="table-main table-responsive mb-100 mt-25">
+            <table class="table" id="walletTable"  >
+                <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Transaction Status</th>
+                    <th>Order ID</th>
+                    <th>Transaction Date</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+
+                <tr th:each="walletHistory, index : ${walletHistory}">
+                    <td  th:text="${index.index + 1}"></td>
+                    <td>₹<span th:text="${walletHistory.amount}"></span></td>
+                    <td th:text="${walletHistory.trasactionType}"></td>
+                    <td th:text="${walletHistory.trasactionStatus}"></td>
+                    <td th:text="${walletHistory.id}"></td>
+                    <td th:text="${walletHistory.transationDate}"></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<footer th:replace="~{fragments::footer-sec}"></footer>
+
+<div th:replace="~{fragments::pre-loader}"></div>
+<!-- Vendor JS-->
+<div th:replace="~{fragments::scripts}"></div>
+</body>
+</html>

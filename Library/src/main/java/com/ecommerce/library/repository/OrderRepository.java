@@ -1,5 +1,6 @@
 package com.ecommerce.library.repository;
 
+import com.ecommerce.library.dto.CustomEarning;
 import com.ecommerce.library.model.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,13 +33,13 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     Page<Order> findOrderByOrderStatusPagable(Pageable pageable,String orderStatus);
 
     List<Order> findByOrderDateBetween(LocalDate startDate, LocalDate endDate);
+
+    List<Order> findByOrderDateBetween(Date startDate, Date endDate);
 @Query("select o from Order o order by o.orderDate desc")
     Page<Order> findOrderByPagable(Pageable pageable);
 
     @Query(value = "SELECT SUM(o.grand_totel_prize) FROM Order o WHERE MONTH(o.order_date)=:month AND YEAR(o.order_date)=:year",nativeQuery = true)
     int totalPrice(YearMonth year, Month month);
-
-    List<Order> findByOrderDateBetween(Date startDate, Date endDate);
 
     int countByIsAcceptIsFalse();
 
@@ -70,18 +71,82 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     @Query(value="SELECT DATE_TRUNC('month', o.order_date) AS month, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('month', o.order_date)) AS earnings FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year GROUP BY DATE_TRUNC('month', o.order_date)",nativeQuery = true)
     List<Object[]> monthlyEarnings(@Param("year") int year);
 
-    @Query(value="SELECT DATE_TRUNC('week', o.order_date) AS week, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('week', o.order_date)) AS earnings FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year GROUP BY DATE_TRUNC('week', o.order_date)", nativeQuery = true)
+    @Query(value="SELECT EXTRACT(YEAR FROM o.order_date) AS year, SUM(o.grand_total_prize) AS earnings FROM orders o WHERE o.order_status='Delivered' GROUP BY EXTRACT(YEAR FROM o.order_date)", nativeQuery = true)
+    List<Object[]> yearlyEarnings();
+
+
+//    @Query(value="SELECT DATE_TRUNC('week', o.order_date) AS week, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('week', o.order_date)) AS earnings FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year GROUP BY DATE_TRUNC('week', o.order_date)", nativeQuery = true)
+//    List<Object[]> weeklyEarnings(@Param("year") int year);
+
+//    @Query(value="SELECT DATE_TRUNC('day', o.order_date) AS date, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('day', o.order_date)) AS earnings, COUNT(o.order_id) AS totelOrder  FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year AND EXTRACT(MONTH FROM o.order_date) =:month GROUP BY DATE_TRUNC('day', o.order_date)",nativeQuery = true)
+//    List<Object[]> dailyReport(@Param("year") int year, @Param("month") int month);
+
+    @Query(value = "SELECT DATE_TRUNC('week', o.order_date) AS week, " +
+            "SUM(SUM(CASE WHEN o.order_status = 'Delivered' THEN o.grand_total_prize ELSE 0 END)) OVER (PARTITION BY DATE_TRUNC('week', o.order_date)) AS earnings, " +
+            "COUNT(o.order_id) AS totalOrders, " +
+            "SUM(o.deduction) AS couponDeduction, " +
+            "COUNT(CASE WHEN o.order_status = 'Delivered' THEN o.order_id END) AS deliveredOrders, " +
+            "COUNT(CASE WHEN o.order_status = 'Cancel' THEN o.order_id END) AS cancelledOrders " +
+            "FROM orders o " +
+            "WHERE EXTRACT(YEAR FROM o.order_date) = :year " +
+            "GROUP BY DATE_TRUNC('week', o.order_date)",
+            nativeQuery = true)
     List<Object[]> weeklyEarnings(@Param("year") int year);
 
-    @Query(value="SELECT DATE_TRUNC('day', o.order_date) AS date, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('day', o.order_date)) AS earnings, COUNT(o.order_id) AS totelOrder  FROM orders o WHERE o.order_status='Delivered' AND EXTRACT(YEAR FROM o.order_date) = :year AND EXTRACT(MONTH FROM o.order_date) =:month GROUP BY DATE_TRUNC('day', o.order_date)",nativeQuery = true)
+
+    @Query(value = "SELECT DATE_TRUNC('day', o.order_date) AS date, " +
+            "SUM(SUM(CASE WHEN o.order_status = 'Delivered' THEN o.grand_total_prize ELSE 0 END)) OVER (PARTITION BY DATE_TRUNC('day', o.order_date)) AS earnings, " +
+            "COUNT(o.order_id) AS totalOrders, " +
+            "SUM(o.deduction) AS deduction, " +
+            "COUNT(CASE WHEN o.order_status = 'Delivered' THEN o.order_id END) AS deliveredOrders, " +
+            "COUNT(CASE WHEN o.order_status = 'Cancel' THEN o.order_id END) AS cancelledOrders " +
+            "FROM orders o " +
+            "WHERE EXTRACT(YEAR FROM o.order_date) = :year " +
+            "AND EXTRACT(MONTH FROM o.order_date) = :month " +
+            "GROUP BY DATE_TRUNC('day', o.order_date)",
+            nativeQuery = true)
     List<Object[]> dailyReport(@Param("year") int year, @Param("month") int month);
 
-    @Query(value="SELECT DATE_TRUNC('month', o.order_date) AS month, SUM(SUM(o.grand_total_prize)) OVER (PARTITION BY DATE_TRUNC('month', o.order_date)) AS earnings, COUNT(o.order_id)  AS totelOrder, " +
-            "COUNT(CASE WHEN o.order_status = 'Delivered' THEN o.order_id END) AS delivered_orders, " +
-            "COUNT(CASE WHEN o.order_status = 'Cancel' THEN o.order_id END) AS cancelled_orders " +
-            "FROM orders o WHERE EXTRACT(YEAR FROM o.order_date) = :year GROUP BY DATE_TRUNC('month', o.order_date)",nativeQuery = true)
-    List<Object[]> monthlyReport(@Param("year") int year);
+    @Query(value = "SELECT DATE_TRUNC('year', o.order_date) AS year, "
+            + "SUM(SUM(CASE WHEN o.order_status = 'Delivered' THEN o.grand_total_prize ELSE 0 END)) OVER (PARTITION BY DATE_TRUNC('year', o.order_date)) AS earnings, "
+            + "COUNT(o.order_id) AS totalOrders, "
+            + "SUM(CASE WHEN o.order_status = 'Delivered' THEN o.deduction ELSE 0 END) AS totalDeduction, "
+            + "COUNT(CASE WHEN o.order_status = 'Delivered' THEN o.order_id END) AS deliveredOrders, "
+            + "COUNT(CASE WHEN o.order_status = 'Cancel' THEN o.order_id END) AS cancelledOrders "
+            + "FROM orders o "
+            + "WHERE EXTRACT(YEAR FROM o.order_date) = :year "
+            + "GROUP BY DATE_TRUNC('year', o.order_date)", nativeQuery = true)
+    List<Object[]> yearlyReport(@Param("year") int year);
 
+    @Query(value = "SELECT SUM(SUM(CASE WHEN o.order_status = 'Delivered' THEN o.grand_total_prize ELSE 0 END)) OVER (PARTITION BY DATE_TRUNC('year', o.order_date)) AS earnings, "
+            + "COUNT(o.order_id) AS totalOrders, "
+            + "SUM(CASE WHEN o.order_status = 'Delivered' THEN o.deduction ELSE 0 END) AS totalDeduction, "
+            + "COUNT(CASE WHEN o.order_status = 'Delivered' THEN o.order_id END) AS deliveredOrders, "
+            + "COUNT(CASE WHEN o.order_status = 'Cancel' THEN o.order_id END) AS cancelledOrders "
+            + "FROM orders o "
+            + "WHERE o.order_date BETWEEN :startDate AND :endDate "
+            + "GROUP BY DATE_TRUNC('year', o.order_date)", nativeQuery = true)
+    List<Object[]> findByOrderDatesBetween(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+
+//   ------------ Best selling ---------------
+
+    @Query(value = "SELECT p.product_id, p.name, SUM(od.quantity) as total_sold " +
+            "FROM order_details od " +
+            "JOIN products p ON od.product_id = p.product_id " +
+            "GROUP BY p.product_id, p.name " +
+            "ORDER BY total_sold DESC " +
+            "LIMIT 10", nativeQuery = true)
+    List<Object[]>findTopSellingProducts();
+
+    @Query(value = "SELECT c.category_id, c.name, SUM(od.quantity) as total_sold " +
+            "FROM order_details od " +
+            "JOIN products p ON od.product_id = p.product_id " +
+            "JOIN categories c ON p.category_id = c.category_id " +
+            "GROUP BY c.category_id, c.name " +
+            "ORDER BY total_sold DESC " +
+            "LIMIT 10", nativeQuery = true)
+    List<Object[]> findTopSellingCategories();
 
 
 }

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/shop/login/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/shop/login/css/main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+    <main class="container">
+        <section class="content-main" >
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Invoice</h2>
+                    <p>Details for Order ID: <span th:text="${id}"></span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-8">
+                    <div class="card">
+                        <header class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                                    <span>
+                                        <span class="material-symbols-outlined">calendar_today</span> <b th:text="${date}">Wed, Aug 13, 2022, 4:34PM</b>
+                                    </span> <br>
+                                    <small class="text-muted">Order ID: <span th:text="${id}"></span></small>
+                                </div>
+                                <div class="col-lg-6 col-md-6 ms-auto text-md-end">                                   
+                                    <a class="btn btn-primary pb-15" id="download-btn" href="javascript:void(0);">
+                                        <span class="material-symbols-outlined">download</span>
+                                        Download PDF</a>
+                                </div>
+                            </div>
+                        </header> <!-- card-header end// -->
+                        <div class="card-body">
+                            <div class="receipt-content">
+                                <div class="container bootstrap snippets bootdey">
+                                    <div class="row pb-50">
+                                        <div class="col-md-12">
+                                            <div class="invoice-wrapper">
+                                                <div class="intro">
+                                                    Hi <strong th:text="${customer.name}"></strong>,
+                                                    <br>
+                                                    This is the receipt for a payment of <strong th:text="${orders.grandTotalPrize}"></strong> (INR) for your order
+                                                </div>
+                    
+                                                <div class="payment-info">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <span>Payment Method.</span>
+                                                            <strong th:text="${orders.paymentMethod}"></strong>
+                                                        </div>
+                                                        <div class="col-sm-6 text-end">
+                                                            <span>Payment Date</span>
+                                                            <strong th:text="${order_date}">Jul 09, 2022 - 12:20 pm</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="payment-details">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <span>Delivery Address</span>
+                                                            <strong th:text="${address.addressLine1}">
+                                                            </strong>
+                                                            <p th:text="${address.addressLine2}">
+                                                            <p th:text="${address.city}"></p>
+                                                            <p th:text="${address.pincode}"></p>
+                                                            <p th:text="${address.district}+','+${address.country}"></p>
+                                                                <a href="#" th:text="${customer.email}">
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-sm-6 text-end">
+                                                            <span>Payment To</span>
+                                                            <strong>
+                                                                BagBliss Pvt.Ltd
+                                                            </strong>
+                                                            <p>
+                                                                23, HAL Old Airport Rd <br>
+                                                                Kodihalli,560008 <br>
+                                                                Bengaluru <br>
+                                                                Karnataka,India <br>
+                                                                <a href="#">
+                                                                    bagbliss@gmail.com
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="line-items">
+                                                    <div class="headers clearfix">
+                                                        <div class="row">
+                                                            <div class="col-md-4">Description</div>
+                                                            <div class="col-md-3">Quantity</div>
+                                                            <div class="col-md-5 text-end">Amount</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="items" th:each="order:${orderDetails}">
+                                                        <div class="row item" >
+                                                            <div class="col-md-4 desc" th:text="${order.product.name}">
+                                                            </div>
+                                                            <div class="col-md-3 qty" th:text="${order.quantity}">
+                                                            </div>
+                                                            <div class="col-md-5 amount text-end" th:text="${order.totalPrice}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="total text-end">
+                                                        <div class="field">
+                                                            Subtotal <span th:text="${subtotal}"></span>
+                                                        </div>
+                                                        <div class="field">
+                                                            Shipping <span th:text="${orders.shippingFee}"></span>
+                                                        </div>
+                                                        <div class="field">
+                                                            Discount <span th:text="${orders.deduction}"></span>
+                                                        </div>
+                                                        <div class="field grand-total">
+                                                            Total <span th:text="${orders.grandTotalPrize}"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- card-body end// -->
+                    </div> <!-- card end// -->
+                </div>
+            </div>
+        </section> <!-- content-main end// -->
+    </main>
+
+
+    <script src="/shop/login/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/shop/login/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/shop/login/js/vendors/select2.min.js"></script>
+    <script src="/shop/login/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/shop/login/js/vendors/jquery.fullscreen.min.js"></script>
+
+    <script src="/shop/login/js/main.js" type="text/javascript"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('download-btn').addEventListener('click', async function () {
+                const { jsPDF } = window.jspdf;
+
+                // Reference to the HTML content to be converted to PDF
+                const invoiceContent = document.querySelector('.card-body');
+
+                // Use html2canvas to capture the content
+                const canvas = await html2canvas(invoiceContent, { scale: 2 });
+
+                // Create a new jsPDF instance
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgData = canvas.toDataURL('image/png');
+                const imgProps = pdf.getImageProperties(imgData);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+                // Add the captured image to the PDF
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+                // Save the generated PDF
+                pdf.save('invoice.pdf');
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

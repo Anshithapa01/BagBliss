@@ -1,8 +1,9 @@
 package com.ecommerce.library.service;
 
+import com.ecommerce.library.dto.CustomEarning;
 import com.ecommerce.library.dto.DailyEarning;
-import com.ecommerce.library.dto.Monthlyearning;
 import com.ecommerce.library.dto.WeeklyEarnings;
+import com.ecommerce.library.dto.YearlyEarning;
 import com.ecommerce.library.model.Order;
 import com.ecommerce.library.model.OrderDetails;
 import com.ecommerce.library.model.ShoppingCart;
@@ -13,7 +14,11 @@ import java.util.Date;
 import java.util.List;
 
 public interface OrderService {
-    Order saveOrder(ShoppingCart shopingCart, String email, Long addressId, String paymentMethod, Double grandTotel);
+    Order saveOrder(ShoppingCart shopingCart, String email, Long addressId,
+                    String paymentMethod, Double grandTotel,Double deduction,double total);
+
+    void updateOrder(String paymentMethod, Long id);
+
     List<OrderDetails> findAllOrder();
 
     List<OrderDetails> findOrderDetailsByCustomer(String email);
@@ -29,7 +34,8 @@ public interface OrderService {
     void cancelOrder(Long id);
 
     void returnOrder(Long id);
-//    List<Order> findOrderByCustomer(String email);
+    List<Order> findOrderByCustomer(String email);
+
     public List<Order> getDailyOrders(LocalDate date);
 
     Page<Order> findOrderByPageble(int page,int size);
@@ -38,7 +44,7 @@ public interface OrderService {
 
     Page<Order> findOrderByCustomerPagable(int pageNo, String email);
     Page<Order> findOrderByOrderStatusPagable(int pageNo,String status);
-    List<Order> getDailyReport(Date date);
+//    List<Order> getDailyReport(Date date);
 
     void deleteOrderDetailsById(Long id);
 
@@ -53,7 +59,10 @@ public interface OrderService {
 
     boolean hasOrdersForAddress(Long addressId);
 
-    List<Monthlyearning> getMonthlyReport(int year);
     List<DailyEarning> dailyReport(int year, int month);
     List<WeeklyEarnings> findWeeklyEarnings(int year);
+
+    List<YearlyEarning> getYearlyReport(int year);
+
+    List<CustomEarning> getCustomReport(Date startDate, Date endDate,Date parsedEndDate);
 }

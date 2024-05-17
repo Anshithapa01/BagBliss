@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="~{fragments::head_sec}"></head>
-
 <body>
 <header class="header-area header-style-1 header-height-2" th:replace="~{fragments::header-sec}">
 </header>
-
 <div th:replace="~{fragments::side-header}"></div>
-
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
@@ -21,21 +17,19 @@
     </div>
     <section class="mt-50 mb-50">
         <div class="container">
-
             <div class="row">
                 <div class="col-12">
                     <div class="divider mt-50 mb-50"></div>
                 </div>
             </div>
-
             <div class="row">
-
                 <div class="col-md-6">
                     <div class="order_review">
                         <div class="mb-20">
                             <h4>Your Orders</h4>
                         </div>
                         <div class="table-responsive order_table text-center">
+                            <input type="hidden" id="orderId" th:value="${id}" />
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -50,17 +44,17 @@
                                     <td>
                                         <h5><a href="shop-product-full.html" th:object="${checkOut.product.name}"></a></h5> <span class="product-qty" th:text="${checkOut.quantity}"></span>
                                     </td>
-                                    <td th:text="${checkOut.totalPrice}">$</td>
+                                    <td th:text="${checkOut.totalPrice}">₹</td>
                                 </tr>
 
 
                                 <tr>
                                     <th>SubTotal</th>
-                                    <td class="product-subtotal"  colspan="2" th:text="${totel}">$</td>
+                                    <td class="product-subtotal total"  colspan="2" th:text="${totel}">₹</td>
                                 </tr>
                                 <tr>
                                     <th>Shipping</th>
-                                    <td colspan="2"><em>Free Shipping</em></td>
+                                    <td colspan="2" th:text="${shipping}"><em></em></td>
                                 </tr>
                                 <tr id="couponRow" class="d-none" th:each="checkOut :${cartItem}">
                                     <th>Coupon Discount</th>
@@ -70,7 +64,7 @@
                                     <th>Total</th>
                                     <td colspan="2" class="product-subtotal">
                                         <span class="font-xl text-brand fw-900 payment_field" id="totalPrice"
-                                              th:text="${payable}" th:value="${payable}">$</span>
+                                              th:text="${payable}" th:value="${payable}">₹</span>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -98,14 +92,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div th:if="${errorMessage}">
-                                <p class = "alert alert-danger" th:text = "${errorMessage}"></p>
+                            <div id="error" class="d-none">
+                                <p class = "alert alert-danger" id="errorMessage"></p>
                             </div>
                             <div th:if="${param.expired}">
                                 <div class="alert alert-danger"> Coupon Expired</div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!--Address Details  -->
@@ -120,14 +113,12 @@
                             <div th:each="address : ${addresses} ">
                                 <div class="card mb-30">
                                     <div class="card-header">
-
                                         <input class="form-check-input selectCheckBox" type="radio" th:value="${address.id}" name="addressId"
                                                th:checked="${address.is_default}">
                                         <h5 class="mb-0"><span th:text="${address.addressLine1}"></span></h5>
                                     </div>
                                     <div class="card-body">
                                         <address>
-
                                             <span th:text="${address.addressLine2}"></span>,<br>
                                             <span th:text="${address.city}"></span>,
                                             <span th:text="${address.pincode}"></span> Ph:<span th:text="${customer.mobile}"></span>
@@ -136,11 +127,9 @@
                                             <span th:text="${address.state}"></span></p>
                                         <p><span th:text="${address.country}"></span></p>
                                         <a th:href="@{/editAddress(addressId=${address.id})}" class="btn btn-danger">Edit</a>
-
                                     </div>
                                 </div>
                             </div >
-
                         </div>
                         <div class="payment_method">
                             <div class="mb-25">
@@ -148,26 +137,26 @@
                             </div>
                             <div class="payment_option">
                                 <div class="custome-radio">
-                                    <input class="form-check-input payment_option" required="" type="radio" name="payment_option" id="exampleRadios3"  th:value="cash">
+                                    <input class="form-check-input payment_option" required="" type="radio" name="payment_option" id="exampleRadios3"  th:value="cash_on_Delivery">
                                     <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Cash on Delivery</label>
                                     <div class="form-group collapse in" id="bankTranfer">
                                         <p class="text-muted mt-5">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration. </p>
                                     </div>
                                 </div>
                                 <div class="custome-radio">
-                                    <input class="form-check-input payment_option" required="" type="radio" name="payment_option" id="exampleRadios4">
+                                    <input class="form-check-input payment_option" required="" type="radio" name="payment_option" id="exampleRadios4"  th:value="online_payment">
                                     <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Online Payment</label>
                                     <div class="form-group collapse in" id="checkPayment">
                                         <p class="text-muted mt-5">Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode. </p>
                                     </div>
                                 </div>
-                                 <div class="custome-radio">
-                                     <input class="form-check-input payment_option" required="" type="radio" name="payment_option" id="exampleRadios5" >
-                                     <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Wallet</label>
-                                     <div class="form-group collapse in" id="wallet">
-                                         <p class="text-muted mt-5"></p>
-                                     </div>
-                                 </div>
+                                <div class="custome-radio">
+                                    <input class="form-check-input payment_option" required="" type="radio" name="payment_option" id="exampleRadios5" th:value="wallet">
+                                    <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Wallet</label>
+                                    <div class="form-group collapse in" id="wallet">
+                                        <p class="text-muted mt-5"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div th:if="${param.addressEmpty}">
@@ -185,104 +174,212 @@
 
 <!-- Vendor JS-->
 <div th:replace="~{fragments::scripts}"></div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
-    function placeOrder() {
+    function placeOrder(){
         const checkedAddress = $('.selectCheckBox:checked').val();
         const paymentMethod = $('.payment_option:checked').val();
-        const amount1Text = $('.payment_field').text(); // Get the text content
-        const amount1 = parseFloat(amount1Text); // Convert to a double
+        const amount1Text = $('.payment_field').text();
+        const total = $('.total').text();
+        const amount1 = parseFloat(amount1Text);
+        const total1 = parseFloat(total);
+        const couponDiscountText = $('#coupon').text().trim();
+        const couponDiscount = parseFloat(couponDiscountText);
+        const deduction1 = isNaN(couponDiscount) ? 0 : couponDiscount;
+        const orderId = $('#orderId').val();
 
-        console.log(amount1);
-        console.log(paymentMethod);
+        console.log("amount1"+amount1)
+        console.log("paymentMethod"+paymentMethod)
+        console.log("deduction1"+deduction1)
+        console.log("total"+total1)
+        console.log("orderId: " + orderId);
 
-        if (checkedAddress === undefined) {
-            alert("Please choose a shipping address!!");
-        } else {
-            const addressId = checkedAddress;
-            const payment_Method = paymentMethod;
-            let amount = amount1;
-            paymentStart(addressId, payment_Method, amount);
+
+        if(paymentMethod    === undefined ){
+            alert("Please choose a payment Method!!")
+        }
+
+        if(checkedAddress    === undefined ){
+            alert("Please choose a shipping address!!")
+        }else{
+            paymentStart(checkedAddress,paymentMethod,amount1,deduction1,total1,orderId);
         }
     }
 
-    const paymentStart = (addressId, paymentMethod, amount) => {
-        console.log(addressId);
-        console.log(paymentMethod);
-        console.log(amount);
 
-        // Only proceed if payment method is "cash"
-        if (paymentMethod === "cash") {
-            // Call your AJAX request here for cash on delivery
-            $.ajax({
-                url: '/shop/createPayment',
-                data: JSON.stringify({
-                    addressId: addressId,
-                    paymentMethod: paymentMethod,
-                    amount: amount
-                }),
-                contentType: 'application/json',
-                type: 'POST',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('[name="_csrf"]').attr('content')
-                },
-                success: function (response) {
-                    console.log(response);
-                    if (response.status === "cash") {
-                        location.href = '/shop/orderConfirm';
-                    }
-                },
-                error: function (error) {
-                    console.log(error);
-                    alert("Something went wrong!!");
+    const paymentStart = (addressId, paymentMethod, amount, deduction,total,orderId) => {
+        console.log("addressId"+addressId);
+        console.log("paymentMethod"+paymentMethod);
+        console.log("amount"+amount);
+        console.log("deduction"+deduction);
+        console.log("orderId: " + orderId);
+
+        $.ajax({
+            url: '/shop/createPayment',
+            data: JSON.stringify({ addressId, paymentMethod, amount, deduction,total }),
+            contentType: 'application/json',
+            type: 'POST',
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('[name="_csrf"]').attr('content')
+            },
+            success: function (response) {
+                console.log("response:", response);
+                if (response.status === "created") {
+                    let options = {
+                        key: 'rzp_test_y8yagsN9W3YyKJ', // Razorpay key (consider moving this to the server-side)
+                        amount: response.amount,
+                        currency: 'INR',
+                        name: 'My Bag store Ecommerce',
+                        description: 'Purchase order',
+                        order_id: response.id,
+                        handler: function (razorpayResponse) {
+                            console.log("Payment response:", razorpayResponse);
+                            console.log("Razorpay Payment ID:", razorpayResponse.razorpay_payment_id);
+                            console.log("Razorpay Order ID:", razorpayResponse.razorpay_order_id);
+                            console.log("Razorpay Signature:", razorpayResponse.razorpay_signature);
+
+                            // Make another AJAX request to save the order
+                            $.ajax({
+                                url: orderId ? '/shop/updateOrder' : '/shop/saveOrder',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify({
+                                    addressId: addressId,
+                                    paymentMethod: paymentMethod,
+                                    amount: amount,
+                                    deduction: deduction,
+                                    total:total,
+                                    id:orderId,
+                                    razorpayPaymentId: razorpayResponse.razorpay_payment_id,
+                                    razorpayOrderId: razorpayResponse.razorpay_order_id,
+                                    razorpaySignature: razorpayResponse.razorpay_signature
+                                }),
+                                headers: {
+                                    'X-CSRF-TOKEN': $('[name="_csrf"]').attr('content')
+                                },
+                                success: function(orderResponse) {
+                                    console.log("Order saved successfully:", orderResponse);
+                                    location.href = '/shop/orderConfirm';
+                                },
+                                error: function(error) {
+                                    console.log("Error saving order:", error);
+                                    alert("Failed to save order. Please try again.");
+                                }
+                            });
+                        },
+                        prefill: {
+                            name: "",
+                            email: "",
+                            contact: ""
+                        },
+                        notes: {
+                            address: "My Bag Payment"
+                        },
+                        theme: {
+                            color: "#3399cc"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                    rzp1.on('payment.failed', function (response) {
+                        console.log("Payment failed response:", response);
+                        console.log("Error Code:", response.error.code);
+                        console.log("Error Description:", response.error.description);
+                        console.log("Error Source:", response.error.source);
+                        console.log("Error Step:", response.error.step);
+                        console.log("Error Reason:", response.error.reason);
+                        console.log("Order ID:", response.error.metadata.order_id);
+                        console.log("Payment ID:", response.error.metadata.payment_id);
+                        $.ajax({
+                            url: '/shop/pendingPayment',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                addressId: addressId,
+                                paymentMethod: paymentMethod,
+                                amount: amount,
+                                deduction: deduction,
+                                total:total,
+                                razorpayOrderId: response.error.metadata.order_id
+                            }),
+                            headers: {
+                                'X-CSRF-TOKEN': $('[name="_csrf"]').attr('content')
+                            },
+                            success: function(pendingResponse) {
+                                console.log("Order marked as pending:", pendingResponse);
+                                alert("Payment failed. Your order has been marked as pending.");
+                                location.href = '/shop/orderDetails?pageNo=0';
+                            },
+                            error: function(error) {
+                                console.log("Error marking order as pending:", error);
+                                alert("Failed to mark order as pending. Please try again.");
+                            }
+                        });
+                    });
+                } else if (response.status === "cash") {
+                    location.href = '/shop/orderConfirm';
+                }else if(response.status === "noCash"){
+                    alert("Sorry You can't choose cash on delivery because of your total amount is greater than 1000")
+                } else if (response.status === "noWallet") {
+                    alert("sorry! your wallet don't have enough balance to make this order");
+                } else if (response.status === "wallet") {
+                    location.href = '/shop/orderConfirm';
                 }
-            });
-        } else {
-            alert("Invalid payment method selected!");
-        }
-    }
+            },
+            error: function (error) {
+                console.log(error);
+                alert("something went wrong!!");
+            }
+        });
+    };
 
 
     function applyCoupon(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
+            event.preventDefault(); // Prevent the default form submission behavior
 
-        var couponCode = document.getElementById("couponCode").value;
-        var formData = new FormData();
-        formData.append("couponCode", couponCode);
+            var couponCode = document.getElementById("couponCode").value;
+            var formData = new FormData();
+            formData.append("couponCode", couponCode);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/shop/applyCoupon", true);
-        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var payable = xhr.getResponseHeader("payable");
-                    if (payable !== null) {
-                        document.getElementById("applyCouponBtn").classList.add("d-none");
-                        document.getElementById("removeCouponBtn").classList.remove("d-none");
-                        updateTotalPrice(xhr.getResponseHeader("payable"));
-                        // document.getElementById("couponRow").classList.remove("d-none");
-                        var couponRow = document.getElementById("couponRow");
-                        couponRow.classList.remove("d-none");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/shop/applyCoupon", true);
+            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var payable = xhr.getResponseHeader("payable");
+                        if (payable !== null) {
+                            document.getElementById("applyCouponBtn").classList.add("d-none");
+                            document.getElementById("removeCouponBtn").classList.remove("d-none");
+                            document.getElementById("error").classList.add("d-none")    
+                            updateTotalPrice(xhr.getResponseHeader("payable"));
+                            // document.getElementById("couponRow").classList.remove("d-none");
+                            var couponRow = document.getElementById("couponRow");
+                            couponRow.classList.remove("d-none");
 
-                        var offer = xhr.getResponseHeader("offer");
-                        if (offer !== null) {
-                            couponRow.querySelector("td").textContent = offer;
-                        }else{
-                            alert("error")
+                            var offer = xhr.getResponseHeader("offer");
+                            if (offer !== null) {
+                                couponRow.querySelector("td").textContent = offer;
+                            }else{
+                                alert("error")
+                            }
                         }
+                        else {
+                            var error = document.getElementById("error");
+                            error.classList.remove("d-none");
+                            var errorMessage = xhr.getResponseHeader("errorMessage");
+                            error.querySelector("p").textContent = errorMessage;
 
-                    }   else {
-                        alert("Coupon not found.");
+                        }
+                    } else {
+                        alert("Failed to apply coupon. Please try again.");
                     }
-                } else {
-                    alert("Failed to apply coupon. Please try again.");
                 }
-            }
-        };
-        xhr.send(formData);
-    }
+            };
+            xhr.send(formData);
+        }
 
     function removeCoupon() {
         var couponCode = document.getElementById("couponCode").value;

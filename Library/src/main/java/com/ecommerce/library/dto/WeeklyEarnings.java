@@ -12,9 +12,19 @@ import java.util.Date;
 public class WeeklyEarnings {
     private Date week;
     private Double earnings;
+    private Long totalOrders;
+    private Double deduction;
+    private Long deliveredOrders;
+    private Long cancelledOrders;
 
-    public WeeklyEarnings(Date week, Double earnings) {
+    public WeeklyEarnings(Date week, Double earnings,
+                          Long totalOrders,Double deduction,
+                          Long deliveredOrders,Long cancelledOrders) {
         this.week = week;
         this.earnings = earnings;
+        this.totalOrders=totalOrders;
+        this.deduction=deduction;
+        this.deliveredOrders=deliveredOrders;
+        this.cancelledOrders=cancelledOrders;
     }
 }

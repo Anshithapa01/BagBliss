@@ -58,7 +58,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p where p.name like %?1% or p.description like %?1%")
     Page<Product> searchProducts(String keyword, Pageable pageable);
 
-    @Query("select p from Product p where p.name like %?1% or p.description like %?1%")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE CONCAT('%', LOWER(?1), '%') OR LOWER(p.description) LIKE CONCAT('%', LOWER(?1), '%')")
     List<Product> searchProductsList(String keyword);
 
     @Query(value = "select * from products ORDER BY product_id DESC",nativeQuery = true)
@@ -67,7 +67,23 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("select  p from Product p")
     Page<Product> pageProducts(Pageable pageable);
 
-    List<Product> findAllByCategoryId(long id);
+    Page<Product> findAllByCategory_id(long id,Pageable pageable);
 
+    List<Product> findAllByCategory_Id(long id);
+
+    List<Product> findAllByCategoryName(String name);
+
+
+    @Query(value = "SELECT p.*, c.category_id AS cat_id \n" +
+            "FROM products p \n" +
+            "JOIN categories c ON p.category_id = c.category_id \n" +
+            "WHERE p.is_deleted = FALSE \n" +
+            "AND c.is_deleted = FALSE \n" +
+            "AND (LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(c.name) LIKE LOWER(CONCAT('%', :keyword, '%')))",nativeQuery = true)
+    List<Product> listViewProductsUserSide(String keyword);
+
+
+//    @Query(value = "SELECT p.*,c.category_id as cat_id FROM products p JOIN categories c ON p.category_id=c.category_id WHERE p.is_Deleted=FALSE AND c.is_deleted=FALSE AND (LOWER(p.name) LIKE %:keyword% OR LOWER(c.name) LIKE %:keyword%)",nativeQuery = true)
+//    List<Product> listViewProductsUserSide(String keyword);
     
 }

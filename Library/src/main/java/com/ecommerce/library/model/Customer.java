@@ -61,6 +61,9 @@ public class Customer {
     @Column(name="referalToke")
     private String referralToken;
 
+    @Column(name = "referrals")
+    private int referrals;
+
 
 
 

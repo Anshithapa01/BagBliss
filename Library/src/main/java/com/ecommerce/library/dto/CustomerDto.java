@@ -27,6 +27,7 @@ public class CustomerDto {
     @NotNull(message = "Required")
     private Long mobile;
 
+    private int referrals;
     private String role;
     private boolean activated;
     private boolean blocked;

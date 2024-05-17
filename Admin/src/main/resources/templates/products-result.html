@@ -30,22 +30,23 @@
         </div>
         <div class="card mb-4">
             <header class="card-header">
-                <div class="row align-items-center">
-                    <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                        <select class="form-select" th:field="*{categories}" id="categories" name="categories">
-                            <option selected th:value="null"> All categories </option>
-                            <option th:each="category : ${categories}"
-                                    th:value="${category.id}"
-                                    th:text="${category.name}"></option>
-                        </select>
+                <div class="row">
+                    <div class="col-md-5 col-3">
+                        <form id="categoryForm" th:action="@{/searchCategory}" th:object="${categories1}" method="get">
+                            <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+                                <select id="categorySelect" class="form-select d-inline-block mb-lg-0 mb-15 mw-200" th:field="*{name}">
+                                    <option selected th:value="null">Select Category</option>
+                                    <option th:each="category :${categories}" th:text="${category.name}" th:value="${category.name}"></option>
+                                </select>
+                                <!-- Remove the input type="submit" -->
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-2 col-6">
-                        <input type="date" value="02.05.2022" class="form-control">
-                    </div>
-                    <div th:fragment="search_products" class="col-md-3 col-6 col-search">
-                        <form class="searchform" th:action="@{/search-products/0}" method="get">
+                    <div class="col-4"></div>
+                    <div th:fragment="search_products" class="col-md-3 col-3 col-search">
+                        <form class="searchform" th:action="@{/searchProduct}" method="get">
                             <div class="input-group">
-                                <input name="keyword" type="text" class="form-control" placeholder="Search Products">
+                                <input name="key" type="text" class="form-control" placeholder="Search Products">
                                 <button class="btn btn-light bg" type="submit"><i class="material-icons md-search"></i></button>
                             </div>
                         </form>
@@ -80,46 +81,33 @@
                             <a th:href="@{/update-product/{id}(id=${product.id})}" class="btn btn-sm font-sm rounded btn-brand">
                                 <i class="material-icons md-edit"></i> Edit
                             </a>
-                            <a th:if="${product.deleted==false}" onclick="if (!(confirm('Are you sure you want to Disable this product?'))) return false" th:href="@{/delete-product/{id}(id=${product.id})}" class="btn btn-sm font-sm btn-danger rounded">
+                            <a th:if="${product.is_deleted==true}" onclick="if (!(confirm('Are you sure you want to Disable this product?'))) return false" th:href="@{/delete-product/{id}(id=${product.id})}" class="btn btn-sm font-sm btn-danger rounded">
                                 <i class="material-icons md-delete_forever"></i> Delete
                             </a>
-                            <a th:if="${product.activated==false}" onclick="if (!(confirm('Are you sure you want to Enable this product?'))) return false" th:href="@{/enable-product/{id}(id=${product.id})}" class="btn btn-sm font-sm btn-light rounded">
+                            <a th:if="${product.is_activated==false}" onclick="if (!(confirm('Are you sure you want to Enable this product?'))) return false" th:href="@{/enable-product/{id}(id=${product.id})}" class="btn btn-sm font-sm btn-light rounded">
                                 <i class="material-icons md-delete_forever"></i> Enable
                             </a>
                         </div>
                     </div> <!-- row .// -->
                 </article> <!-- itemlist  .// -->
-
             </div> <!-- card-body end// -->
         </div> <!-- card end// -->
-        <div class="pagination-area mt-30 mb-50">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-start">
-                    <li th:if= "${currentPage != 0}" class="page-item ">
-                        <a th:href = "@{'/products/' + ${currentPage - 1}}" class="page-link">
-                            <i class="material-icons md-chevron_left"></i>
-                        </a>
-                    </li >
-                    <li th:each = "i : ${#numbers.sequence(1, totalPages)}" th:classappend = "${currentPage == i - 1 ? 'active' : ''}" class="page-item">
-                        <a th:href = "@{'/products/' + ${i - 1}}" class="page-link" href="#">
-                            <span th:text = "${i}"></span>
-                        </a>
-                    </li>
-                    <li th:if = "${currentPage + 1 != totalPages}" class="page-item">
-                        <a th:href = "@{'/products/' + ${currentPage + 1}}" class="page-link" href="#">
-                            <i class="material-icons md-chevron_right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
     </section> <!-- content-main end// -->
     <div th:replace="~{fragments::footer_sec}"></div>
 
-
-
 </main>
 <div th:replace="~{fragments::script}"></div>
+<script>
+    // Get the form and select elements
+    const categoryForm = document.getElementById('categoryForm');
+    const categorySelect = document.getElementById('categorySelect');
+
+    // Add event listener to the select element
+    categorySelect.addEventListener('change', function() {
+        // Submit the form when an option is selected
+        categoryForm.submit();
+    });
+</script>
 </body>
 
 </html>

@@ -134,9 +134,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer update(String email, String name, Long mobile) {
-    System.out.println(email);
-    System.out.println(name);
-    System.out.println(mobile);
         Customer customer = customerRepository.findByEmail(email);
         customer.setName(name);
         customer.setMobile(mobile);

@@ -129,7 +129,7 @@ public class FilterController {
         try{
             List<CategoryDto> categories = categoryService.getCategoriesAndSize();
             model.addAttribute("categories", categories);
-            int pageSize = 10; 
+            int pageSize = 10;
             Page<ProductDto> products = productService.filterByIdDescending(pageNo, pageSize);
             List<ProductDto> listView = productService.listViewProducts();
             model.addAttribute("title", "Shop Detail");
@@ -139,7 +139,7 @@ public class FilterController {
 
             // Pass pagination-related attributes to the view
             model.addAttribute("currentPage", pageNo);
-            model.addAttribute("totalPages", products.getTotalPages());
+            model.addAttribute("totalPages",1);
 
             return "shop-list";
         } catch (DataAccessException ex) {
