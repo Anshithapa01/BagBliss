@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -281,10 +282,13 @@ class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductDto> filterByRandom(int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        Page<Product> products = productRepository.randomProduct(pageable);
-        return products.map(this::mapToDto);
+    public List<Product> filterByRandom() {
+        return productRepository.randomProduct();
+    }
+
+    @Override
+    public List<Product> filterByPopularity(){
+        return productRepository.findTopSellingProducts();
     }
 
     private ProductDto mapToDto(Product product) {
@@ -469,6 +473,33 @@ class ProductServiceImpl implements ProductService {
         return imageRepository.existsByNameAndProductId(imageName, productId);
     }
 
+//    Search by filtered
 
+
+    @Override
+    public List<Product> filterByIdDescendingWithKeyword(String keyword) {
+        List<Long> last10Ids = productRepository.findLast10ProductIds();
+        return productRepository.findProductsByIdsAndKeyword(last10Ids, keyword);
+    }
+
+    @Override
+    public List<Product> randomProductWithKeyword(String keyword) {
+        List<Product> randomProducts = productRepository.randomProduct();
+        List<Long> productIds = randomProducts.stream().map(Product::getId).collect(Collectors.toList());
+        if (productIds.isEmpty()) {
+            return List.of();
+        }
+        return productRepository.randomProductWithKeyword(productIds, keyword);
+    }
+
+    @Override
+    public List<Product> findTopSellingProductsWithKeyword(String keyword) {
+        return productRepository.findTopSellingProductsWithKeyword(keyword);
+    }
+
+    @Override
+    public List<Product> findProductsByCategoryNameAndKeyword(String categoryName, String keyword) {
+        return productRepository.findByCategoryNameAndKeywordIgnoreCase(categoryName, keyword);
+    }
 
 }

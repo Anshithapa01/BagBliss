@@ -28,7 +28,7 @@
                             </span> <br>Order ID:
                     <small class="text-muted" th:text="${order.id}"> </small>
                 </div>
-                <form th:action="@{/updateStatus}" th:object="${order1}" method="post">
+                <form th:if="${order.orderStatus !='Cancel'}" th:action="@{/updateStatus}" th:object="${order1}" method="post">
                     <div class="col-lg-6 col-md-6 ms-auto text-md-end">
                         <input type="hidden" th:field="*{id}">
                         <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" name="orderStatus" th:field="*{orderStatus}">
@@ -44,7 +44,6 @@
 
 
                         <input type="submit" value="Save" class="btn btn-primary">
-                        <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a>
                     </div>
                 </form>
 
@@ -62,7 +61,6 @@
                             <p class="mb-1" th:text="${order.customer.name}"></p>
                             <p class="mb-1" th:text="${order.customer.email}"></p>
                             <p class="mb-1" th:text="${order.customer.mobile}"></p>
-                            <a href="#">View profile</a>
                         </div>
                     </article>
                 </div> <!-- col// -->
@@ -75,9 +73,9 @@
                             <h6 class="mb-1">Order info</h6>
                             <p class="mb-1" > Payment Method:<span th:text="${order.paymentMethod}"></span></p>
                             <p class="mb-1" >order Status:<span th:text="${order.orderStatus}"></span></p>
+                            <p class="mb-1" th:if="${order.orderStatus =='Cancel' || order.orderStatus =='Return Pending' || order.orderStatus =='Return Accept'}">Reason:<span class="text-danger" th:text="${order.reason}"></span></p>
                             <p class="mb-1" > Order Date:<span th:text="${order.orderDate}"></span></p>
 
-                            <a href="#">Download info</a>
                         </div>
                     </article>
                 </div> <!-- col// -->
@@ -95,13 +93,12 @@
                             <p class="mb-1" th:text="${order.shippingAddress.state}"></p>
                             <p class="mb-1" th:text="${order.shippingAddress.country}"></p>
                             <p class="mb-1" th:text="${order.shippingAddress.pincode}"></p>
-                            <a href="#">View profile</a>
                         </div>
                     </article>
                 </div> <!-- col// -->
             </div> <!-- row // -->
-            <div class="row">
-                <div class="col-lg-7">
+            <div class="row container pt-10">
+                <div class="col-lg-12">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -160,24 +157,6 @@
                     </div> <!-- table-responsive// -->
                     <a class="btn btn-primary" th:if="${order.orderStatus != 'Cancel'}" href="page-orders-tracking.html">View Order Tracking</a>
                     <a class="btn btn-danger" th:if="${order.orderStatus == 'Cancel'}" th:href="@{/removeOrder(orderId=${order.id})}">Remove Order</a>
-                </div> <!-- col// -->
-                <div class="col-lg-1"></div>
-                <div class="col-lg-4">
-<!--                    <div class="box shadow-sm bg-light">-->
-<!--                        <h6 class="mb-15">Payment info</h6>-->
-<!--                        <p>-->
-<!--                            <img src="assets/imgs/card-brands/2.png" class="border" height="20"> Master Card **** **** 4768 <br>-->
-<!--                            Business name: Grand Market LLC <br>-->
-<!--                            Phone: +1 (800) 555-154-52-->
-<!--                        </p>-->
-<!--                    </div>-->
-                    <div class="h-25 pt-4">
-                        <div class="mb-3">
-                            <label>Notes</label>
-                            <textarea class="form-control" name="notes" id="notes" placeholder="Type some note"></textarea>
-                        </div>
-                        <button class="btn btn-primary">Save note</button>
-                    </div>
                 </div> <!-- col// -->
             </div>
         </div> <!-- card-body end// -->

@@ -44,8 +44,13 @@ public class ShoppingCartController {
         String username=principal.getName();
         List<ShoppingCart> shoppingCart=shopCartService.findShoppingCartByCustomer(username);
 
-        double total=shopCartService.grandTotal(username);
+        double total1=shopCartService.grandTotal(username);
+        double total=Math.round(total1 * 100.0) / 100.0;
+        double shippingFee=shopCartService.shippingFee(username);
+        double finalTotal=shopCartService.finalGrandTotal(username);
         model.addAttribute("total",total);
+        model.addAttribute("shippingFee",shippingFee);
+        model.addAttribute("finalTotal",finalTotal);
         model.addAttribute("title", "Cart");
         model.addAttribute("shoppingCart",shoppingCart);
 //        session.setAttribute("totalItems", shoppingCart.getTotalItems());
@@ -150,14 +155,17 @@ public class ShoppingCartController {
     public ResponseEntity<String> updateUnitPrice(@RequestParam("cartId") Long cartId,
                                                   @RequestParam("newUnitPrice") Double newUnitPrice) {
         ShoppingCart cart = shopCartService.findById(cartId);
+        double newTotal=newUnitPrice*cart.getQuantity();
         if (cart != null) {
             cart.setUnitPrice(newUnitPrice);
+            cart.setTotalPrice(newTotal);
             shopCartService.save(cart);
             String updatedHtmlContent = "<td class=\"price\" data-title=\"Price\" " +
                     "th:id=\"'cartPrice_'+${cart.id}\" th:text=\"${cart.unitPrice}\"><span>₹" +
                     newUnitPrice+"</span></td>";
             return ResponseEntity.ok()
                     .header("newUnitPrice", String.valueOf(newUnitPrice))
+                    .header("newTotal", String.valueOf(newTotal))
                     .body(updatedHtmlContent);
         } else {
             return ResponseEntity.notFound().build();

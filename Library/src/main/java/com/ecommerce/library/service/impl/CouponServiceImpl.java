@@ -7,6 +7,7 @@ import com.ecommerce.library.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -103,5 +104,10 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public Coupon findByid(Long id) {
         return couponRepository.getReferenceById(id);
+    }
+
+    @Override
+    public List<Coupon> getEnabledCoupons() {
+        return couponRepository.findByEnabledTrueAndExpireDateAfterAndStartDateBefore(LocalDate.now(), LocalDate.now());
     }
 }

@@ -124,7 +124,7 @@
                                         </tr>
                                         <tr>
                                             <td class="cart_total_label">Total</td>
-                                            <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand" id="finalTotal" th:text="${total}" >₹</span></strong></td>
+                                            <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand" id="finalTotal" th:text="${finalTotal}" ></span></strong></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -162,16 +162,36 @@
                     },
                     success: function(response,status,xhr) {
                         var newUnitPrice = xhr.getResponseHeader("newUnitPrice");
-                        if (newUnitPrice !== null) {
-                            updateCartPrice(xhr.getResponseHeader("newUnitPrice"));
+                        var newTotal = xhr.getResponseHeader("newTotal");
+                        if (newUnitPrice !== null && newTotal !== null) {
+                            updateCartPrice(newUnitPrice,newTotal);
                         }
                     },
                     error: function(xhr, status, error) {
                         console.error("Error updating unit price:", error);
                     }
                 });
-                function updateCartPrice(newPrice) {
+                function updateCartPrice(newPrice,newTotal) {
                     document.getElementById('cartPrice_'+cartId).innerText = newPrice;
+                    document.getElementById('total_'+cartId).innerText = newTotal;
+                    document.getElementById('grandTotal').innerText = newTotal;
+                    var sub=document.getElementById('grandTotal').innerText;
+                    console.log(sub)
+
+                    if (sub < 1000 && sub > 0) {
+                        document.getElementById('shippingFee').innerText = 50.0;
+                        document.getElementById('shippingFee');
+                    } else {
+                        document.getElementById('shippingFee').innerText = 0.0;
+                        document.getElementById('shippingFee');
+                    }
+                    var shipping = parseFloat(document.getElementById('shippingFee').innerText);
+                    var newTot = parseFloat(document.getElementById('grandTotal').innerText);
+                    console.log("shipping"+shipping)
+                    console.log("newTot"+newTot)
+                    var final=Math.round((newTot+shipping) * 100.0) / 100.0;
+                    document.getElementById('finalTotal').innerText = final;
+                    console.log("final"+final)
                 }
             }
         });
@@ -195,6 +215,9 @@
                     var total = xhr.getResponseHeader("totalPrice");
                     var shippingFee = xhr.getResponseHeader("shippingFee");
                     var finalTotal = xhr.getResponseHeader("finalTotal");
+                    if (finalTotal !== null) {
+                        finalTotal = Math.round(finalTotal * 100.0) / 100.0;
+                    }
                     if (quantity !== null) {
                         updateQuantity(cartId,quantity,total,finalTotal);
                         updateTotalAmount(shippingFee);
@@ -204,8 +227,6 @@
                 }
             });
         }
-    });
-
     function updateQuantity(cartId,newQuantity,total,finalTotal) {
         document.getElementById("quantity_" + cartId).innerText = newQuantity;
         document.getElementById("total_" + cartId).innerText = total;
@@ -219,6 +240,7 @@
         $("#grandTotal").text(total.toFixed(2));
         document.getElementById("shippingFee").innerText = shippingFee;
     }
+    });
 </script>
 
 

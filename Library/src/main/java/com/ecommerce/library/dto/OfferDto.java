@@ -3,6 +3,7 @@ package com.ecommerce.library.dto;
 import com.ecommerce.library.model.Category;
 import com.ecommerce.library.model.Product;
 import jakarta.mail.Message;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -22,6 +23,7 @@ public class OfferDto {
     private String description;
 
     @Min(value = 1,message = "Minimum of 1 Percentage needed")
+    @Max(value = 80, message = "Offer can't be greater than 80%")
     private int offerPercentage;
 
     private String offerType;

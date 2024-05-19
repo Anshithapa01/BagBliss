@@ -57,11 +57,11 @@
 
                                         </td>
                                         <td>
-                                            <a href="#orders" class="btn-danger" th:if="${(orderDetail.orderStatus=='Pending' || orderDetail.orderStatus=='Shipped') && orderDetail.paymentMethod!='Payment Pending'}" th:href="@{/cancelOrder(orderId=${orderDetail.id})}"
-                                               onclick="if (!confirm('Are you sure want to Cancel This item'))return false">Cancel</a>
+                                            <a href="#orders" class="btn-danger" th:if="${(orderDetail.orderStatus=='Pending' || orderDetail.orderStatus=='Shipped') && orderDetail.paymentMethod!='Payment Pending'}"
+                                               th:onclick="|showSweetAlert('${orderDetail.id}', 'cancel'); return false;|">Cancel</a>
                                             <a href="#orders" class="btn-success" th:if="${orderDetail.orderStatus=='Cancel'}">Cancelled</a>
-                                            <a class="btn-danger"  th:if="${orderDetail.orderStatus=='Delivered'}" th:href="@{/returnOrder(orderId=${orderDetail.id})}"
-                                               onclick="if (!confirm('Are you sure want to Return This item'))return false">
+                                            <a class="btn-danger"  th:if="${orderDetail.orderStatus=='Delivered'}"
+                                               th:onclick="|showSweetAlert('${orderDetail.id}', 'return'); return false;|">
                                                 Return</a>
                                             <a class="btn-brand text-white" th:if="${orderDetail.orderStatus=='Delivered'}" > Add Review</a>
                                             <a class="btn-brand text-white" th:if="${orderDetail.orderStatus=='Return Pending'}">Returned</a>
@@ -72,6 +72,32 @@
 
                                     </tbody>
                                 </table>
+                                <!-- Modal -->
+                                <div class="modal fade" id="reasonModal" tabindex="-1" aria-labelledby="reasonModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="reasonModalLabel">Reason for Cancellation/Return</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="reasonForm">
+                                                    <div class="mb-3">
+                                                        <label for="reasonInput" class="form-label">Please provide a reason:</label>
+                                                        <textarea class="form-control" id="reasonInput" rows="3" required></textarea>
+                                                    </div>
+                                                    <input type="hidden" id="orderIdInput" name="orderId">
+                                                    <input type="hidden" id="actionType" name="actionType">
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" id="submitReason">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -86,7 +112,79 @@
 <div th:replace="~{fragments::pre-loader}"></div>
 <!-- Vendor JS-->
 <div th:replace="~{fragments::scripts}"></div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function showReasonModal(orderId, actionType) {
+        document.getElementById('orderIdInput').value = orderId;
+        document.getElementById('actionType').value = actionType;
+        var reasonModal = new bootstrap.Modal(document.getElementById('reasonModal'));
+        reasonModal.show();
+    }
 
-</div>
+    document.getElementById('submitReason').addEventListener('click', function() {
+        var reason = document.getElementById('reasonInput').value;
+        var orderId = document.getElementById('orderIdInput').value;
+        var actionType = document.getElementById('actionType').value;
+
+        if (reason.trim() !== '') {
+            const url = actionType === 'cancel' ? '/shop/cancelOrder':'/shop/returnOrder';
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {
+                    orderId: orderId,
+                    reason: reason
+                },
+                success: function(response) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            title: 'Thank you!',
+                            text: 'Thank you for your feedback!',
+                            icon: 'success',
+                            timer: 1000,
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        }).then((result) => {
+                            location.reload();
+                        });
+                    }, 500);
+                },
+                error: function(error) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+
+            // Hide the modal
+            var reasonModal = bootstrap.Modal.getInstance(document.getElementById('reasonModal'));
+            reasonModal.hide();
+        } else {
+            alert('Please provide a reason.');
+        }
+    });
+
+    function showSweetAlert(orderId, actionType) {
+        let confirmMessage = actionType === 'cancel' ?
+            "Are you sure you want to cancel this order?" :
+            "Are you sure you want to return this order?";
+        Swal.fire({
+            title: confirmMessage,
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, proceed!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                showReasonModal(orderId, actionType)
+                console.log("User clicked Yes");
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                console.log("User clicked Cancel");
+            }
+        });
+    }
+
+</script>
+
 </body>
 </html>

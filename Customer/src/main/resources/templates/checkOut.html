@@ -71,6 +71,34 @@
                             </table>
                         </div>
                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+<!--                        <div class="mb-30 mt-50">-->
+<!--                            <div class="heading_s1 mb-3">-->
+<!--                                <h4>Apply Coupon</h4>-->
+<!--                            </div>-->
+<!--                            <div class="total-amount">-->
+<!--                                <div class="left">-->
+<!--                                    <div class="coupon">-->
+<!--                                        <form th:action="@{/applyCoupon}" th:object="${coupon}" id="couponForm" method="POST" onsubmit="applyCoupon(event)">-->
+<!--                                            <div class="form-row row justify-content-center">-->
+<!--                                                <div class="form-group col-lg-6">-->
+<!--                                                    <input class="font-medium" th:field="*{couponCode}" id="couponCode" name="couponCode" placeholder="Enter Your Coupon">-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group col-lg-6">-->
+<!--                                                    <button id="applyCouponBtn" class="btn btn-sm" type="submit"><i class="fi-rs-label mr-10"></i>Apply</button>-->
+<!--                                                    <button id="removeCouponBtn" class="btn btn-sm d-none" type="button" onclick="removeCoupon()"><i class="fi-rs-label mr-10"></i>Remove</button>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </form>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div id="error" class="d-none">-->
+<!--                                <p class = "alert alert-danger" id="errorMessage"></p>-->
+<!--                            </div>-->
+<!--                            <div th:if="${param.expired}">-->
+<!--                                <div class="alert alert-danger"> Coupon Expired</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="mb-30 mt-50">
                             <div class="heading_s1 mb-3">
                                 <h4>Apply Coupon</h4>
@@ -86,6 +114,7 @@
                                                 <div class="form-group col-lg-6">
                                                     <button id="applyCouponBtn" class="btn btn-sm" type="submit"><i class="fi-rs-label mr-10"></i>Apply</button>
                                                     <button id="removeCouponBtn" class="btn btn-sm d-none" type="button" onclick="removeCoupon()"><i class="fi-rs-label mr-10"></i>Remove</button>
+                                                    <button id="viewCouponsBtn" class="btn btn-sm" type="button" data-toggle="modal" data-target="#couponModal"><i class="fi-rs-label mr-10"></i>View Coupons</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -93,12 +122,31 @@
                                 </div>
                             </div>
                             <div id="error" class="d-none">
-                                <p class = "alert alert-danger" id="errorMessage"></p>
+                                <p class="alert alert-danger" id="errorMessage"></p>
                             </div>
                             <div th:if="${param.expired}">
-                                <div class="alert alert-danger"> Coupon Expired</div>
+                                <div class="alert alert-danger">Coupon Expired</div>
                             </div>
                         </div>
+
+                        <!-- Coupon Modal -->
+                        <div class="modal fade" id="couponModal" tabindex="-1" role="dialog" aria-labelledby="couponModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="couponModalLabel">Available Coupons</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="couponList">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <!--Address Details  -->
@@ -177,7 +225,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
-    function placeOrder(){
+    function placeOrder() {
         const checkedAddress = $('.selectCheckBox:checked').val();
         const paymentMethod = $('.payment_option:checked').val();
         const amount1Text = $('.payment_field').text();
@@ -189,35 +237,35 @@
         const deduction1 = isNaN(couponDiscount) ? 0 : couponDiscount;
         const orderId = $('#orderId').val();
 
-        console.log("amount1"+amount1)
-        console.log("paymentMethod"+paymentMethod)
-        console.log("deduction1"+deduction1)
-        console.log("total"+total1)
+        console.log("amount1" + amount1)
+        console.log("paymentMethod" + paymentMethod)
+        console.log("deduction1" + deduction1)
+        console.log("total" + total1)
         console.log("orderId: " + orderId);
 
 
-        if(paymentMethod    === undefined ){
+        if (paymentMethod === undefined) {
             alert("Please choose a payment Method!!")
         }
 
-        if(checkedAddress    === undefined ){
+        if (checkedAddress === undefined) {
             alert("Please choose a shipping address!!")
-        }else{
-            paymentStart(checkedAddress,paymentMethod,amount1,deduction1,total1,orderId);
+        } else {
+            paymentStart(checkedAddress, paymentMethod, amount1, deduction1, total1, orderId);
         }
     }
 
 
-    const paymentStart = (addressId, paymentMethod, amount, deduction,total,orderId) => {
-        console.log("addressId"+addressId);
-        console.log("paymentMethod"+paymentMethod);
-        console.log("amount"+amount);
-        console.log("deduction"+deduction);
+    const paymentStart = (addressId, paymentMethod, amount, deduction, total, orderId) => {
+        console.log("addressId" + addressId);
+        console.log("paymentMethod" + paymentMethod);
+        console.log("amount" + amount);
+        console.log("deduction" + deduction);
         console.log("orderId: " + orderId);
 
         $.ajax({
             url: '/shop/createPayment',
-            data: JSON.stringify({ addressId, paymentMethod, amount, deduction,total }),
+            data: JSON.stringify({addressId, paymentMethod, amount, deduction, total}),
             contentType: 'application/json',
             type: 'POST',
             dataType: 'json',
@@ -250,8 +298,8 @@
                                     paymentMethod: paymentMethod,
                                     amount: amount,
                                     deduction: deduction,
-                                    total:total,
-                                    id:orderId,
+                                    total: total,
+                                    id: orderId,
                                     razorpayPaymentId: razorpayResponse.razorpay_payment_id,
                                     razorpayOrderId: razorpayResponse.razorpay_order_id,
                                     razorpaySignature: razorpayResponse.razorpay_signature
@@ -259,11 +307,11 @@
                                 headers: {
                                     'X-CSRF-TOKEN': $('[name="_csrf"]').attr('content')
                                 },
-                                success: function(orderResponse) {
+                                success: function (orderResponse) {
                                     console.log("Order saved successfully:", orderResponse);
                                     location.href = '/shop/orderConfirm';
                                 },
-                                error: function(error) {
+                                error: function (error) {
                                     console.log("Error saving order:", error);
                                     alert("Failed to save order. Please try again.");
                                 }
@@ -301,18 +349,18 @@
                                 paymentMethod: paymentMethod,
                                 amount: amount,
                                 deduction: deduction,
-                                total:total,
+                                total: total,
                                 razorpayOrderId: response.error.metadata.order_id
                             }),
                             headers: {
                                 'X-CSRF-TOKEN': $('[name="_csrf"]').attr('content')
                             },
-                            success: function(pendingResponse) {
+                            success: function (pendingResponse) {
                                 console.log("Order marked as pending:", pendingResponse);
                                 alert("Payment failed. Your order has been marked as pending.");
                                 location.href = '/shop/orderDetails?pageNo=0';
                             },
-                            error: function(error) {
+                            error: function (error) {
                                 console.log("Error marking order as pending:", error);
                                 alert("Failed to mark order as pending. Please try again.");
                             }
@@ -320,7 +368,7 @@
                     });
                 } else if (response.status === "cash") {
                     location.href = '/shop/orderConfirm';
-                }else if(response.status === "noCash"){
+                } else if (response.status === "noCash") {
                     alert("Sorry You can't choose cash on delivery because of your total amount is greater than 1000")
                 } else if (response.status === "noWallet") {
                     alert("sorry! your wallet don't have enough balance to make this order");
@@ -337,49 +385,48 @@
 
 
     function applyCoupon(event) {
-            event.preventDefault(); // Prevent the default form submission behavior
+        event.preventDefault(); // Prevent the default form submission behavior
 
-            var couponCode = document.getElementById("couponCode").value;
-            var formData = new FormData();
-            formData.append("couponCode", couponCode);
+        var couponCode = document.getElementById("couponCode").value;
+        var formData = new FormData();
+        formData.append("couponCode", couponCode);
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/shop/applyCoupon", true);
-            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        var payable = xhr.getResponseHeader("payable");
-                        if (payable !== null) {
-                            document.getElementById("applyCouponBtn").classList.add("d-none");
-                            document.getElementById("removeCouponBtn").classList.remove("d-none");
-                            document.getElementById("error").classList.add("d-none")    
-                            updateTotalPrice(xhr.getResponseHeader("payable"));
-                            // document.getElementById("couponRow").classList.remove("d-none");
-                            var couponRow = document.getElementById("couponRow");
-                            couponRow.classList.remove("d-none");
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/shop/applyCoupon", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var payable = xhr.getResponseHeader("payable");
+                    if (payable !== null) {
+                        document.getElementById("applyCouponBtn").classList.add("d-none");
+                        document.getElementById("removeCouponBtn").classList.remove("d-none");
+                        document.getElementById("error").classList.add("d-none")
+                        updateTotalPrice(xhr.getResponseHeader("payable"));
+                        // document.getElementById("couponRow").classList.remove("d-none");
+                        var couponRow = document.getElementById("couponRow");
+                        couponRow.classList.remove("d-none");
 
-                            var offer = xhr.getResponseHeader("offer");
-                            if (offer !== null) {
-                                couponRow.querySelector("td").textContent = offer;
-                            }else{
-                                alert("error")
-                            }
-                        }
-                        else {
-                            var error = document.getElementById("error");
-                            error.classList.remove("d-none");
-                            var errorMessage = xhr.getResponseHeader("errorMessage");
-                            error.querySelector("p").textContent = errorMessage;
-
+                        var offer = xhr.getResponseHeader("offer");
+                        if (offer !== null) {
+                            couponRow.querySelector("td").textContent = offer;
+                        } else {
+                            alert("error")
                         }
                     } else {
-                        alert("Failed to apply coupon. Please try again.");
+                        var error = document.getElementById("error");
+                        error.classList.remove("d-none");
+                        var errorMessage = xhr.getResponseHeader("errorMessage");
+                        error.querySelector("p").textContent = errorMessage;
+
                     }
+                } else {
+                    alert("Failed to apply coupon. Please try again.");
                 }
-            };
-            xhr.send(formData);
-        }
+            }
+        };
+        xhr.send(formData);
+    }
 
     function removeCoupon() {
         var couponCode = document.getElementById("couponCode").value;
@@ -398,8 +445,8 @@
                         document.getElementById("removeCouponBtn").classList.add("d-none");
                         updateTotalPrice(xhr.getResponseHeader("payable"));
                         document.getElementById("couponRow").classList.add("d-none");
-                        document.getElementById("couponCode").value="";
-                    }   else {
+                        document.getElementById("couponCode").value = "";
+                    } else {
                         alert("Failed to remove coupon. Please try again.");
                     }
                 } else {
@@ -413,6 +460,37 @@
     function updateTotalPrice(newTotalPrice) {
         document.getElementById("totalPrice").innerText = newTotalPrice;
     }
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('viewCouponsBtn').addEventListener('click', function () {
+            fetch('/shop/enabled')
+                .then(response => response.json())
+                .then(data => {
+                    let couponList = document.getElementById('couponList');
+                    couponList.innerHTML = '';
+                    data.forEach(coupon => {
+                        let couponItem = document.createElement('div');
+                        couponItem.className = 'coupon-item';
+                        couponItem.innerHTML = `
+              <p><strong>${coupon.couponCode}(Min :${coupon.minimumOrderAmount})</strong>: ${coupon.couponDescription}</p>
+              <button class="btn btn-sm btn-primary" onclick="selectCoupon('${coupon.couponCode}')">Select</button>
+            `;
+                        couponList.appendChild(couponItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching coupons:', error));
+        });
+    });
+
+        function selectCoupon(couponCode) {
+        document.getElementById('couponCode').value = couponCode;
+            var closeButton = document.querySelector('#couponModal .close');
+            closeButton.click();
+
+            console.log('Modal should be closed now.');
+        }
+
 
 </script>
 

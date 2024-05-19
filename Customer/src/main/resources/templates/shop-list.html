@@ -3,7 +3,7 @@
 
 <head th:replace="~{fragments::head_sec}">
 </head>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <body>
     <!-- Quick view -->
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
@@ -157,27 +157,22 @@
                     <div class="col-lg-9">
                         <div class="shop-product-fillter style-2">
                             <div class="totall-product">
-                                <p> We found <strong class="text-brand">688</strong> items for you!</p>
+                                <form class="search-form"th:action="@{/filterSearch}" method="GET" id="filterForm">
+                                    <div class="search-style-2 d-flex border border-radius">
+                                        <input type="text" name="key" class="border-0" placeholder="Search">
+                                        <button type="submit" class="p-0"><span class="material-symbols-outlined">search</span></button>
+                                    </div>
+                                </form>
                             </div>
                             <div class="sort-by-product-area">
-<!--                                <select id="basic" class="selectpicker show-tick form-control"-->
-<!--                                        data-placeholder="$ USD" onchange="location = this.value;">-->
-<!--                                    <option>Featured</option>-->
-<!--                                    <option value="http://localhost:8020/shop/high-price">High Price → Low Price-->
-<!--                                    </option>-->
-<!--                                    <option value="http://localhost:8020/shop/lower-price">Low Price → High Price-->
-<!--                                    </option>-->
-<!--                                    <option>Release Date</option>-->
-<!--                                    <option>Avg. Rating</option>-->
-<!--                                </select>-->
                                 <select id="basic" class="form-select show-tick form-control" data-placeholder="$ USD" onchange="location = this.value;">
                                     <option selected class="active"  value="null">Filter</option>
                                     <option value="http://localhost:8020/shop/random">Featured</option>
                                     <option value="http://localhost:8020/shop/high-price"> High Price → Low Price</option>
                                     <option value="http://localhost:8020/shop/lower-price">Low Price → High Price</option>
-                                    <option value="http://localhost:8020/shop/descending-id">New arrivals</option>
+                                    <option value="http://localhost:8020/shop/newArrival">New arrivals</option>
                                     <option value="http://localhost:8020/shop/random">Avg. Rating</option>
-                                    <option value="http://localhost:8020/shop/random">Popularity</option>
+                                    <option value="http://localhost:8020/shop/popular">Popularity</option>
                                     <option value="http://localhost:8020/shop/ascending-name">aA - zZ</option>
                                     <option value="http://localhost:8020/shop/descending-name">zZ - aA</option>
                                 </select>
@@ -260,27 +255,6 @@
                                 <li><a th:href="'/shop/searchCategoryHome?name=' + ${category.name}" th:text="${category.name}"></a></li>
                             </ul>
                         </div>
-                        <!-- Product sidebar Widget -->
-                        <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">New products</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="single-post clearfix" th:each="product, iterStat : ${products}" th:if="${iterStat.index &lt;= 2}">
-                                <a th:href="@{/find-products/{id} (id = ${product.id})}">
-                                    <div class="image">
-                                        <img th:src="@{|/imgs/items/${product.image[0].getName()}|}" alt="img1">
-                                    </div>
-                                </a>
-                                <div class="content pt-10">
-                                    <h5><a th:href="@{/find-products/{id} (id = ${product.id})}" th:text="${product.name}"></a></h5>
-                                    <p class="price mb-0 mt-5" th:text="${product.salePrice}"></p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
                             <img src="/shop/imgs/banner/banner-11.jpg" alt="">
                             <div class="banner-text text-white">
@@ -298,6 +272,9 @@
 
     <!-- Vendor JS-->
     <div th:replace="~{fragments::scripts}"></div>
+<script>
+
+</script>
 </body>
 
 </html>

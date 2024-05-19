@@ -118,7 +118,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             Long customerId = customer.getCustomer_id();
             double grandTotal = shopingCartRepository.findGrandTotal(customerId);
             double shippingFee=shippingFee(username);
-            return grandTotal+shippingFee;
+            double finalGrand=Math.round((grandTotal+shippingFee)* 100.0) / 100.0;
+            return finalGrand;
         }
 
         return 0.0;

@@ -21,4 +21,5 @@ public interface CouponService {
 
     void updateCoupon(CouponDto couponDto);
 
+    List<Coupon> getEnabledCoupons();
 }

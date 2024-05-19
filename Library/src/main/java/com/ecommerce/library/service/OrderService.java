@@ -31,9 +31,9 @@ public interface OrderService {
 
     List<Order> findAll();
 
-    void cancelOrder(Long id);
+    void cancelOrder(Long id,String reason);
 
-    void returnOrder(Long id);
+    void returnOrder(Long id,String reason);
     List<Order> findOrderByCustomer(String email);
 
     public List<Order> getDailyOrders(LocalDate date);
@@ -65,4 +65,6 @@ public interface OrderService {
     List<YearlyEarning> getYearlyReport(int year);
 
     List<CustomEarning> getCustomReport(Date startDate, Date endDate,Date parsedEndDate);
+
+    void setReason(Long orderId, String reason);
 }

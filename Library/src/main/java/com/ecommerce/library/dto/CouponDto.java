@@ -1,9 +1,6 @@
 package com.ecommerce.library.dto;
 
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,13 +22,14 @@ public class CouponDto {
     @NotBlank(message = "Description is Required")
     private String couponDescription;
 
-    @NotBlank(message = "Percentage amount is Required")
-    private String offerPercentage;
+    @Max(value = 80,message = "percentage should less than 80%")
+    @Min(value = 1,message = "atleast 1% needed")
+    private double offerPercentage;
 
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate expireDate;
 
     @NotNull(message = "Minimum order amount is required")

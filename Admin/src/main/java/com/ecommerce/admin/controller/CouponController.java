@@ -29,7 +29,6 @@ public class CouponController {
     public String showcoupon(Model model){
 
         List<Coupon> coupons=couponService.findAll();
-
         model.addAttribute("coupons",coupons);
         return "coupon";
     }

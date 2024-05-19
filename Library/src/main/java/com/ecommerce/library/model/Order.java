@@ -19,7 +19,7 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
     private Date orderDate;
-    private Date deliveryDate;
+    private String reason;
     private String orderStatus;
     private double grandTotalPrize;
     private double deduction;

@@ -13,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -86,7 +87,7 @@ public class CoupenController {
                     .header("errorMessage", String.valueOf(errorMessage))
                     .body(updatedHtmlContent);
         }
-        double offerPercentage= Double.parseDouble(coupon.getOfferPercentage());
+        double offerPercentage=coupon.getOfferPercentage();
         double offer=Double.parseDouble(String.format("%.2f", ( (grandTotel * offerPercentage) / 100)));
         if(offer<coupon.getMaximumOfferAmount()) {
            payableAmount = Double.parseDouble(String.format("%.2f", (grandTotel - offer)));
@@ -132,5 +133,11 @@ public class CoupenController {
         return ResponseEntity.ok()
                 .header("payable", String.valueOf(grandTotal))
                 .body(updatedHtmlContent);
+    }
+
+    @GetMapping("/enabled")
+    public ResponseEntity<List<Coupon>> getEnabledCoupons() {
+        List<Coupon> enabledCoupons = couponService.getEnabledCoupons();
+        return ResponseEntity.ok(enabledCoupons);
     }
 }

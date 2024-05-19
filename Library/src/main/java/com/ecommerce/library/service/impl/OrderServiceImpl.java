@@ -4,6 +4,7 @@ import com.ecommerce.library.dto.CustomEarning;
 import com.ecommerce.library.dto.DailyEarning;
 import com.ecommerce.library.dto.WeeklyEarnings;
 import com.ecommerce.library.dto.YearlyEarning;
+import com.ecommerce.library.exception.OrderNotFoundException;
 import com.ecommerce.library.model.*;
 import com.ecommerce.library.repository.*;
 import com.ecommerce.library.service.OrderService;
@@ -147,10 +148,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void cancelOrder(Long id) {
+    public void cancelOrder(Long id,String reason) {
 
         Order order = orderRepository.getReferenceById(id);
         order.setOrderStatus("Cancel");
+        order.setReason(reason);
 
         orderRepository.save(order);
         List<OrderDetails> orderDetails=orderDetailsRepository.findByOrderId(id);
@@ -163,9 +165,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void returnOrder(Long id) {
+    public void returnOrder(Long id,String reason) {
         Order order = orderRepository.getReferenceById(id);
         order.setOrderStatus("Return Pending");
+        order.setReason(reason);
         orderRepository.save(order);
     }
 
@@ -322,6 +325,16 @@ public class OrderServiceImpl implements OrderService {
         }
         return report;
     }
+
+
+    @Override
+    public void setReason(Long orderId, String reason) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new OrderNotFoundException(orderId));
+        order.setReason(reason);
+        orderRepository.save(order);
+    }
+
 }
 
 

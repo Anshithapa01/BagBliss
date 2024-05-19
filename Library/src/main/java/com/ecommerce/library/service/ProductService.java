@@ -68,7 +68,9 @@ public interface ProductService {
 
     Page<ProductDto> filterByIdDescending(int pageNo, int pageSize);
 
-    Page<ProductDto> filterByRandom(int pageNo, int pageSize);
+    List<Product> filterByRandom();
+
+    List<Product> filterByPopularity();
 
     List<ProductDto> listViewProducts();
 
@@ -85,4 +87,11 @@ public interface ProductService {
     List<Product> findAllByCategoryName(String name);
 
 
+    List<Product> filterByIdDescendingWithKeyword(String keyword);
+
+    List<Product> randomProductWithKeyword(String keyword);
+
+    List<Product> findTopSellingProductsWithKeyword(String keyword);
+
+    List<Product> findProductsByCategoryNameAndKeyword(String categoryName, String keyword);
 }

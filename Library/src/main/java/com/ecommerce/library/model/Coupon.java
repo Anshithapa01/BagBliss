@@ -22,7 +22,7 @@ public class Coupon {
 
     private String couponCode;
     private String couponDescription;
-    private String offerPercentage;
+    private double offerPercentage;
     @DateTimeFormat(pattern = "yyyy/mm/dd")
     private LocalDate startDate;
     @DateTimeFormat(pattern = "yyyy/mm/dd")
