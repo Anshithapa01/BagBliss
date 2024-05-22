@@ -83,10 +83,10 @@ public class PdfController {
             calendar.setTime(date);
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH) + 1;
-            List<DailyEarning> list=orderService.dailyReport(year,month);
+            List<DailyEarning> orders=orderService.getCurrentDayOrders();
             PdfGenerator pdfGenerator=new PdfGenerator();
-            pdfGenerator.setOrders(list);
-            pdfGenerator.generate(response);
+            pdfGenerator.setOrders(orders);
+            pdfGenerator.generateDailyOrderPdf(orders,response);
 
         }
         if(value.equals("weekly")){
@@ -101,10 +101,11 @@ public class PdfController {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             int year = calendar.get(Calendar.YEAR);
-            List<WeeklyEarnings> list=orderService.findWeeklyEarnings(year);
+
             WeeklyPdfGenerator pdfGenerator=new WeeklyPdfGenerator();
-            pdfGenerator.setOrders(list);
-            pdfGenerator.generate(response);
+
+            List<WeeklyEarnings> orders = orderService.getLastWeekOrders();
+            pdfGenerator.generate(orders,response);
         }
         if(value.equals("yearly")){
             response.setContentType("application/pdf");
@@ -118,10 +119,9 @@ public class PdfController {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             int year = calendar.get(Calendar.YEAR);
-            List<YearlyEarning> yearlyEarnings = orderService.getYearlyReport(year);
+            List<YearlyEarning> yearlyEarnings = orderService.getYearlyOrders();
             YearlyReportPdf yearlyReportPdf = new YearlyReportPdf();
-            yearlyReportPdf.setYearlyEarnings(yearlyEarnings);
-            yearlyReportPdf.generate(response);
+            yearlyReportPdf.generate(yearlyEarnings,response);
         }
         if(value.equals("custom")){
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -143,10 +143,9 @@ public class PdfController {
                 calendar.set(Calendar.SECOND, 0);
                 Date endOfDayEndDate = calendar.getTime();
 
-                List<CustomEarning> customEarnings = orderService.getCustomReport(parsedStartDate, endOfDayEndDate,parsedEndDate);
+                List<CustomEarning> customEarnings = orderService.getOrdersWithinDateRange(parsedStartDate, endOfDayEndDate);
                 CustomReportPdf customReportPdf = new CustomReportPdf();
-                customReportPdf.setCustomEarnings(customEarnings);
-                customReportPdf.generate(response);
+                customReportPdf.generate(customEarnings,response);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -162,7 +161,7 @@ public class PdfController {
         System.out.println("Start ="+startDate);
         System.out.println("End ="+endDate);
         if(value.equals("daily")){
-            List<DailyEarning> dailyEarnings = orderService.dailyReport(2024,5);
+            List<DailyEarning> dailyEarnings = orderService.getCurrentDayOrders();
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
@@ -173,7 +172,7 @@ public class PdfController {
             return new ResponseEntity<>(csvBytes, headers, HttpStatus.OK);
         }
         else if(value.equals(("yearly"))){
-            List<YearlyEarning> monthlyearnings=orderService.getYearlyReport(2024);
+            List<YearlyEarning> monthlyearnings=orderService.getYearlyOrders();
             HttpHeaders headers=new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             headers.setContentDispositionFormData("attachment","monthlyReport.csv");
@@ -181,14 +180,15 @@ public class PdfController {
             return new ResponseEntity<>(csvBytes,headers,HttpStatus.OK);
         }
         else if(value.equals("weekly")){
-            List<WeeklyEarnings> weeklyEarnings=orderService.findWeeklyEarnings(2024);
+            List<WeeklyEarnings> weeklyEarnings=orderService.getLastWeekOrders();
             HttpHeaders headers=new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             headers.setContentDispositionFormData("attachment","weeklyReport.csv");
             byte[] csvBytes=csvGeneratorWeekly.generateCsv(weeklyEarnings).getBytes();
             return new ResponseEntity<>(csvBytes,headers,HttpStatus.OK);
 
-        }else{
+        }
+        else{
             try {
                 Date parsedStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
                 Date parsedEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
@@ -203,7 +203,7 @@ public class PdfController {
                 calendar.set(Calendar.MINUTE, 0);
                 calendar.set(Calendar.SECOND, 0);
                 Date endOfDayEndDate = calendar.getTime();
-                List<CustomEarning> customEarnings=orderService.getCustomReport(parsedStartDate, endOfDayEndDate, parsedEndDate);
+                List<CustomEarning> customEarnings=orderService.getOrdersWithinDateRange(parsedStartDate, endOfDayEndDate);
                 HttpHeaders headers=new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
                 headers.setContentDispositionFormData("attachment","weeklyReport.csv");

@@ -59,12 +59,25 @@ public interface OrderService {
 
     boolean hasOrdersForAddress(Long addressId);
 
-    List<DailyEarning> dailyReport(int year, int month);
-    List<WeeklyEarnings> findWeeklyEarnings(int year);
+//    List<DailyEarning> dailyReport(int year, int month);
 
-    List<YearlyEarning> getYearlyReport(int year);
 
-    List<CustomEarning> getCustomReport(Date startDate, Date endDate,Date parsedEndDate);
+    List<DailyEarning> getCurrentDayOrders();
+
+//    List<WeeklyEarnings> findWeeklyEarnings(int year);
+
+    List<WeeklyEarnings> getLastWeekOrders();
+
+//    List<YearlyEarning> getYearlyReport(int year);
+
+//    List<CustomEarning> getCustomReport(Date startDate, Date endDate,Date parsedEndDate);
+
+
+    List<YearlyEarning> getYearlyOrders();
+
+    List<CustomEarning> getOrdersWithinDateRange(Date startDate, Date endDate);
+
+    CustomEarning mapToDTO(Object[] result);
 
     void setReason(Long orderId, String reason);
 }

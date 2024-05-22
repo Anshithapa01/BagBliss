@@ -100,7 +100,7 @@ public class DashBoardControll {
             Date date = (Date) obj[0];
             Double amount = (Double) obj[1];
 
-            DailyEarning dailyEarnings1 = new DailyEarning(date,amount,1l,1.0,1l,1);
+            DailyReport dailyEarnings1 = new DailyReport(date,amount,1l);
             String input=dailyEarnings1.toString();
             String datePart = input.substring(input.indexOf("date=")+"date=".length(),input.indexOf(" "));
             DailyEarningMapping dailyEarningsMapping=new DailyEarningMapping(datePart,amount);
@@ -152,6 +152,7 @@ public class DashBoardControll {
         List<TotelPriceByPayment> totalPriceByPaymentList=new ArrayList<>();
         for(Object[] obj: priceByPayMethod){
             String payMethod= (String) obj[0];
+            System.out.println("payMethod"+payMethod);
             Double amount= (Double) obj[1];
             TotelPriceByPayment totalPriceByPayment=new TotelPriceByPayment(payMethod,amount);
             totalPriceByPaymentList.add(totalPriceByPayment);

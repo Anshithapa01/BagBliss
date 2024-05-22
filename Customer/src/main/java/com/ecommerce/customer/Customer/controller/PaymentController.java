@@ -133,6 +133,7 @@ public class PaymentController {
                 return option.toString();
             } else {
                 ShoppingCart shoppingCart = new ShoppingCart();
+                System.out.println(paymentMethod);
                 orderService.saveOrder(shoppingCart, username, address_id, paymentMethod, amount, deduction,total);
                 walletService.setWalletAmount(username, amount);
                 JSONObject option = new JSONObject();

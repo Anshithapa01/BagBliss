@@ -95,23 +95,23 @@ public class OrderController {
         return "order-details";
     }
 
-    @GetMapping("/orderListPdf1")
-    public void generatePdf(HttpServletResponse response, Principal principal) throws DocumentException, IOException {
-
-        String email=principal.getName();
-        response.setContentType("application/pdf");
-        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
-        String currentDateTime = dateFormat.format(new Date());
-        String headerkey = "Content-Disposition";
-        String headervalue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
-        response.setHeader(headerkey, headervalue);
-
+//    @GetMapping("/orderListPdf1")
+//    public void generatePdf(HttpServletResponse response, Principal principal) throws DocumentException, IOException {
+//
+//        String email=principal.getName();
+//        response.setContentType("application/pdf");
+//        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
+//        String currentDateTime = dateFormat.format(new Date());
+//        String headerkey = "Content-Disposition";
+//        String headervalue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
+//        response.setHeader(headerkey, headervalue);
+//
 //        Page<Order> list=orderService.findOrderByCustomerPagable(email);
-
-        PdfGenerator pdfGenerator=new PdfGenerator();
-       // pdfGenerator.setOrders(list);
-        pdfGenerator.generate(response);
-    }
+//
+//        PdfGenerator pdfGenerator=new PdfGenerator();
+//        pdfGenerator.setOrders(list);
+//        pdfGenerator.generate(response);
+//    }
 
 
 

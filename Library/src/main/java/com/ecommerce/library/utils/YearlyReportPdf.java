@@ -12,63 +12,98 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class YearlyReportPdf {
-    private List<YearlyEarning> yearlyEarnings;
-
-    public void generate(HttpServletResponse response) throws DocumentException, IOException {
-
-        Document document = new Document(PageSize.A4);
+    public void generate(List<YearlyEarning> orders, HttpServletResponse response)
+            throws DocumentException, IOException {
+        Document document = new Document();
         PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
-        Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
-        fontTitle.setSize(20);
-        Paragraph paragraph = new Paragraph("Yearly Earnings Report", fontTitle);
-        paragraph.setAlignment(Paragraph.ALIGN_CENTER);
-        document.add(paragraph);
-        PdfPTable table = new PdfPTable(6);
-        table.setWidthPercentage(100f);
-        table.setWidths(new int[]{2, 2, 2, 2, 2, 2});
-        table.setSpacingBefore(10);
 
-        PdfPCell cell = new PdfPCell();
-        cell.setBackgroundColor(CMYKColor.MAGENTA);
-        cell.setPadding(5);
+        Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+        Paragraph titleParagraph = new Paragraph("Yearly Sales Report", fontTitle);
+        titleParagraph.setAlignment(Paragraph.ALIGN_CENTER);
+        document.add(titleParagraph);
 
-        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
-        font.setColor(CMYKColor.WHITE);
+        document.add(new Paragraph(" "));
 
-        cell.setPhrase(new Phrase("Year", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Total Earnings", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Total Orders", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Discount", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Delivered Orders", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Cancelled Orders", font));
-        table.addCell(cell);
+        PdfPTable table = new PdfPTable(4);
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
+        table.addCell("Category");
+        table.addCell("Product");
+        table.addCell("Ordered Quantity");
+        table.addCell("Ordered Total Price");
 
-        for (YearlyEarning yearlyEarning : yearlyEarnings) {
-            table.addCell(dateFormat.format(yearlyEarning.getYear()));
-            table.addCell(String.valueOf(yearlyEarning.getTotalEarnings()));
-            table.addCell(String.valueOf(yearlyEarning.getTotalOrders()));
-            table.addCell(String.valueOf(yearlyEarning.getCouponDeduction()));
-            table.addCell(String.valueOf(yearlyEarning.getDelivered_orders()));
-            table.addCell(String.valueOf(yearlyEarning.getCancelled_orders()));
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        String prevCategory = "";
+        Double categoryTotal = 0.0;
+        Double grandTotal = 0.0;
+        int categoryStartIndex = -1;
+
+        for (int i = 0; i < orders.size(); i++) {
+            YearlyEarning order = orders.get(i);
+            String currentCategory = order.getCategoryName();
+
+            if (!currentCategory.equals(prevCategory)) {
+                if (categoryStartIndex != -1) {
+                    PdfPCell categoryTotalCell = new PdfPCell(new Phrase("Category Total"));
+                    categoryTotalCell.setColspan(3);
+                    table.addCell(categoryTotalCell);
+                    table.addCell(df.format(categoryTotal));
+                    categoryTotal = 0.0;
+                }
+
+                PdfPCell categoryCell = new PdfPCell(new Phrase(order.getCategoryName()));
+                categoryStartIndex = i;
+                int rowSpan = getRowSpanForCategory(orders, currentCategory);
+                categoryCell.setRowspan(rowSpan);
+                table.addCell(categoryCell);
+
+                prevCategory = currentCategory;
+            }
+
+            table.addCell(order.getProductName());
+            table.addCell(order.getOrderedQuantity().toString());
+            table.addCell(df.format(order.getOrderedTotalPrice()));
+
+            categoryTotal += order.getOrderedTotalPrice();
+            grandTotal += order.getOrderedTotalPrice();
         }
+
+        if (categoryStartIndex != -1) {
+            PdfPCell categoryTotalCell = new PdfPCell(new Phrase("Category Total"));
+            categoryTotalCell.setColspan(3);
+            table.addCell(categoryTotalCell);
+            table.addCell(df.format(categoryTotal));
+        }
+
+        PdfPCell grandTotalCell = new PdfPCell(new Phrase("Grand Total"));
+        grandTotalCell.setColspan(3);
+        table.addCell(grandTotalCell);
+        table.addCell(df.format(grandTotal));
 
         document.add(table);
         document.close();
+    }
+
+    // Helper method to calculate rowspan for a specific category
+    private int getRowSpanForCategory(List<YearlyEarning> orders, String category) {
+        int rowSpan = 0;
+        for (YearlyEarning order : orders) {
+            if (order.getCategoryName().equals(category)) {
+                rowSpan++;
+            }
+        }
+        return rowSpan;
     }
 }

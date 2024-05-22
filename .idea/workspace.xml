@@ -4,37 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="invoice,dashboard admin">
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/exception/OrderNotFoundException.java" afterDir="false" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="modified search">
+      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/DailyReport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CouponController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/CouponController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/orderDetail-info.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/orderDetail-info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/CoupenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/CoupenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/FilterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/FilterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/DashBoardControll.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/DashBoardControll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/PdfController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/java/com/ecommerce/admin/controller/PdfController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ShoppingCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/StatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/StatusController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/checkOut.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/checkOut.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/search_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/search_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CouponDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CouponDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/OfferDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/OfferDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Coupon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CouponRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/CouponRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CouponService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CouponService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/wish-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/wish-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CustomEarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/CustomEarning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/DailyEarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/DailyEarning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/WeeklyEarnings.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/WeeklyEarnings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/YearlyEarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/dto/YearlyEarning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/repository/OrderRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CouponServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CouponServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ShoppingCartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ShoppingCartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorDaily.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorDaily.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorWeekly.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorWeekly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorYearly.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CsvGeneratorYearly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CustomReportPdf.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/CustomReportPdf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/PdfGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/PdfGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/WeeklyPdfGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/WeeklyPdfGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/YearlyReportPdf.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/utils/YearlyReportPdf.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +205,11 @@
       <workItem from="1715836418824" duration="29178000" />
       <workItem from="1715919550236" duration="59931000" />
       <workItem from="1716094253536" duration="15646000" />
-      <workItem from="1716133121509" duration="635000" />
+      <workItem from="1716133121509" duration="5055000" />
+      <workItem from="1716184199044" duration="14241000" />
+      <workItem from="1716265339279" duration="26322000" />
+      <workItem from="1716316263290" duration="674000" />
+      <workItem from="1716351870974" duration="3791000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -335,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715968682123</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="modified search">
+      <option name="closed" value="true" />
+      <created>1716135001784</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716135001784</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +371,7 @@
     <MESSAGE value="Earning report" />
     <MESSAGE value="Wishlist, coupon" />
     <MESSAGE value="invoice,dashboard admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="invoice,dashboard admin" />
+    <MESSAGE value="modified search" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified search" />
   </component>
 </project>

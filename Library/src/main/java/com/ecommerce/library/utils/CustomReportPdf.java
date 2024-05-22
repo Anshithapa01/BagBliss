@@ -13,66 +13,149 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class CustomReportPdf {
-    private List<CustomEarning> customEarnings;
-
-    public void generate(HttpServletResponse response) throws DocumentException, IOException {
-
-        Document document = new Document(PageSize.A4);
+    public void generate(List<CustomEarning> orders, HttpServletResponse response) throws DocumentException, IOException {
+        Document document = new Document();
         PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
-        Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
-        fontTitle.setSize(20);
-        Paragraph paragraph = new Paragraph("Earnings Report for Custom Date", fontTitle);
-        paragraph.setAlignment(Paragraph.ALIGN_CENTER);
-        document.add(paragraph);
-        PdfPTable table = new PdfPTable(7);
-        table.setWidthPercentage(100f);
-        table.setWidths(new int[]{2, 2, 2,1 ,1, 2, 2});
-        table.setSpacingBefore(10);
 
-        PdfPCell cell = new PdfPCell();
-        cell.setBackgroundColor(CMYKColor.MAGENTA);
-        cell.setPadding(5);
+        // Title
+        Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+        Paragraph titleParagraph = new Paragraph("Sales Report", fontTitle);
+        titleParagraph.setAlignment(Paragraph.ALIGN_CENTER);
+        document.add(titleParagraph);
 
-        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
-        font.setColor(CMYKColor.WHITE);
+        // Add space
+        document.add(new Paragraph(" "));
 
-        cell.setPhrase(new Phrase("Start Date", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("End Date", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Total Earnings", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Total Orders", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Discount", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Delivered Orders", font));
-        table.addCell(cell);
-        cell.setPhrase(new Phrase("Cancelled Orders", font));
-        table.addCell(cell);
+        // Create table with 8 columns
+        PdfPTable table = new PdfPTable(8);
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // Add table headers
+        table.addCell("Date");
+        table.addCell("Order ID");
+        table.addCell("Product Name");
+        table.addCell("Quantity");
+        table.addCell("Total");
+        table.addCell("Deduction");
+        table.addCell("Shipping Fee");
+        table.addCell("Paid");
 
-        for (CustomEarning customEarning : customEarnings) {
-            table.addCell(dateFormat.format(customEarning.getStartDate()));
-            table.addCell(dateFormat.format(customEarning.getEndDate()));
-            table.addCell(String.valueOf(customEarning.getTotalEarnings()));
-            table.addCell(String.valueOf(customEarning.getTotalOrders()));
-            table.addCell(String.valueOf(customEarning.getCouponDeduction()));
-            table.addCell(String.valueOf(customEarning.getDelivered_orders()));
-            table.addCell(String.valueOf(customEarning.getCancelled_orders()));
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd (EEEE)");
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        String prevDate = "";
+        Long prevOrderId = null;
+        Double dailyTotal = 0.0;
+        Double weeklyGrandTotal = 0.0;
+
+        for (int i = 0; i < orders.size(); i++) {
+            CustomEarning order = orders.get(i);
+            String dateFormatted = dateFormat.format(order.getOrderDate());
+
+            // Check if date cell needs to be added
+            if (!dateFormatted.equals(prevDate)) {
+                // Add daily total row before adding a new date row
+                if (!prevDate.isEmpty() && dailyTotal != 0.0) {
+                    PdfPCell dailyTotalCell = new PdfPCell(new Phrase("Daily Total"));
+                    dailyTotalCell.setColspan(7);
+                    table.addCell(dailyTotalCell);
+                    table.addCell(df.format(dailyTotal));
+                    weeklyGrandTotal += dailyTotal;
+                    dailyTotal = 0.0;
+                }
+
+                PdfPCell dateCell = new PdfPCell(new Phrase(dateFormatted));
+                dateCell.setRowspan(getRowSpanForDate(orders, order.getOrderDate()));
+                table.addCell(dateCell);
+                prevDate = dateFormatted;
+            }
+
+            // Check if order ID cell needs to be added
+            if (!order.getOrderId().equals(prevOrderId)) {
+                PdfPCell orderIdCell = new PdfPCell(new Phrase(order.getOrderId().toString()));
+                orderIdCell.setRowspan(getRowSpanForOrderId(orders, order.getOrderId()));
+                table.addCell(orderIdCell);
+                prevOrderId = order.getOrderId();
+            }
+
+            // Add product details
+            table.addCell(order.getProductName());
+            table.addCell(order.getQuantity().toString());
+            table.addCell(order.getTotalPrice().toString());
+
+            // Add deduction, shipping fee, and paid for the first occurrence of each order ID
+            if (i == 0 || !order.getOrderId().equals(orders.get(i - 1).getOrderId())) {
+                table.addCell(df.format(order.getDeduction())); // Format deduction
+                table.addCell(df.format(order.getShippingFee())); // Format shipping fee
+                table.addCell(df.format(order.getTotalAmount())); // Format paid value
+                dailyTotal += order.getTotalAmount();
+            } else {
+                table.addCell("");
+                table.addCell("");
+                table.addCell("");
+            }
+
+            // Check if it's the last order or the date changes in the next iteration
+            if (i == orders.size() - 1 || !dateFormat.format(orders.get(i + 1).getOrderDate()).equals(dateFormatted)) {
+                PdfPCell dailyTotalCell = new PdfPCell(new Phrase("Daily Total"));
+                dailyTotalCell.setColspan(7);
+                table.addCell(dailyTotalCell);
+                table.addCell(df.format(dailyTotal));
+                weeklyGrandTotal += dailyTotal;
+                dailyTotal = 0.0;
+            }
         }
 
+        // Add a row for the weekly grand total
+        PdfPCell cell = new PdfPCell(new Phrase("Grand Total"));
+        cell.setColspan(7);
+        table.addCell(cell);
+        table.addCell(df.format(weeklyGrandTotal));
+
+        // Add table to the document
         document.add(table);
         document.close();
+    }
+
+    // Helper method to calculate rowspan for a specific date
+    private int getRowSpanForDate(List<CustomEarning> orders, Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String targetDate = dateFormat.format(date);
+        int rowSpan = 0;
+
+        for (CustomEarning order : orders) {
+            if (dateFormat.format(order.getOrderDate()).equals(targetDate)) {
+                rowSpan++;
+            }
+        }
+
+        return rowSpan;
+    }
+
+    // Helper method to calculate rowspan for a specific order ID
+    private int getRowSpanForOrderId(List<CustomEarning> orders, Long orderId) {
+        int rowSpan = 0;
+
+        for (CustomEarning order : orders) {
+            if (order.getOrderId().equals(orderId)) {
+                rowSpan++;
+            }
+        }
+
+        return rowSpan;
     }
 }

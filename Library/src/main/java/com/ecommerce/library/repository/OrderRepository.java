@@ -107,6 +107,50 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
             nativeQuery = true)
     List<Object[]> dailyReport(@Param("year") int year, @Param("month") int month);
 
+
+    @Query(value = "SELECT o.order_date, o.order_id, od.product_id, p.name, p.description, od.unit_price, od.quantity, " +
+            "od.total_price, o.deduction, o.shipping_fee, grand_total_prize " +
+            "FROM orders o " +
+            "JOIN order_details od ON o.order_id = od.order_id " +
+            "JOIN products p ON od.product_id = p.product_id " +
+            "WHERE o.order_date BETWEEN :startDate AND :endDate AND o.order_status='Delivered' " +
+            "ORDER BY o.order_date, o.order_id",
+            nativeQuery = true)
+    List<Object[]> findOrdersWithinDateRange(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+
+    @Query(value = "SELECT o.order_date, o.order_id, od.product_id, p.name, p.description, od.unit_price, od.quantity, " +
+            "od.total_price, o.deduction, o.shipping_fee, grand_total_prize " +
+            "FROM orders o " +
+            "JOIN order_details od ON o.order_id = od.order_id " +
+            "JOIN products p ON od.product_id = p.product_id " +
+            "WHERE o.order_date >= CURRENT_DATE - INTERVAL '7 days' AND o.order_status='Delivered'" +
+            "ORDER BY o.order_date, o.order_id ",
+            nativeQuery = true)
+    List<Object[]> lastWeekOrders();
+
+
+
+    @Query(value = "SELECT o.order_id, p.product_id, p.name, p.description, od.unit_price, od.quantity, od.total_price, o.deduction, o.shipping_fee, o.grand_total_prize " +
+            "FROM orders o " +
+            "JOIN order_details od ON o.order_id = od.order_id " +
+            "JOIN products p ON od.product_id = p.product_id " +
+            "WHERE DATE(o.order_date) = CURRENT_DATE AND o.order_status='Delivered'", nativeQuery = true)
+    List<Object[]> currentDayOrders();
+
+
+    @Query(value = "SELECT c.name, p.name, SUM(od.quantity) as ordered_qty, SUM(od.total_price) as ordered_total_price " +
+            "FROM orders o " +
+            "JOIN order_details od ON o.order_id = od.order_id " +
+            "JOIN products p ON od.product_id = p.product_id " +
+            "JOIN categories c ON p.category_id = c.category_id " +
+            "WHERE EXTRACT(YEAR FROM o.order_date) = :year AND o.order_status='Delivered' " +
+            "GROUP BY c.name, p.name " +
+            "ORDER BY c.name, p.name",
+            nativeQuery = true)
+    List<Object[]> findYearlyOrdersWithCategory(@Param("year") int year);
+
+
     @Query(value = "SELECT DATE_TRUNC('year', o.order_date) AS year, "
             + "SUM(SUM(CASE WHEN o.order_status = 'Delivered' THEN o.grand_total_prize ELSE 0 END)) OVER (PARTITION BY DATE_TRUNC('year', o.order_date)) AS earnings, "
             + "COUNT(o.order_id) AS totalOrders, "

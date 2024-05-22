@@ -45,7 +45,8 @@
                                     <span class="color3 font-weight-bold" th:text="${wishlists.product.currentQuantity}"></span>
                                 </td>
                                 <td class="text-right" data-title="Cart">
-                                    <a class="btn btn-sm" th:href="@{/addToCart(productId=${wishlists.product.id})}"><i class="fi-rs-shopping-bag mr-5"></i>Add to cart</a>
+                                    <a class="btn btn-sm" th:if="${wishlists.product.currentQuantity!=0}" th:href="@{/addToCart(productId=${wishlists.product.id})}"><i class="fi-rs-shopping-bag mr-5"></i>Add to cart</a>
+                                    <a class="btn btn-sm" th:if="${wishlists.product.currentQuantity==0}" onclick="if (!confirm('The product is currently un available. we will inform you when it restocks.Thank you'))return false "><i class="fi-rs-shopping-bag mr-5"></i>Add to cart</td>
                                 </td>
                                 <td class="action" data-title="Remove"><a th:href="@{/removeFromWishList(wishListId=${wishlists.id})}"
                                                                           onclick="if (!confirm('Are you sure want to delete this item wish List'))return false "><i class="fi-rs-trash"></i></a></td>

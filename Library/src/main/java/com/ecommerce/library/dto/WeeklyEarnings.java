@@ -1,5 +1,6 @@
 package com.ecommerce.library.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,22 +10,17 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class WeeklyEarnings {
-    private Date week;
-    private Double earnings;
-    private Long totalOrders;
+    private Date orderDate;
+    private Long orderId;
+    private Long productId;
+    private String productName;
+    private String description;
+    private Double unitPrice;
+    private Integer quantity;
+    private Double totalPrice;
     private Double deduction;
-    private Long deliveredOrders;
-    private Long cancelledOrders;
-
-    public WeeklyEarnings(Date week, Double earnings,
-                          Long totalOrders,Double deduction,
-                          Long deliveredOrders,Long cancelledOrders) {
-        this.week = week;
-        this.earnings = earnings;
-        this.totalOrders=totalOrders;
-        this.deduction=deduction;
-        this.deliveredOrders=deliveredOrders;
-        this.cancelledOrders=cancelledOrders;
-    }
+    private Double shippingFee;
+    private Double totalAmount;
 }

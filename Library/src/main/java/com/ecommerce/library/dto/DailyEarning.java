@@ -1,29 +1,25 @@
 package com.ecommerce.library.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class DailyEarning {
-    private Date date;
-    private Double earnings;
-    private Long totalOrders;
+    private Long orderId;
+    private Long productId;
+    private String productName;
+    private String description;
+    private Double unitPrice;
+    private Integer quantity;
+    private Double total;
     private Double deduction;
-    private Long deliveredOrders;
-    private Long cancelledOrders;
+    private Double shippingFee;
+    private Double totalAmount;
 
-    public DailyEarning(Date date, double earnings, Long totalOrders,
-                        Double deduction,Long deliveredOrders,
-                        long cancelledOrders) {
-        this.date = date;
-        this.earnings = earnings;
-        this.totalOrders=totalOrders;
-        this.deduction=deduction;
-        this.deliveredOrders=deliveredOrders;
-        this.cancelledOrders=cancelledOrders;
-    }
 }

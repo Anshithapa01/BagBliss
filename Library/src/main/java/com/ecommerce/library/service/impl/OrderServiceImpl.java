@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -253,79 +254,166 @@ public class OrderServiceImpl implements OrderService {
 //    }
 
 
-    @Override
-    public List<DailyEarning> dailyReport(int year, int month) {
-        List<Object[]> result=orderRepository.dailyReport(year,month);
-        List<DailyEarning> report=new ArrayList<>();
-        for(Object[] row:result){
-            Date date= (Date) row[0];
-            double newBalance1 =(Double) row[1];
-            Double grandTotal = Math.round(newBalance1 * 100.0) / 100.0;
-            Long totalOrder= (Long) row[2];
-            double newBalance2 =(Double) row[3];
-            Double deduction = Math.round(newBalance2 * 100.0) / 100.0;
-            Long deliveredOrders = (Long) row[4];
-            Long cancelledOrders = (Long) row[5];
-            report.add(new DailyEarning(date,grandTotal,totalOrder,deduction,deliveredOrders,cancelledOrders));
-        }
-
-        return report;
-    }
-
-    @Override
-    public List<WeeklyEarnings> findWeeklyEarnings(int year) {
-        List<Object[]> result=orderRepository.weeklyEarnings(year);
-        List<WeeklyEarnings> report=new ArrayList<>();
-        for (Object[] row:result){
-            Date date= (Date) row[0];
-            double newBalance1 =(Double) row[1];
-            Double earnings = Math.round(newBalance1 * 100.0) / 100.0;
-            Long totalOrders = (Long) row[2];
-            double newBalance2 =(Double) row[3];
-            Double deduction = Math.round(newBalance2 * 100.0) / 100.0;
-            Long deliveredOrders = (Long) row[4];
-            Long cancelledOrders = (Long) row[5];
-            report.add(new WeeklyEarnings(date, earnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
-        }
-        return report;
-    }
-
+//    @Override
+//    public List<DailyEarning> dailyReport(int year, int month) {
+//        List<Object[]> result=orderRepository.dailyReport(year,month);
+//        List<DailyEarning> report=new ArrayList<>();
+//        for(Object[] row:result){
+//            Date date= (Date) row[0];
+//            double newBalance1 =(Double) row[1];
+//            Double grandTotal = Math.round(newBalance1 * 100.0) / 100.0;
+//            Long totalOrder= (Long) row[2];
+//            double newBalance2 =(Double) row[3];
+//            Double deduction = Math.round(newBalance2 * 100.0) / 100.0;
+//            Long deliveredOrders = (Long) row[4];
+//            Long cancelledOrders = (Long) row[5];
+//            report.add(new DailyEarning(date,grandTotal,totalOrder,deduction,deliveredOrders,cancelledOrders));
+//        }
+//
+//        return report;
+//    }
 
     @Override
-    public List<YearlyEarning> getYearlyReport(int year) {
-        List<Object[]> result = orderRepository.yearlyReport(year);
-        List<YearlyEarning> report = new ArrayList<>();
+    public List<DailyEarning> getCurrentDayOrders() {
+        List<Object[]> result = orderRepository.currentDayOrders();
+        List<DailyEarning> orders = new ArrayList<>();
+
         for (Object[] row : result) {
-            Date yearDate = (Date) row[0];
-            double newBalance1 =(Double) row[1];
-            Double totalEarnings = Math.round(newBalance1 * 100.0) / 100.0;
-            Long totalOrders = (Long) row[2];
-            double newBalance2 =(Double) row[3];
-            Double deduction  = Math.round(newBalance2 * 100.0) / 100.0;
-            Long deliveredOrders = (Long) row[4];
-            Long cancelledOrders = (Long) row[5];
-            report.add(new YearlyEarning(yearDate, totalEarnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
+            Long orderId = (Long) row[0];
+            Long productId = ((Long) row[1]);
+            String productName = (String) row[2];
+            String description = (String) row[3];
+            Double unitPrice = (Double) row[4];
+            Integer quantity = (Integer) row[5];
+            Double total = (Double) row[6];
+            Double deduction = (Double) row[7];
+            Double shippingFee = (Double) row[8];
+            Double totalAmount = (Double) row[9];
+
+            orders.add(new DailyEarning(orderId, productId, productName, description, unitPrice, quantity, total, deduction, shippingFee, totalAmount));
         }
-        return report;
+        return orders;
+    }
+
+
+//    @Override
+//    public List<WeeklyEarnings> findWeeklyEarnings(int year) {
+//        List<Object[]> result=orderRepository.weeklyEarnings(year);
+//        List<WeeklyEarnings> report=new ArrayList<>();
+//        for (Object[] row:result){
+//            Date date= (Date) row[0];
+//            double newBalance1 =(Double) row[1];
+//            Double earnings = Math.round(newBalance1 * 100.0) / 100.0;
+//            Long totalOrders = (Long) row[2];
+//            double newBalance2 =(Double) row[3];
+//            Double deduction = Math.round(newBalance2 * 100.0) / 100.0;
+//            Long deliveredOrders = (Long) row[4];
+//            Long cancelledOrders = (Long) row[5];
+//            report.add(new WeeklyEarnings(date, earnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
+//        }
+//        return report;
+//    }
+
+    @Override
+    public List<WeeklyEarnings> getLastWeekOrders() {
+        List<Object[]> results = orderRepository.lastWeekOrders();
+        List<WeeklyEarnings> orders = new ArrayList<>();
+
+        for (Object[] result : results) {
+            WeeklyEarnings order = new WeeklyEarnings();
+            order.setOrderDate((Date) result[0]);
+            order.setOrderId(((Long) result[1]));
+            order.setProductId(((Long) result[2]));
+            order.setProductName((String) result[3]);
+            order.setDescription((String) result[4]);
+            order.setUnitPrice((Double) result[5]);
+            order.setQuantity((Integer) result[6]);
+            order.setTotalPrice((Double) result[7]);
+            order.setDeduction((Double) result[8]);
+            order.setShippingFee((Double) result[9]);
+            order.setTotalAmount((Double) result[10]);
+            orders.add(order);
+        }
+        return orders;
+    }
+
+
+    @Override
+    public List<YearlyEarning> getYearlyOrders() {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        List<Object[]> results = orderRepository.findYearlyOrdersWithCategory(currentYear);
+        List<YearlyEarning> orders = new ArrayList<>();
+
+        for (Object[] result : results) {
+            YearlyEarning order = new YearlyEarning();
+            order.setCategoryName((String) result[0]);
+            order.setProductName((String) result[1]);
+            order.setOrderedQuantity((Long) result[2]);
+            order.setOrderedTotalPrice((Double) result[3]);
+            orders.add(order);
+        }
+
+        return orders;
+    }
+
+
+//    @Override
+//    public List<YearlyEarning> getYearlyReport(int year) {
+//        List<Object[]> result = orderRepository.yearlyReport(year);
+//        List<YearlyEarning> report = new ArrayList<>();
+//        for (Object[] row : result) {
+//            Date yearDate = (Date) row[0];
+//            double newBalance1 =(Double) row[1];
+//            Double totalEarnings = Math.round(newBalance1 * 100.0) / 100.0;
+//            Long totalOrders = (Long) row[2];
+//            double newBalance2 =(Double) row[3];
+//            Double deduction  = Math.round(newBalance2 * 100.0) / 100.0;
+//            Long deliveredOrders = (Long) row[4];
+//            Long cancelledOrders = (Long) row[5];
+//            report.add(new YearlyEarning(yearDate, totalEarnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
+//        }
+//        return report;
+//    }
+
+//    @Override
+//    public List<CustomEarning> getCustomReport(Date startDate, Date endDate,Date parsedEndDate) {
+//        List<Object[]> result = orderRepository.findByOrderDatesBetween(startDate, endDate);
+//        List<CustomEarning> report = new ArrayList<>();
+//        for (Object[] row : result) {
+//            double newBalance1 =(Double) row[0];
+//            Double totalEarnings = Math.round(newBalance1 * 100.0) / 100.0;
+//            Long totalOrders = (Long) row[1];
+//            double newBalance2 =(Double) row[2];
+//            Double deduction  = Math.round(newBalance2 * 100.0) / 100.0;
+//            Long deliveredOrders = (Long) row[3];
+//            Long cancelledOrders = (Long) row[4];
+//            report.add(new CustomEarning(startDate,parsedEndDate, totalEarnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
+//        }
+//        return report;
+//    }
+
+    @Override
+    public List<CustomEarning> getOrdersWithinDateRange(Date startDate, Date endDate) {
+        List<Object[]> results = orderRepository.findOrdersWithinDateRange(startDate, endDate);
+        return results.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     @Override
-    public List<CustomEarning> getCustomReport(Date startDate, Date endDate,Date parsedEndDate) {
-        List<Object[]> result = orderRepository.findByOrderDatesBetween(startDate, endDate);
-        List<CustomEarning> report = new ArrayList<>();
-        for (Object[] row : result) {
-            double newBalance1 =(Double) row[0];
-            Double totalEarnings = Math.round(newBalance1 * 100.0) / 100.0;
-            Long totalOrders = (Long) row[1];
-            double newBalance2 =(Double) row[2];
-            Double deduction  = Math.round(newBalance2 * 100.0) / 100.0;
-            Long deliveredOrders = (Long) row[3];
-            Long cancelledOrders = (Long) row[4];
-            report.add(new CustomEarning(startDate,parsedEndDate, totalEarnings, totalOrders, deduction, deliveredOrders, cancelledOrders));
-        }
-        return report;
+    public CustomEarning mapToDTO(Object[] result) {
+        CustomEarning dto = new CustomEarning();
+        dto.setOrderDate((Date) result[0]);
+        dto.setOrderId((Long) result[1]);
+        dto.setProductId((Long) result[2]);
+        dto.setProductName((String) result[3]);
+        dto.setProductDescription((String) result[4]);
+        dto.setUnitPrice((Double) result[5]);
+        dto.setQuantity((Integer) result[6]);
+        dto.setTotalPrice((Double) result[7]);
+        dto.setDeduction((Double) result[8]);
+        dto.setShippingFee((Double) result[9]);
+        dto.setTotalAmount((Double) result[10]);
+        return dto;
     }
-
 
     @Override
     public void setReason(Long orderId, String reason) {
