@@ -38,7 +38,6 @@ border: 1px solid #ccc;
                                 <thead>
                                 <tr>
                                     <th>Order</th>
-<!--                                    <th>Product</th>-->
                                     <th>Product</th>
                                     <th>Name</th>
                                     <th>Product Description</th>
@@ -51,8 +50,7 @@ border: 1px solid #ccc;
                                 </thead>
                                 <tbody>
                                 <tr th:each="orderDetail : ${orderDetailsPage}">
-                                    <td class="order-id" th:text="${orderDetail.order.id}"></td>
-<!--                                    <td th:text="${orderDetail.id}">#</td>-->
+                                    <td class="order-id d-none" th:text="${orderDetail.order.id}"></td>
                                     <td>
                                         <img th:if="${not #lists.isEmpty(orderDetail.product.image)}"
                                              th:src="@{|/imgs/items/${orderDetail.product.image[0].getName()}|}" width="40" height="40" class="img-xs" alt="Item"> <br>

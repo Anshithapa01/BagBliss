@@ -94,16 +94,28 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4" id="monthlyChart">
-                <div class="card mb-4" style="height: 360px;">
-                    <article class="card-body" th:attr="monthly-data=${monthlyEarn}, yearly-data=${yearlyEarn}">
-                        <h5 class="card-title"></h5>
-                        <canvas id="myChart2" height="200"></canvas>
-                    </article>
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4" id="yearlyChart">
+                    <div class="card mb-4" style="height: 360px;">
+                        <article class="card-body" th:attr="yearly-data=${yearlyEarn}">
+                            <h5 class="card-title">Yearly Earning</h5>
+                            <canvas id="yearlyChartCanvas" height="200"></canvas>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4" id="monthlyChart">
+                    <div class="card mb-4" style="height: 360px;">
+                        <article class="card-body" th:attr="monthly-data=${monthlyEarn}, yearly-data=${yearlyEarn}">
+                            <h5 class="card-title">Monthly Earning</h5>
+                            <canvas id="monthlyChartCanvas" height="200"></canvas>
+                        </article>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="container">
@@ -270,14 +282,11 @@
 
     var encodedDataElement = document.querySelector('[monthly-data]');
     var yearlyDataElement = document.querySelector('[yearly-data]');
-    if (encodedDataElement && yearlyDataElement) {
+
+    if (encodedDataElement) {
         var encodedData = encodedDataElement.getAttribute('monthly-data');
         var decodedData = decodeEntities(encodedData);
         var jsonData = JSON.parse(decodedData);
-
-        var yearlyEncodedData = yearlyDataElement.getAttribute('yearly-data');
-        var yearlyDecodedData = decodeEntities(yearlyEncodedData);
-        var yearlyJsonData = JSON.parse(yearlyDecodedData);
 
         var dates = jsonData.map(function(item) {
             var date = new Date(item.date);
@@ -289,38 +298,24 @@
             return item.earning;
         });
 
-        var years = yearlyJsonData.map(function(item) {
-            return item.year;
-        });
+        var monthlyCanvas = document.getElementById("monthlyChartCanvas");
+        var monthlyCtx = monthlyCanvas.getContext('2d');
 
-        var yearlyEarning = yearlyJsonData.map(function(item) {
-            return item.earning;
-        });
-
-        var canvas = document.getElementById("myChart2");
-        var existingChart = Chart.getChart(canvas);
-        if (existingChart) {
-            existingChart.destroy();
+        var existingMonthlyChart = Chart.getChart(monthlyCanvas);
+        if (existingMonthlyChart) {
+            existingMonthlyChart.destroy();
         }
 
-        var ctx = canvas.getContext('2d');
-        var myChart = new Chart(ctx, {
+        var monthlyChart = new Chart(monthlyCtx, {
             type: 'bar',
             data: {
-                labels: dates.concat(years),
+                labels: dates,
                 datasets: [
                     {
                         label: "Monthly Earning",
                         backgroundColor: "#5897fb",
-                        barThickness:10,
-                        data: earning,
-                        fill:true,
-                    },
-                    {
-                        label: "Yearly Earning",
-                        backgroundColor: "#ff6384",
                         barThickness: 10,
-                        data: new Array(dates.length).fill(null).concat(yearlyEarning), // Align the yearly data with the correct x-axis position
+                        data: earning,
                         fill: true,
                     }
                 ]
@@ -341,11 +336,65 @@
             }
         });
     }
+
+    if (yearlyDataElement) {
+        var yearlyEncodedData = yearlyDataElement.getAttribute('yearly-data');
+        var yearlyDecodedData = decodeEntities(yearlyEncodedData);
+        var yearlyJsonData = JSON.parse(yearlyDecodedData);
+
+        var years = yearlyJsonData.map(function(item) {
+            return item.year;
+        });
+
+        var yearlyEarning = yearlyJsonData.map(function(item) {
+            return item.earning;
+        });
+
+        var yearlyCanvas = document.getElementById("yearlyChartCanvas");
+        var yearlyCtx = yearlyCanvas.getContext('2d');
+
+        var existingYearlyChart = Chart.getChart(yearlyCanvas);
+        if (existingYearlyChart) {
+            existingYearlyChart.destroy();
+        }
+
+        var yearlyChart = new Chart(yearlyCtx, {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: "Yearly Earning",
+                        backgroundColor: "#ff6384",
+                        barThickness: 10,
+                        data: yearlyEarning,
+                        fill: true,
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            usePointStyle: true,
+                        },
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
     function decodeEntities(encodedString) {
         var textArea = document.createElement('textarea');
         textArea.innerHTML = encodedString;
         return textArea.value;
     }
+
 </script>
 
 

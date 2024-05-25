@@ -8,8 +8,8 @@ import com.ecommerce.library.service.UserOtpService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,6 +77,10 @@ public class EmailSendController {
             }
             String status = emailService.sendSimpleMail(email,otp);
             if(status.equals("success")){
+                if(session.getAttribute("token")!=null) {
+                    Object token=session.getAttribute("token");
+                    session.setAttribute("token",token);
+                }
                 session.setAttribute("message","otpsent");
                 session.setAttribute("email",email);
                 redirectAttributes.addFlashAttribute("email",email);
@@ -141,31 +145,9 @@ public class EmailSendController {
         }
     }
 
-//    @PostMapping("/validateOTP")
-//    public String validateOTP(@ModelAttribute("userOTP")UserOtp userOTPRequest, HttpSession session,
-//                              RedirectAttributes redirectAttributes){
-//
-//        String email = (String) session.getAttribute("email");
-//        if (email == null) {
-//            return "redirect:/error";
-//        }
-//        UserOtp userOTP = userOTPService.findByEmail(email);
-//        if (userOTP != null) {
-//            if (passwordEncoder.matches(userOTPRequest.getOneTimePassword(), userOTP.getOneTimePassword())) {
-//                redirectAttributes.addFlashAttribute("email", userOTP.getEmail());
-//                return "redirect:/register";
-//            } else {
-//                return "redirect:/otpvalidation?error";
-//            }
-//        } else {
-//            return "redirect:/requestOTP?email=" + email;
-//        }
-//
-//    }
-
     @PostMapping("/validateOTP")
     public String validateOTP(@ModelAttribute("userOTP")UserOtp userOTPRequest, HttpSession session,
-                              RedirectAttributes redirectAttributes){
+                              RedirectAttributes redirectAttributes, Model model){
 
         String email = (String) session.getAttribute("email");
         if (email == null) {
@@ -180,7 +162,13 @@ public class EmailSendController {
                 if (timeDifference < 60000) { // Check if time difference is less than 1 minute (60,000 milliseconds)
                     session.setAttribute("email",email);
                     redirectAttributes.addFlashAttribute("email", userOTP.getEmail());
-                    return "redirect:/register";
+                    if (session.getAttribute("token")==null)
+                        return "redirect:/register";
+                    else{
+                        Object token=session.getAttribute("token");
+                        model.addAttribute("token",token);
+                        return "redirect:/referral_signup";
+                    }
                 } else {
                     session.setAttribute("error","Sorry, the OTP has timed out. Please request a new one.");
                     return "redirect:/otpvalidation";

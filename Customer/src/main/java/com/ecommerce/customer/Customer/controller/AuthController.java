@@ -112,6 +112,10 @@ public class AuthController {
     @GetMapping("/otpvalidation")
     public String showotpvalidationPage(Model model, HttpSession session){
         String email = (String) session.getAttribute("email");
+        if(session.getAttribute("token")!=null){
+            Object token=session.getAttribute("token");
+            session.setAttribute("token",token);
+        }
         UserOtp userOTP = new UserOtp();
         userOTP.setEmail(email);
         session.setAttribute("email",email);
@@ -124,6 +128,5 @@ public class AuthController {
     public String googleOAuth2Callback() {
         return "home";
     }
-
 
 }

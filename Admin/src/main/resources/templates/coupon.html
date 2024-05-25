@@ -66,11 +66,11 @@
                                     <td th:text="${couponData.maximumOfferAmount}"></td>
                                     <td th:text="${couponData.count}"></td>
                                     <td th:text="${couponData.expireDate}"></td>
-                                    <td><a class="btn btn-danger" th:href="@{/editcoupon(couponId=${couponData.id})}">Edit</a></td>
+                                    <td><a class="btn btn-success" th:href="@{/editcoupon(couponId=${couponData.id})}">Edit</a></td>
                                     <td>
-                                        <a class="btn"  th:if="${couponData.enabled==true && couponData.isExpired()==false}"
+                                        <a class="btn btn-danger"  th:if="${couponData.enabled==true && couponData.isExpired()==false}"
                                         th:href="@{/disablecoupon(couponId=${couponData.id})}">Disable </a>
-                                        <a class="btn"  th:if="${couponData.enabled==false && couponData.isExpired()==false}"
+                                        <a class="btn btn-brand"  th:if="${couponData.enabled==false && couponData.isExpired()==false}"
                                         th:href="@{/enablecoupon(couponId=${couponData.id})}">Enable </a>
                                     </td>
                                 </tr>

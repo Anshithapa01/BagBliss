@@ -55,12 +55,12 @@
                                     <td th:text="${offer1.offerType}"></td>
                                     <td th:text="${offer1.offerPercentage}"></td>
                                     <td>
-                                        <a class="btn btn-danger" th:href="@{/editOffer(offerId=${offer1.id})}">Edit</a>
+                                        <a class="btn btn-success" th:href="@{/editOffer(offerId=${offer1.id})}">Edit</a>
                                     </td>
                                     <td>
-                                        <a class="btn"  th:if="${offer1.active==true}"
+                                        <a class="btn btn-danger"  th:if="${offer1.active==true}"
                                            th:href="@{/disableOffer(offerId=${offer1.id})}">Remove Offer </a>
-                                        <a class="btn"  th:if="${offer1.active==false}"
+                                        <a class="btn btn-brand"  th:if="${offer1.active==false}"
                                            th:href="@{/enableOffer(offerId=${offer1.id})}">Apply Offer </a>
                                     </td>
                                 </tr>

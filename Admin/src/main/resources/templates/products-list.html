@@ -60,7 +60,7 @@
                 <article class="itemlist" th:each= "product : ${products}">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-sm-1 col-2 col-price"> <span th:text="${product.id}"></span> </div>
-                        <div class="col-lg-3 col-sm-3 col-6 flex-grow-1 col-name">
+                        <div class="col-lg-3 col-sm-1 col-10 flex-grow-1 col-name">
                             <a class="itemside">
                                 <div class="left">
                                     <img th:if="${product.image != null and product.image.size() > 0}"
@@ -73,12 +73,12 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-1 col-sm-1 col-2 col-price"> <span th:text="${product.category.name}"></span> </div>
-                        <div class="col-lg-3 col-sm-3 col-4 col-price"> <span th:text="${product.description}"></span> </div>
-                        <div class="col-lg-1 col-sm-1 col-4 col-price"> <span th:text=" '$' + ${product.costPrice}"></span> </div>
+                        <div class="col-lg-1 col-sm-1 col-3 col-price"> <span th:text="${product.category.name}"></span> </div>
+                        <div class="col-lg-3 col-sm-1 col-4 col-price"> <span th:text="${product.description}"></span> </div>
+                        <div class="col-lg-1 col-sm-1 col-3 col-price"> <span th:text=" '$' + ${product.costPrice}"></span> </div>
                         <div class="col-lg-1 col-sm-1 col-2 col-price"> <span th:if="${product.currentQuantity>0}" th:text="${product.currentQuantity} +' Left'"></span>
                             <span th:if="${product.currentQuantity==0}" class="alert-danger">Out of stock</span></div>
-                        <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
+                        <div class="col-lg-2 col-sm-1 col-4col-action text-end">
                             <a th:href="@{/update-product/{id}(id=${product.id})}" class="btn btn-sm font-sm rounded btn-brand">
                                 <i class="material-icons md-edit"></i> Edit
                             </a>

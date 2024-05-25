@@ -3,7 +3,7 @@
 
 <head th:fragment="head_sec">
     <meta charset="utf-8">
-    <title>Evara - eCommerce HTML Template</title>
+    <title>BagBliss - eCommerce HTML Template</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,14 +81,12 @@
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
                                 <a th:href="@{/wishList}">
-                                    <img class="svgInject" alt="Evara" src="/shop/imgs/theme/icons/icon-heart.svg">
-                                    <span class="pro-count blue">4</span>
+                                    <img class="svgInject" alt="BagBliss" src="/shop/imgs/theme/icons/icon-heart.svg">
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" th:href="@{/cart}">
-                                    <img alt="Evara" src="/shop/imgs/theme/icons/icon-cart.svg">
-                                    <span class="pro-count blue">2</span>
+                                    <img alt="BagBliss" src="/shop/imgs/theme/icons/icon-cart.svg">
                                 </a>
                             </div>
                         </div>
@@ -119,7 +117,7 @@
                                 <li><a th:href="@{/wallet}">Wallet</a>
                                 </li>
                                 <li>
-                                    <a href="page-contact.html">Contact</a>
+                                    <a th:href="@{/contact}">Contact</a>
                                 </li>
                             </ul>
                         </nav>
@@ -133,20 +131,20 @@
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
                             <a th:href="@{/wishList}">
-                                <img alt="Evara" src="/shop/imgs/theme/icons/icon-heart.svg">
+                                <img alt="BagBliss" src="/shop/imgs/theme/icons/icon-heart.svg">
                                 <span class="pro-count white">4</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" th:href="@{/cart}">
-                                <img alt="Evara" src="/shop/imgs/theme/icons/icon-cart.svg">
+                                <img alt="BagBliss" src="/shop/imgs/theme/icons/icon-cart.svg">
                                 <span class="pro-count white">2</span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                 <ul>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Evara" src="/shop/imgs/shop/thumbnail-3.jpg"></a>
+                                            <a href="shop-product-right.html"><img alt="BagBliss" src="/shop/imgs/shop/thumbnail-3.jpg"></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
@@ -158,7 +156,7 @@
                                     </li>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Evara" src="/shop/imgs/shop/thumbnail-4.jpg"></a>
+                                            <a href="shop-product-right.html"><img alt="BagBliss" src="/shop/imgs/shop/thumbnail-4.jpg"></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
@@ -472,33 +470,8 @@
 
 
 <footer th:fragment="footer-sec" class="main">
-    <section class="newsletter p-30 text-white wow fadeIn animated">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-md-3 mb-lg-0">
-                    <div class="row align-items-center">
-                        <div class="col flex-horizontal-center">
-                            <img class="icon-email" src="/shop/imgs/theme/icons/icon-email.svg" alt="">
-                            <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
-                        </div>
-                        <div class="col my-4 my-md-0 des">
-                            <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>₹25 coupon for first shopping.</strong></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <!-- Subscribe Form -->
-                    <form class="form-subcriber d-flex wow fadeIn animated">
-                        <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
-                        <button class="btn bg-dark text-white" type="submit">Subscribe</button>
-                    </form>
-                    <!-- End Subscribe Form -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section-padding footer-mid">
-        <div class="container pt-15 pb-20">
+    <section class="newsletter pt-30 pb-2 text-white wow fadeIn animated">
+        <div class="container pt-15 pb-2">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5 mb-lg-0">
@@ -507,10 +480,10 @@
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                         <p class="wow fadeIn animated">
-                            <strong>Address: </strong>562 Wellington Road, Street 32, San Francisco
+                            <strong>Address: </strong>205 North Michigan Avenue, Suite 810<br>Chicago, 60601, USA
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Phone: </strong>+01 2222 365 /(+91) 01 2345 6789
+                            <strong>Phone: </strong>+01 2222 365 /(123) 456-7890
                         </p>
                         <p class="wow fadeIn animated">
                             <strong>Hours: </strong>10:00 - 18:00, Mon - Sat
@@ -527,30 +500,24 @@
                 </div>
                 <div class="col-lg-2 col-md-3">
                     <h5 class="widget-title wow fadeIn animated">About</h5>
-                    <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Support Center</a></li>
+                    <ul class="footer-list wow fadeIn animated mt-10 mb-sm-5 mb-md-0">
+                        <li><a th:href="@{/contact}">About Us</a></li>
+                        <li><a th:href="@{/contact}">Contact</a></li>
+                        <li><a th:href="@{/contact}">Support Center</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-3">
                     <h5 class="widget-title wow fadeIn animated">My Account</h5>
-                    <ul class="footer-list wow fadeIn animated">
-                        <li><a href="#">Sign In</a></li>
-                        <li><a href="#">View Cart</a></li>
-                        <li><a href="#">My Wishlist</a></li>
-                        <li><a href="#">Track My Order</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Order</a></li>
+                    <ul class="footer-list wow fadeIn animated mt-10">
+                        <li><a th:href="@{/cart}">View Cart</a></li>
+                        <li><a th:href="@{/wishList}">My Wishlist</a></li>
+                        <li><a th:href="@{/orderDetails?pageNo=0}">Order</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
                     <h5 class="widget-title wow fadeIn animated">Install App</h5>
                     <div class="row">
-                        <div class="col-md-8 col-lg-12">
+                        <div class="col-md-8 col-lg-12 mt-10">
                             <p class="wow fadeIn animated">From App Store or Google Play</p>
                             <div class="download-app wow fadeIn animated">
                                 <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="/shop/imgs/theme/app-store.jpg" alt=""></a>
@@ -565,22 +532,10 @@
                 </div>
             </div>
         </div>
-    </section>
-    <div class="container pb-20 wow fadeIn animated">
-        <div class="row">
-            <div class="col-12 mb-20">
-                <div class="footer-bottom"></div>
-            </div>
-            <div class="col-lg-6">
-                <p class="float-md-left font-sm text-muted mb-0">&copy; 2022, <strong class="text-brand">Evara</strong> - HTML Ecommerce Template </p>
-            </div>
-            <div class="col-lg-6">
-                <p class="text-lg-end text-start font-sm text-muted mb-0">
-                    Designed by <a href="http://alithemes.com" target="_blank">Alithemes.com</a>. All rights reserved
-                </p>
-            </div>
+        <div class="col-lg-12 pt-30">
+            <p class="float-md-left font-sm text-muted mb-0 text-center">&copy; 2022, <strong class="text-brand">BagBliss</strong> .Pvt Ltd </p>
         </div>
-    </div>
+    </section>
 </footer>
 
 
@@ -600,34 +555,6 @@
 </div>
 
 <div th:fragment="scripts">
-
-<!--    <script src="/shop/js/vendor/modernizr-3.6.0.min.js"></script>-->
-<!--    <script src="/shop/js/vendor/jquery-3.6.0.min.js"></script>-->
-<!--    <script src="/shop/js/vendor/jquery-migrate-3.3.0.min.js"></script>-->
-<!--    <script src="/shop/js/vendor/bootstrap.bundle.min.js"></script>-->
-<!--    <script src="/shop/js/plugins/slick.js"></script>-->
-<!--    <script src="/shop/js/plugins/jquery.syotimer.min.js"></script>-->
-<!--    <script src="/shop/js/plugins/wow.js"></script>-->
-<!--    <script src="/shop/js/plugins/jquery-ui.js"></script>-->
-<!--    <script src="/shop/js/plugins/perfect-scrollbar.js"></script>-->
-<!--    <script src="/shop/js/plugins/magnific-popup.js"></script>-->
-<!--    <script src="/shop/js/plugins/select2.min.js"></script>-->
-<!--    <script src="/shop/js/plugins/waypoints.js"></script>-->
-<!--    <script src="/shop/js/plugins/counterup.js"></script>-->
-<!--    <script src="/shop/js/plugins/jquery.countdown.min.js"></script>-->
-<!--    <script src="/shop/js/plugins/images-loaded.js"></script>-->
-<!--    <script src="/shop/js/plugins/isotope.js"></script>-->
-<!--    <script src="/shop/js/plugins/scrollup.js"></script>-->
-<!--    <script src="/shop/js/plugins/jquery.vticker-min.js"></script>-->
-<!--    <script src="/shop/js/plugins/jquery.theia.sticky.js"></script>-->
-<!--    <script src="/shop/js/plugins/jquery.elevatezoom.js"></script>-->
-<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
-<!--    &lt;!&ndash; Template  JS &ndash;&gt;-->
-<!--    <script src="/shop/js/main.js?v=3.4"></script>-->
-<!--    <script src="/shop/js/shop.js?v=3.4"></script>-->
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

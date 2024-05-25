@@ -162,7 +162,7 @@ class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> pageProducts(int pageNo) {
-        Pageable pageable=PageRequest.of(pageNo,8);
+        Pageable pageable=PageRequest.of(pageNo,16);
         List<ProductDto> products= transferData(productRepository.findAll());
         Page<Product> productPage=toPage(products,pageable);
         return productPage;
