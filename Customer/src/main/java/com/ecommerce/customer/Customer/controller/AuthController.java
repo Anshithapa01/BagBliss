@@ -123,10 +123,4 @@ public class AuthController {
         return "verify-otp";
     }
 
-
-    @GetMapping("/register/oauth2/code/google")
-    public String googleOAuth2Callback() {
-        return "home";
-    }
-
 }

@@ -89,18 +89,7 @@
 <!-- Main Script -->
 <script src="/shop/login/js/main.js" type="text/javascript"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const googleSignupButton = document.getElementById('google-signup-button');
 
-        googleSignupButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default action of following the link
-
-            // Redirect to the Google OAuth 2.0 authentication endpoint
-            window.location.href = '/shop/oauth2/authorization/google'; // This is the default endpoint provided by Spring Security OAuth2
-        });
-    });
-</script>
 </body>
 
 </html>

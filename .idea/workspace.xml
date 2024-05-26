@@ -6,6 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="final setup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/referral-signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/referral-signUp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/sign-up.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CustomOAuth2UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomOAuth2UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/GoogleUserInfoService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +202,7 @@
       <workItem from="1716558560198" duration="725000" />
       <workItem from="1716617391002" duration="13018000" />
       <workItem from="1716698708342" duration="40000" />
+      <workItem from="1716700791634" duration="742000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
