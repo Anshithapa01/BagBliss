@@ -4,49 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="modified sales report">
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/about1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/about2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/shop/about3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/contact.html" afterDir="false" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="final setup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/coupon.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/coupon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/offer.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/offer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-error-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-error-404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-invoice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/page-reviews.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/src/main/resources/templates/products-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/EmailSendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/EmailSendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ReferalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/ReferalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/static/imgs/banner/banner-8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/change-password-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/change-password-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/invoice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/order-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/order-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-description.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-description.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/referal-signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/referral-signUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/search_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/search_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/sign-up.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-email.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-email.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-otp.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/verify-otp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/ProductServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +191,8 @@
       <workItem from="1716351870974" duration="8885000" />
       <workItem from="1716439025441" duration="8528000" />
       <workItem from="1716558560198" duration="725000" />
-      <workItem from="1716617391002" duration="10016000" />
+      <workItem from="1716617391002" duration="13018000" />
+      <workItem from="1716698708342" duration="40000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -370,7 +330,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716357823009</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="final setup">
+      <option name="closed" value="true" />
+      <created>1716632120916</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716632120917</updated>
+    </task>
+    <task id="LOCAL-00019" summary="final setup">
+      <option name="closed" value="true" />
+      <created>1716632130144</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716632130144</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,6 +380,7 @@
     <MESSAGE value="invoice,dashboard admin" />
     <MESSAGE value="modified search" />
     <MESSAGE value="modified sales report" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified sales report" />
+    <MESSAGE value="final setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="final setup" />
   </component>
 </project>
