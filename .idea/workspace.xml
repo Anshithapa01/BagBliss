@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="some errors resolved" />
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="some errors resolved">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Library/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +52,13 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.All in Library.executor": "Debug",
+    "Maven.Admin [clean].executor": "Run",
+    "Maven.Admin [install].executor": "Run",
+    "Maven.BagBliss [clean].executor": "Run",
+    "Maven.BagBliss [install].executor": "Run",
+    "Maven.Customer [clean].executor": "Run",
+    "Maven.Customer [install].executor": "Run",
     "Maven.Library [clean].executor": "Run",
     "Maven.Library [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -64,7 +74,7 @@
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Customer/src/main/resources/templates",
+    "last_opened_file_path": "C:/Users/Anshitha P A/Desktop/Project backup/Mangolia-Trendz-main",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -110,7 +120,75 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.Library [install]">
+  <component name="RunManager" selected="JUnit.All in Library">
+    <configuration name="All in Library" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Library" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Customer [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Customer" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Customer [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Customer" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="Library [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -196,8 +274,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Library" />
+        <item itemvalue="Maven.Customer [install]" />
         <item itemvalue="Maven.Library [install]" />
         <item itemvalue="Maven.Library [clean]" />
+        <item itemvalue="Maven.Customer [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +342,8 @@
       <workItem from="1716617391002" duration="13018000" />
       <workItem from="1716698708342" duration="40000" />
       <workItem from="1716700791634" duration="904000" />
-      <workItem from="1716814675990" duration="4983000" />
+      <workItem from="1716814675990" duration="5839000" />
+      <workItem from="1716824284357" duration="2678000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
