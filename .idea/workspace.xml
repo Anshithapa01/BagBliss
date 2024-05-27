@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="final setup">
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="some errors resolved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/config/CustomerConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/ecommerce/customer/Customer/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/referral-signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/referral-signUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/sign-up.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/CustomOAuth2UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/CustomOAuth2UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/service/impl/GoogleUserInfoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/test/java/com/ecommerce/library/LibraryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/test/java/com/ecommerce/library/LibraryApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,37 +47,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.CustomerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Customer/src/main/resources/templates&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Maven.Library [clean].executor": "Run",
+    "Maven.Library [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AdminApplication.executor": "Run",
+    "Spring Boot.CustomerApplication.executor": "Run",
+    "Spring Boot.LibraryApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Anshitha P A/Documents/Spring-Initializer/Mini_project/BagBliss/Customer/src/main/resources/templates",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Anshitha P A\Documents\Spring-Initializer\Mini_project\BagBliss\Customer\src\main\resources\templates" />
@@ -118,7 +113,67 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CustomerApplication">
+  <component name="RunManager" selected="Maven.Library [install]">
+    <configuration name="Library [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Library" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Library [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Library" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="Admin" />
@@ -142,6 +197,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Maven.Library [install]" />
+        <item itemvalue="Maven.Library [clean]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -202,7 +263,8 @@
       <workItem from="1716558560198" duration="725000" />
       <workItem from="1716617391002" duration="13018000" />
       <workItem from="1716698708342" duration="40000" />
-      <workItem from="1716700791634" duration="742000" />
+      <workItem from="1716700791634" duration="904000" />
+      <workItem from="1716814675990" duration="4658000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
@@ -356,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716632130144</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="some errors resolved">
+      <option name="closed" value="true" />
+      <created>1716701609177</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716701609177</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,6 +461,7 @@
     <MESSAGE value="modified search" />
     <MESSAGE value="modified sales report" />
     <MESSAGE value="final setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="final setup" />
+    <MESSAGE value="some errors resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="some errors resolved" />
   </component>
 </project>
