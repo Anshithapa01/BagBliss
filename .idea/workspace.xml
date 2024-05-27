@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="some errors resolved">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/test/java/com/ecommerce/library/LibraryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/test/java/com/ecommerce/library/LibraryApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="0dc9c8e7-3843-4bb2-8743-24783014f1a7" name="Changes" comment="some errors resolved" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,7 +261,7 @@
       <workItem from="1716617391002" duration="13018000" />
       <workItem from="1716698708342" duration="40000" />
       <workItem from="1716700791634" duration="904000" />
-      <workItem from="1716814675990" duration="4658000" />
+      <workItem from="1716814675990" duration="4983000" />
     </task>
     <task id="LOCAL-00001" summary="Admin Login,register and index added">
       <option name="closed" value="true" />
