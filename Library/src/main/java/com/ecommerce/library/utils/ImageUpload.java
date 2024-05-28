@@ -13,9 +13,9 @@ import java.security.cert.TrustAnchor;
 
 @Service
 public class ImageUpload {
-    private final String UPLOAD_FOLDER = "C:\\Users\\Anshitha P A\\Documents\\Spring-Initializer\\Mini_project\\BagBliss\\Admin\\src\\main\\resources\\static\\imgs\\items";
+    private final String UPLOAD_FOLDER = "/home/ubuntu/BagBliss/Admin/src/main/resources/static/imgs/items";
 
-    String UPLOAD_FOLDER_CUSTOMER ="C:\\Users\\Anshitha P A\\Documents\\Spring-Initializer\\Mini_project\\BagBliss\\Customer\\src\\main\\resources\\static\\imgs\\items";
+    String UPLOAD_FOLDER_CUSTOMER ="/home/ubuntu/BagBliss/Customer/src/main/resources/static/imgs/items";
 
     public String storeFile(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
